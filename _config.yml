@@ -103,6 +103,5 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/q1061709994/blog_hexo #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
-  branch: [main]
-  message: [message]
+  repo: https://github.com/q1061709994/q1061709994.github.iohexo clean && hexo deploy #https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io
+  branch: gh-pages

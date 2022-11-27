@@ -1,0 +1,2350 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/favicon.ico">
+  <link rel="icon" href="/img/bg/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="第一章、概述1.1什么是Internet从具体构成角度  节点  主机及其上运行的应用程序 路由器、交换机等网络交换设备   边  接入网链路：主机连接到互联网的链路 主干链路：路由器间的链路   协议  数以亿计的、互联的计算设备  主机 &#x3D; 端系统 运行网络运行程序   通信链路  光纤、同轴电缆、无线电、卫星 传输速率 &#x3D; 带宽（bps）   分组交换设备：转发分组（packets）  路由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络学习笔记">
+<meta property="og:url" content="http://example.com/2020/11/08/guide/network/index.html">
+<meta property="og:site_name" content="Huan&#39;s Blog">
+<meta property="og:description" content="第一章、概述1.1什么是Internet从具体构成角度  节点  主机及其上运行的应用程序 路由器、交换机等网络交换设备   边  接入网链路：主机连接到互联网的链路 主干链路：路由器间的链路   协议  数以亿计的、互联的计算设备  主机 &#x3D; 端系统 运行网络运行程序   通信链路  光纤、同轴电缆、无线电、卫星 传输速率 &#x3D; 带宽（bps）   分组交换设备：转发分组（packets）  路由">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_093143.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_113238.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_113259.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_094757.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_223255.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_224518.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_080416.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_080803.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_084131.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_154849.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_210350.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_210447.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-06_211956.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-14_215439.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-14_215611.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-14_220249.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-14_221923.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-15_102529.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-15_104552.png">
+<meta property="og:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-15_111616.png">
+<meta property="article:published_time" content="2020-11-08T12:07:00.000Z">
+<meta property="article:modified_time" content="2022-11-27T16:23:24.700Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2020/11/08/guide/network/n_images/2022-09-05_093143.png">
+  
+  
+  
+  <title>计算机网络学习笔记 - Huan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Huan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/hero.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="计算机网络学习笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2020-11-08 20:07" pubdate>
+          November 8, 2020 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          125 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算机网络学习笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="第一章、概述"><a href="#第一章、概述" class="headerlink" title="第一章、概述"></a>第一章、概述</h1><h3 id="1-1什么是Internet"><a href="#1-1什么是Internet" class="headerlink" title="1.1什么是Internet"></a>1.1什么是Internet</h3><p><strong>从具体构成角度</strong></p>
+<ul>
+<li><p>节点</p>
+<ul>
+<li>主机及其上运行的应用程序</li>
+<li>路由器、交换机等网络交换设备</li>
+</ul>
+</li>
+<li><p>边</p>
+<ul>
+<li>接入网链路：主机连接到互联网的链路</li>
+<li>主干链路：路由器间的链路</li>
+</ul>
+</li>
+<li><p>协议</p>
+</li>
+<li><p>数以亿计的、互联的计算设备</p>
+<ul>
+<li>主机 = 端系统</li>
+<li>运行网络运行程序</li>
+</ul>
+</li>
+<li><p>通信链路</p>
+<ul>
+<li>光纤、同轴电缆、无线电、卫星</li>
+<li>传输速率 = 带宽（bps）</li>
+</ul>
+</li>
+<li><p>分组交换设备：转发分组（packets）</p>
+<ul>
+<li>路由器和交换机</li>
+</ul>
+</li>
+<li><p>协议控制发送消息</p>
+<ul>
+<li>如TCP、IP、HTTP、FTP、PPP</li>
+</ul>
+</li>
+<li><p>Internet：“网络的网络”</p>
+<ul>
+<li>松散的层次结构，互联的ISP</li>
+<li>公共Internet vs，专用intranet</li>
+</ul>
+</li>
+<li><p>Internet标准</p>
+<ul>
+<li>RFC：Request for comments</li>
+<li>IETF：Internet Engineering Task Force</li>
+</ul>
+</li>
+</ul>
+<p><strong>从服务角度</strong></p>
+<ul>
+<li><p>使用通信设施进行通信的分布式应用</p>
+<ul>
+<li>Web、VoIp、email、分布式游戏、电子商务、社交网络</li>
+</ul>
+</li>
+<li><p>通信基础设施为apps提供编程接口</p>
+<ul>
+<li><p>将发送和接收数据的apps与互联网连接起来</p>
+</li>
+<li><p>为app应用提供服务选择，类似于邮政服务：</p>
+<p>​    无连接不可靠服务</p>
+<p>​    面向连接的可靠服务</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>什么是协议</strong></p>
+<p>​    <strong>网络协议：</strong></p>
+<ul>
+<li><p>​    类似于人类协议</p>
+</li>
+<li><p>​    机器之间的协议而非人与人之间的协议</p>
+</li>
+<li><p>​    Internet中所有的通信行为都受协议制约</p>
+<blockquote>
+<p>协议定义了在两个或多个通信尸体之间交换的报文格式和次序，以及在报文传输和/或接收或其他事件方面所采取的动作</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="1-2网络边缘"><a href="#1-2网络边缘" class="headerlink" title="1.2网络边缘"></a>1.2网络边缘</h3><p><strong>网络结构</strong></p>
+<ul>
+<li>网络边缘：<ul>
+<li>主机</li>
+<li>应用程序（客户端和服务器）</li>
+</ul>
+</li>
+<li>网络核心：<ul>
+<li>互联着的路由器</li>
+<li>网络的网络</li>
+</ul>
+</li>
+<li>接入网、物理媒体<ul>
+<li>有线或者无线通信链路</li>
+</ul>
+</li>
+</ul>
+<p><strong>网络边缘</strong></p>
+<ul>
+<li>端系统（主机）：<ul>
+<li>运行应用程序</li>
+<li>如Web、email</li>
+<li>在”网络的边缘“</li>
+</ul>
+</li>
+<li>客户/服务器模式<ul>
+<li>客户端向服务器请求、接收服务</li>
+<li>如Web浏览器/服务器：email客户端/服务器</li>
+</ul>
+</li>
+<li>对等（peer-peer）模式<ul>
+<li>很少（甚至没有）专门的服务器</li>
+<li>如Gnutella、KaZaA、Emule</li>
+</ul>
+</li>
+</ul>
+<p><strong>网络边缘：采用基础设施的无连接服务</strong></p>
+<p>​    目标：在端系统之间传输数据</p>
+<ul>
+<li>UDP-用户数据报协议（User Datagram Protocol）（RFC 768）：    <ul>
+<li>无连接</li>
+</ul>
+</li>
+<li>不可靠数据传输<ul>
+<li>无流量控制</li>
+</ul>
+</li>
+<li>无拥塞控制</li>
+</ul>
+<p> 使用TCP的应用：</p>
+<blockquote>
+<p>HTTP（Web），FTP（文件传送）、Telnet（远程登陆）、SMTP（email）</p>
+</blockquote>
+<p>使用UDP的应用：</p>
+<blockquote>
+<p>流媒体、远程会议、DNS、Internet电话</p>
+</blockquote>
+<p><strong>网络边缘：采用网络设施的面向连接服务</strong></p>
+<p>​    目标：在端系统之间传输数据</p>
+<ul>
+<li><p>握手：在数据传输之前做好准备</p>
+<ul>
+<li><p>人类协议中：你好、你好</p>
+</li>
+<li><p>两个通信主机之间为连接建立状态</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>TCP - 传输控制协议（Transmission Control Protocol）：</p>
+<ul>
+<li>Internet上面向连接的服务</li>
+</ul>
+</li>
+<li><p>  TCP服务</p>
+</li>
+<li><p>可靠地、按顺序地传送数据</p>
+<p>​    确认和重传</p>
+</li>
+<li><p>流量控制</p>
+<p>​    发送方不会淹没接收方</p>
+</li>
+<li><p>拥塞控制</p>
+<p>​    当网络拥塞时，发送方降低发送速率</p>
+</li>
+</ul>
+<p>流媒体、远程会议、DNS、Internet电话</p>
+<p><strong>网络边缘：采用网络设施的面向连接服务</strong></p>
+<h3 id="1-3网络核心"><a href="#1-3网络核心" class="headerlink" title="1.3网络核心"></a>1.3网络核心</h3><p><strong>网络核心</strong></p>
+<ul>
+<li><p>网络核心：路由器的网状网络</p>
+</li>
+<li><p>基本问题：数据怎样通过网络进行传输</p>
+<ul>
+<li><p>电路交换：为每个呼叫预留一条专有电路，如电话网</p>
+</li>
+<li><p>分组交换：</p>
+<ul>
+<li>将要传送的数据分成一个个单位：分组</li>
+<li>将分组从一个路由器传到相邻路由器（hop），一段段最终从源端传到目标端</li>
+<li>每段：采用链路的最大传输能力（带宽）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>网络核心：电路交换</strong></p>
+<p>端到端的资源被分配给从源端到目标端的呼叫“call”：</p>
+<ul>
+<li>独享资源：不共享<ul>
+<li>每个呼叫一旦建立起来就能够保证性能</li>
+</ul>
+</li>
+<li>如果呼叫没有数据发送，被分配的资源就会被浪费</li>
+<li>通常被传统电话网络采用</li>
+</ul>
+<p>为呼叫预留端-端资源</p>
+<ul>
+<li>链路带宽、交换能力</li>
+<li>专用资源：不共享</li>
+<li>保证性能</li>
+<li>要求建立呼叫连接</li>
+</ul>
+<p>网络资源（如带宽）被分成片</p>
+<ul>
+<li>为呼叫分配片</li>
+<li>如果某个呼叫没有数据，则其资源片处于空闲状态（不共享）</li>
+<li>将带宽分成片<ul>
+<li>频分（FDM）</li>
+<li>时分（TDM）</li>
+<li>波分（WDM）</li>
+</ul>
+</li>
+</ul>
+<p><strong>电路交换：FDM与TDM</strong></p>
+<p><img src="./n_images/2022-09-05_093143.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>电路叫喊不适合计算机之间的通信</strong></p>
+<ul>
+<li>连接建立时间长</li>
+<li>计算机之间的通信有突发性，如果使用线路交换，则浪费的片比较多<ul>
+<li>即使这个呼叫没有数据，其所占据的片也不能够被别的呼叫使用</li>
+</ul>
+</li>
+<li>可靠性不高？</li>
+</ul>
+<p><strong>网络核心：分组交换</strong></p>
+<p>以分组为单位存储-转发方式</p>
+<ul>
+<li>网络带宽资源不再分为一个个片，传输时使用全部带宽</li>
+<li>主机之间传输的数据被分为一个个分组</li>
+</ul>
+<p>资源共享，按需使用：</p>
+<ul>
+<li>存储-转发：分组每次移动一跳<ul>
+<li>在转发之前，节点必须收到整个分组</li>
+<li>延迟比线路交换要大</li>
+<li>排队时间</li>
+</ul>
+</li>
+</ul>
+<p><strong>分组交换：存储-转发</strong></p>
+<ul>
+<li>被传输到下一个链路之前，整个分组必须到达路由器：存储-转发</li>
+<li>在一个速率R bps的链路，一个长度为L bits的分组的存储转发延时：L/R s</li>
+<li>分组交换：分组的存储转发一段一段从源端传送到目标端<ol>
+<li>数据报网络：<ul>
+<li>分组的目标地址决定下一跳</li>
+<li>在不同的阶段，路由可以改变</li>
+<li>类似：问路</li>
+<li>Internent</li>
+</ul>
+</li>
+<li>虚电路网络<ul>
+<li>每个分组都带标签（虚电路表示VCID），标签决定下一跳</li>
+<li>在呼叫建立时决定路径，在整个呼叫中路径保持不变</li>
+<li>路由器维持每个呼叫的状态信息</li>
+<li>X.25和ATM</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<p><strong>数据报（datagram）的工作原理</strong></p>
+<ul>
+<li>在通信之前，无须建立一个连接，有数据就传输</li>
+<li>每一个分组都独立路由（路径不一样，可能会失序）</li>
+<li>路由器根据分组的目标地址进行路由</li>
+</ul>
+<p><img src="./n_images/2022-09-05_113238.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>虚电路（virtual circuit）的工作原理</strong></p>
+<p><img src="./n_images/2022-09-05_113259.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>分组交换：排队延迟和丢失</strong></p>
+<p>排队和延迟：</p>
+<ul>
+<li>如果到达速率&gt;链路的输出速率<ul>
+<li>分组将会排队，等待传输</li>
+<li>如果路由器的缓存用完了，分组将会被抛弃</li>
+</ul>
+</li>
+</ul>
+<p><strong>网络核心的关键功能</strong></p>
+<p>路由：决定分组采用的源到目标的路径</p>
+<p>转发：将分组从路由器的输入链路转移到输出链路</p>
+<p><strong>分组交换：统计多路复用</strong></p>
+<p><img src="./n_images/2022-09-05_094757.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>A&amp;B时分复用 链路资源</p>
+</li>
+<li><p>A&amp;B分组没有固定的模式-&gt;统计多路复用</p>
+</li>
+</ul>
+<p><strong>分组交换vs电路交换</strong></p>
+<p>同样的网络资源，分组交换允许更多用户使用网络！</p>
+<ul>
+<li><p>1 Mb/s链路</p>
+</li>
+<li><p>每个用户：</p>
+<ul>
+<li>活动时100 kb/s</li>
+<li>10%的时间是活动的</li>
+</ul>
+</li>
+<li><p>电路交换：</p>
+<ul>
+<li>10用户</li>
+</ul>
+</li>
+<li><p>分组交换</p>
+<ul>
+<li>35用户时</li>
+<li>&gt;=10个用户活动的频率为0.0004</li>
+</ul>
+</li>
+</ul>
+<p>分组交换是“突发数据的胜利者”</p>
+<ul>
+<li><p>适合于对突发式数据传输</p>
+<ul>
+<li>资源共享</li>
+<li>简单，不必建立呼叫</li>
+</ul>
+</li>
+<li><p>过度使用会造成网络拥塞：分组延时和丢失</p>
+<ul>
+<li>对可靠地数据传输需要协议来约束：拥塞控制</li>
+</ul>
+</li>
+<li><p>Q:怎样提供类似电路交换的服务？</p>
+<ul>
+<li>保证音频/视频应用需要的带宽</li>
+<li>一个仍未解决地问题（chapter 7）</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4接入网和物理媒体"><a href="#1-4接入网和物理媒体" class="headerlink" title="1.4接入网和物理媒体"></a>1.4接入网和物理媒体</h3><p><strong>接入网络和物理媒体</strong></p>
+<p>Q:怎样将端系统和边缘路由连接？</p>
+<ul>
+<li>住宅接入网络</li>
+<li>单位接入网络（学校、公司）</li>
+<li>无线接入网络</li>
+</ul>
+<p>注意：接入网的带宽？</p>
+<ul>
+<li>共享/专用</li>
+</ul>
+<p><strong>住宅接入：modem</strong></p>
+<ul>
+<li><p>将上网数据调制加载音频信号上，在电话线上传输，在局端将其中的数据调解出来，反之亦然。</p>
+<ul>
+<li>调频</li>
+<li>调幅</li>
+<li>调相位</li>
+<li>综合调制</li>
+</ul>
+</li>
+<li><p>拨号调制解调器</p>
+<ul>
+<li>56kbps的速率直接接入路由器（通常更低）</li>
+<li>不能同时上网和打电话：不能总是在线</li>
+</ul>
+</li>
+</ul>
+<p><strong>接入网digital subscriber line（DSL）</strong></p>
+<ul>
+<li><p>采用现存的交换局DSLAM的电话线</p>
+<ul>
+<li>DSL线路上的数据被传到互联网</li>
+<li>DSL线路上的语音被传到电话网</li>
+</ul>
+</li>
+<li><p>&gt;上行传输速率（typically &lt; 1Mbps）</p>
+</li>
+<li><p>&lt; 24Mbps下行传输速率（typically &lt; 10Mbps）</p>
+</li>
+</ul>
+<p><strong>接入网：线缆网络</strong></p>
+<p><img src="./n_images/2022-09-05_223255.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>HFC：hybrid fiber coax</p>
+<ul>
+<li>非对称：最高30Mbps的下行传输速率，2Mps上行传输速率</li>
+</ul>
+</li>
+<li><p>线缆和光纤网络将个家庭用户接入网络</p>
+</li>
+<li><p>各用户共享到线缆头端的接入网络</p>
+<ul>
+<li>与DSL不同，DSL每个用户一个专线到CO</li>
+</ul>
+</li>
+</ul>
+<p><strong>住宅接入：电缆模式</strong></p>
+<p><img src="./n_images/2022-09-05_224518.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>接入网：家庭网路</strong></p>
+<p><img src="./n_images/2022-09-06_080416.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>企业接入网络（Ethernet）</strong></p>
+<p><img src="./n_images/2022-09-06_080803.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>经常被企业或者大学等机构采用<ul>
+<li>10Mbps，100Mbps，10Gbps传输率</li>
+<li>现在端系统进场直接街道以太网络交换机上</li>
+</ul>
+</li>
+</ul>
+<p><strong>无线接入网络</strong></p>
+<ul>
+<li><p>各无线端系统共享无线接入网络（端系统到五i按路由器）</p>
+<ul>
+<li>通过基站或者叫接入点</li>
+</ul>
+</li>
+<li><p>无线LANs：</p>
+<ul>
+<li>建筑物内部（100ft）</li>
+<li>802.11b/g（WiFi）：11，51Mbps传输速率</li>
+</ul>
+</li>
+<li><p>广域无线接入</p>
+<ul>
+<li>由电信运行商提供（cellular），10s/km</li>
+<li>1到10Mbps</li>
+<li>3G，4G：LTE</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-5Internet结构"><a href="#1-5Internet结构" class="headerlink" title="1.5Internet结构"></a>1.5Internet结构</h3><p><strong>互联网络结构：网络的网络</strong></p>
+<ul>
+<li><p>端系统通过接入ISPs连接到互联网</p>
+<ul>
+<li>住宅，公司和大学的ISPs</li>
+</ul>
+</li>
+<li><p>接入ISPs相应的必须是互联的</p>
+<ul>
+<li>因此任何两个端系统可互相发送分组到对方</li>
+</ul>
+</li>
+<li><p>导致的“网络的网络”非常复杂</p>
+</li>
+</ul>
+<p>Q：给定数百万个接入ISPs，如何将他们互联到一起</p>
+<ul>
+<li>将每两个ISPs直接相联不可扩展需要O($N^2$)连接</li>
+<li>将每个接入ISP都连接到全局ISP，客户ISPs和提供者ISPs有经济合约<br><img src="./n_images/2022-09-06_084131.png" srcset="/img/loading.gif" lazyload><ul>
+<li>竞争：但如果全局ISP是有利可为的业务，那会有竞争者</li>
+<li>合作：如果ISP之间的合作可以完成业务的扩展，肯定能够会有互联，对等互联的结算关系</li>
+<li>然后业务会细分（全球接入和区域接入），区域网络将出现，用与将接入ISPs连接到全局ISPs</li>
+<li>然后内容提供商ICP可能会构建它们自己的网络，连接自己的在各地的DC（Data Center），将它们的服务、内容更加靠近端用户，向用户提供更好的服务，减少自己的运营支出</li>
+</ul>
+</li>
+</ul>
+<p><strong>Internet结构：nettwork of networks</strong></p>
+<ul>
+<li><p>松散的层次模型</p>
+</li>
+<li><p>中心：第一层ISP国家/国际覆盖，速率极高</p>
+<ul>
+<li>直接与其他第一层ISP相连</li>
+<li>与大量的第二层ISP和其他客户网络相连</li>
+</ul>
+</li>
+<li><p>第二层ISP：更小些的（通常是区域性的）ISP</p>
+<ul>
+<li>与一个或多个第一层ISPs，也可能与其他第二层ISP</li>
+</ul>
+</li>
+<li><p>第三层ISP与其他本地ISP</p>
+<ul>
+<li>接入网（与端系统最近）</li>
+</ul>
+</li>
+<li><p>一个分组要经过许多网络</p>
+</li>
+</ul>
+<p><strong>ISP之间的连接</strong></p>
+<ul>
+<li><p>POP：高层ISP面向客户网络的接入点，涉及费用结算</p>
+<ul>
+<li>如一个底层ISP接入多个高层ISP，多宿（multi home）</li>
+</ul>
+</li>
+<li><p>多等接入：两个ISP对等互联，不涉及费用结算</p>
+</li>
+<li><p>IXP：多个对等ISP互联互通之处，通常不涉及费用结算</p>
+</li>
+<li><p>ICP自己部署专用网络，同时和各级ISP连接</p>
+</li>
+</ul>
+<h3 id="1-6分组延时"><a href="#1-6分组延时" class="headerlink" title="1.6分组延时"></a>1.6分组延时</h3><p><strong>分组丢失和延时是怎么样发生的</strong></p>
+<ul>
+<li>分组到达链路的速率超过了链路输出的能力</li>
+<li>分组等待排到队头、被传输</li>
+</ul>
+<p><strong>四种分组延时</strong></p>
+<p><img src="./n_images/2022-09-06_154849.png" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li><p>节点处理延时</p>
+<ul>
+<li>检查bit级差错</li>
+<li>检查分组首部和决定将分组导向何处</li>
+</ul>
+</li>
+<li><p>排队延时</p>
+<ul>
+<li>R=链路带宽（bps）</li>
+<li>L=分组长度（bits）</li>
+<li>a=分组到达队列的平均速率</li>
+<li>流量强度=La/R<ul>
+<li>La/R ~ 0：平均排队延时很小</li>
+<li>La/R -&gt; 1：延时变得很大</li>
+<li>La/R &gt; 1：比特到达队列的速率超过了从该队列输出的速率，平均排队延时将趋向无穷大！</li>
+</ul>
+</li>
+<li>在输出链路上等待传输的时间</li>
+<li>依赖于路由器的拥塞程度</li>
+</ul>
+</li>
+<li><p>传输延时</p>
+<ul>
+<li>R=链路带宽（bps）</li>
+<li>L=分组长度（bits）</li>
+<li>将分组发送到链路上的时间=L/R</li>
+<li>存储转发延时</li>
+</ul>
+</li>
+<li><p>传播延时</p>
+<ul>
+<li>d=物理链路的长度</li>
+<li>s=在媒体上的传播速度的（~2*$10^8$m/sec）</li>
+<li>传播延时=d/s</li>
+</ul>
+</li>
+</ol>
+<p><strong>节点延时</strong></p>
+<p>$d_{nodal}=d_{proc}+d_{queue}+d_{trans}+d_{prop}$</p>
+<ul>
+<li>$d_{proc}$=处理延时<ul>
+<li>通常是微秒数量级或更少</li>
+</ul>
+</li>
+<li>$d_{queue}$=排队延时<ul>
+<li>取决于拥塞程度</li>
+</ul>
+</li>
+<li>$d_{trans}$=传输延时<ul>
+<li>=L/R，对低速率的链路而言很大（如拨号），通常为微秒级到毫秒级</li>
+</ul>
+</li>
+<li>$d_{prop}$=传播延时<ul>
+<li>几微妙到几百微秒</li>
+</ul>
+</li>
+</ul>
+<p><strong>分组丢失</strong></p>
+<ul>
+<li>链路的队列缓冲区容量有限</li>
+<li>当分组到达一个满的队列时，该分组将会丢失</li>
+<li>丢失的分组可能会被前一个节点或源端系统重传，或根本不重传</li>
+</ul>
+<p><strong>吞吐量</strong></p>
+<ul>
+<li><p>吞吐量：在源端和目标端之间传输的速率（数据量/单位时间）</p>
+<ul>
+<li>瞬间吞吐量：在一个时间点的速率</li>
+<li>平均吞吐量：在一个长时间内平均值</li>
+</ul>
+</li>
+<li><p>瓶颈链路：端到端路径上，限制端到端吞吐的链路</p>
+</li>
+<li><p>端到端平均吞吐=Min{$R_1, R_2, R_3,…,R_n$}</p>
+</li>
+</ul>
+<h3 id="1-7协议层次及服务模型"><a href="#1-7协议层次及服务模型" class="headerlink" title="1.7协议层次及服务模型"></a>1.7协议层次及服务模型</h3><p><strong>协议层次</strong></p>
+<ul>
+<li>网络功能繁杂：数字信号的物理信号承载、点到点、路由、rdt、进程区分、应用等</li>
+<li>显示来看，网络的许多构成元素和设备<ul>
+<li>主机</li>
+<li>路由器</li>
+<li>各种媒体的链路</li>
+<li>应用</li>
+<li>协议</li>
+<li>硬件，软件</li>
+</ul>
+</li>
+</ul>
+<p>层次化方式实现复杂网络功能：</p>
+<ul>
+<li>将网络复杂的功能分成功能明确的层次，每一层实现了其中一个或一组功能，功能中有其上层可以使用的功能：服务</li>
+<li>本层协议尸体相互交互执行本层的协议运作，目的是实现本层功能，通过接口为上层提供更好的服务</li>
+<li>在实现本层协议的时候，直接利用了下层所提供的服务</li>
+<li>本层的服务：借助下层服务实现的本层协议实体之间交互带来的新功能（上层可以利用的）+更下层所提供的服务</li>
+</ul>
+<p><strong>服务和服务访问点</strong></p>
+<ul>
+<li><p>服务（Service）：低层实体向上层实体提供它们的通信的能力</p>
+<ul>
+<li>服务用户（service user）、</li>
+<li>服务提供者（service provider）</li>
+</ul>
+</li>
+<li><p>原语（primitive）：上层使用下层服务的形式，高层使用低层提供的服务，以及低层向高层提供服务都是通过服务访问原语来尽心交互的形式</p>
+</li>
+<li><p>服务访问点SAP（Service Access Point）：上层使用下层提供的服务通过层间的接口——地点</p>
+<ul>
+<li>例子：邮箱</li>
+<li>地址（address）：下层的一个实体支撑着上层的多个实体，SAP有标志不同上层实体的作用</li>
+<li>可以有不同的实现，队列</li>
+<li>例子：传输层的SAP：端口（port）</li>
+</ul>
+</li>
+</ul>
+<p><strong>服务的类型</strong></p>
+<ul>
+<li>面向连接的服务和无连接的服务方式<ul>
+<li>面向连接的服务（Connection-oriented Service）<ul>
+<li>连接（Connection）：两个通信实体为进行通信而建立的一种结合</li>
+<li>面向连接的服务通信的过程：建立连接，通信，拆除连接</li>
+<li>面向连接的服务的例子：网络层的连接被称为虚电路</li>
+<li>适用范围：对于大的数据块要传输；不适合小的零星保温</li>
+<li>特点：保序</li>
+<li>服务类型：<ul>
+<li>可靠的信息流 传送页面（可靠地获得，通过接收方的确认）</li>
+<li>可靠地字节流 远程登陆</li>
+<li>不可靠的连接 数字化声音</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>无连接的服务（Connectionless Service）<ul>
+<li>无连接服务：两个对等层实体在通信前不需要建立一个连接，不预留资源；不需要通信双方都是活跃；（例：寄信）</li>
+<li>特点：不可靠、可能重复、可能失序</li>
+<li>IP分组，数据包</li>
+<li>适用范围：适合传送零星数据；</li>
+<li>服务类型：<ul>
+<li>不可靠的数据报 电子方式的函件</li>
+<li>有确认的数据报 挂号信</li>
+<li>请求回答 信息查询</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>服务和协议</strong></p>
+<ul>
+<li><p>服务和协议的区别</p>
+<ul>
+<li>服务（Service）：低层实体向上层实体提供它们之间的通信的能力，是通过原语（primitive）来操作的，垂直</li>
+<li>协议（protocol）：对等层实体（peer entity）之间在相互通信的过程中，需要遵循的规则的集合，水平</li>
+</ul>
+</li>
+<li><p>服务和协议的联系</p>
+<ul>
+<li>本层协议的实现要靠下层提供的服务来实现</li>
+<li>本层实体通过协议为上层提供更高级的服务</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据单元</strong></p>
+<p><img src="./n_images/2022-09-06_210350.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="./n_images/2022-09-06_210447.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>分层处理和实现复杂系统的好处</strong></p>
+<ul>
+<li><p>概念化：结构侵袭，便于标示网络组件，以及描述其互相关系</p>
+<ul>
+<li>分层参考模型</li>
+</ul>
+</li>
+<li><p>结构化：模块化更易于维护和系统升级</p>
+<ul>
+<li>改变某一层服务的实现不影响系统中的其他层次<ul>
+<li>对于其他层次而言是透明的</li>
+</ul>
+</li>
+<li>如改变登机程序并不影响系统的其它部分<ul>
+<li>改变2个秘书使用的通信方式不影响2个翻译的工作</li>
+<li>改变2个翻译使用的语言也不影响上下两个层次的工作</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>有害的部分：效率相较于整体实现低，但总的来说利大于弊</p>
+</li>
+</ul>
+<p><strong>Internet协议栈</strong></p>
+<ul>
+<li>应用层：网络应用<ul>
+<li>为人类用户或者其他应用进程提供网络应用服务</li>
+<li>FTP、SMTP、HTTP、DNS</li>
+</ul>
+</li>
+<li>传输层：主机之间的数据传输<ul>
+<li>在网络层提供的端到端通信基础上，细分为进程到进程，将不可靠的通信变成可靠地通信</li>
+<li>TCP、UDP</li>
+</ul>
+</li>
+<li>网络层：为数据报从源到目的选择路由<ul>
+<li>主机主机之间的通信，端到端通信，不可靠</li>
+<li>IP、路由协议</li>
+</ul>
+</li>
+<li>链路层：响铃网络节点间的数据传输<ul>
+<li>两个相邻两点的通信，点到点的通信，可靠或不可靠</li>
+<li>点对点协议PPP、802.11（wifi）、Ethernet</li>
+</ul>
+</li>
+<li>物理层：在线路上传送bit</li>
+</ul>
+<p><strong>ISO/OSI参考模型</strong></p>
+<ul>
+<li>表示层：允许应用解释传输的数据，eg，加密，压缩，机器相关的表示转换</li>
+<li>会话层：数据交换的同步，检查点，恢复</li>
+<li>互联网协议栈没有这两层！<ul>
+<li>这些服务，如果需要的话，必须被应用实现</li>
+</ul>
+</li>
+</ul>
+<p><strong>封装和解封装</strong></p>
+<p><img src="./n_images/2022-09-06_211956.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>各层次的协议数据单元</strong></p>
+<ul>
+<li>应用层：报文（message）</li>
+<li>传输层：报文段（segment）、TCP段、UDP数据报</li>
+<li>网络层：分组（packet）（如果无连接方式：数据报datagram）</li>
+<li>数据链路层：帧（frame）</li>
+<li>物理层：位（bit）</li>
+</ul>
+<h3 id="1-8历史"><a href="#1-8历史" class="headerlink" title="1.8历史"></a>1.8历史</h3><h1 id="第二章、应用层"><a href="#第二章、应用层" class="headerlink" title="第二章、应用层"></a>第二章、应用层</h1><ul>
+<li><p><strong>目标</strong>：网络应用的原理；网络应用协议的概念和实现方面</p>
+<ul>
+<li>传输层的服务模型</li>
+<li>客户-服务器模式</li>
+<li>对等模式（peer -to-peer）</li>
+<li>内容分发网络</li>
+</ul>
+</li>
+<li><p>网络应用的实例：互联网流行的应用层协议</p>
+<ul>
+<li>HTTP</li>
+<li>FTP</li>
+<li>SMTP/POP3/IMAP</li>
+<li>DNS</li>
+</ul>
+</li>
+<li><p>编程：网络应用程序</p>
+<ul>
+<li>Socket API</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1应用层协议原理"><a href="#2-1应用层协议原理" class="headerlink" title="2.1应用层协议原理"></a>2.1应用层协议原理</h3><p><strong>网络应用的体系结构</strong></p>
+<ul>
+<li>客户-服务器模式（C/S：client/server）</li>
+<li>对等模式（P2P：peer To Peer）</li>
+<li>混合体：客户-服务器和对等体系结构</li>
+</ul>
+<p><strong>客户-服务器（C/S）体系结构</strong></p>
+<ul>
+<li><p>服务器</p>
+<ul>
+<li>一直运行</li>
+<li>固定的IP地址和周知的端口号（约定）</li>
+<li>扩展性<ul>
+<li>数据中心进行扩展</li>
+<li>扩展性差</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>客户端</p>
+<ul>
+<li>主动与服务器通信</li>
+<li>主互联网有间歇性的连接</li>
+<li>可能是动态IP地址</li>
+<li>不直接与其他客户端通信</li>
+</ul>
+</li>
+</ul>
+<p><strong>对等体（P2P）体系结构</strong></p>
+<ul>
+<li><p>（几乎）没有一直运行的服务器</p>
+</li>
+<li><p>任意端系统之间可以进行通讯</p>
+</li>
+<li><p>每一个节点既是客户端又是服务器</p>
+<ul>
+<li>自扩展性-新peer节点带来新的服务能力，当然也带来新的服务请求</li>
+</ul>
+</li>
+<li><p>参与的主机间歇性连接且可以改变IP地址</p>
+<ul>
+<li>难以管理</li>
+</ul>
+</li>
+<li><p>例子：Gnutella，迅雷</p>
+</li>
+</ul>
+<p><strong>C/S和P2P体系结构的混合体</strong></p>
+<p>Napster</p>
+<ul>
+<li><p>文件搜索：集中</p>
+<ul>
+<li>主机在中心服务器上注册其资源</li>
+<li>主机向中心服务器查询资源位置</li>
+</ul>
+</li>
+<li><p>文件传输：P2P</p>
+<ul>
+<li>任意Peer节点之间</li>
+</ul>
+</li>
+</ul>
+<p>即时通讯</p>
+<ul>
+<li><p>在线监测：集中</p>
+<ul>
+<li>当用户上线时，向中心服务器注册其IP地址</li>
+<li>用户与中心服务器联系，以找到其在线好友的位置</li>
+</ul>
+</li>
+<li><p>两个用户之间聊天：P2P</p>
+</li>
+</ul>
+<p><strong>进程通信</strong></p>
+<p>进程：在主机上运行的应用程序</p>
+<ul>
+<li><p>在同一个主机内，使用进程间通信机制通信（操作系统定义）</p>
+</li>
+<li><p>不同主机，通过交换报文（Message）来通信</p>
+<ul>
+<li>使用OS提供的通信服务</li>
+<li>按照应用协议交换报文<ul>
+<li>借助传输层的服务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意：P2P架构的应用也有客户端进程和服务器进程之分</p>
+</li>
+</ul>
+<p><strong>分布式进程通信需要解决的问题</strong></p>
+<ul>
+<li><p>Q1：进程标示和寻址问题（服务用户）</p>
+</li>
+<li><p>Q2：传输层-应用层提供服务是如何（服务）</p>
+<ul>
+<li>位置：层间界面的SAP（TCP/IP：socket）</li>
+<li>形式：应用程序接口API（TCP/IP：socket API）</li>
+</ul>
+</li>
+<li><p>Q3：如何使用传输层提供的服务，实现应用进程之间的报文交换，实现应用（用户使用服务）</p>
+<ul>
+<li>定义应用层协议：报文格式，解释，时序等</li>
+<li>编制程序，使用OS提供的API，调用网络基础设施提供通信服务传报文，实现应用时序等</li>
+</ul>
+</li>
+</ul>
+<p><strong>对进程进行编址</strong></p>
+<ul>
+<li><p>进程为了接收报文，必须有一个标识，即：SAP（发送也需要标示）</p>
+<ul>
+<li>主机：唯一的32位IP地址<ul>
+<li>仅仅有IP地址不能唯一标示一个进程，在一台端系统上有很多应用进程在运行</li>
+</ul>
+</li>
+<li>所采用的传输层协议：TCP or UDP</li>
+<li>端口号</li>
+</ul>
+</li>
+<li><p>一些知名端口号的例子：</p>
+<ul>
+<li>HTTP：TCP 80、Mail：TCP25、ftp：TCP 2</li>
+</ul>
+</li>
+<li><p>一个进程：用IP+port标示 端节点</p>
+</li>
+<li><p>本质上，一对主机进程之间的通信由2个端节点构成</p>
+</li>
+</ul>
+<p><strong>传输层提供的服务-需要穿过层间的信息</strong></p>
+<ul>
+<li><p>层间接口必须要携带的信息</p>
+<ul>
+<li>要传输的报文（对于本层来说：SDU）</li>
+<li>谁传的：对方的应用进程的标示：IP+TCP（UDP）端口</li>
+<li>传给谁：对方的应用进程的标示：对方的IP+TCP（UDP）端口号</li>
+</ul>
+</li>
+<li><p>传输层实体（tcp或udp实体）根据这些信息进行tcp报文段（udp数据报）的封装</p>
+<ul>
+<li>源端口号，目标端口号，数据等</li>
+<li>将IP地址往下交IP实体，用于封装IP数据报；源IP，目标IP</li>
+</ul>
+</li>
+</ul>
+<p><strong>传输层提供的服务-层间信息的代表</strong></p>
+<ul>
+<li><p>如果Socket API每次传输报文，都携带如此多的信息，太繁琐一撮，不便于管理</p>
+</li>
+<li><p>用个代号标示通信的双方或者单方：socket</p>
+</li>
+<li><p>就像OS打开文件返回的句柄一样</p>
+<ul>
+<li>对句柄的操作，就是对文件的操作</li>
+</ul>
+</li>
+<li><p>TCP socket</p>
+<ul>
+<li>TCP服务，两个进程之间通信之间要建立连接<ul>
+<li>两个进程通信会持续一段时间，通信关系稳定</li>
+</ul>
+</li>
+<li>可以用一个整数表示两个应用实体之间的通信关系，本地标示</li>
+<li>穿过层间接口的信息量最小</li>
+<li>TCP socket：源IP，源端口，目标IP，目标端口</li>
+</ul>
+</li>
+</ul>
+<p><strong>TCP之上的套接字</strong></p>
+<ul>
+<li>对于使用面向连接服务的应用而言，套接字是4元组的一个具有本地意义的标示<ul>
+<li>4元组</li>
+<li>唯一的指定了一个会话（2个进程之间的会话关系）</li>
+<li>应用使用这个标示，与远程的应用进程通信</li>
+<li>不必再每一个报文的发送都需要指定这4元组</li>
+<li>就像使用操作系统打开一个文件，OS返回一个文件句柄一样，以后使用这个文件句柄，而不是使用这个文件的目录名、文件名</li>
+<li>简单、便于管理</li>
+</ul>
+</li>
+</ul>
+<p><strong>传输层提供的服务-层间信息代码</strong></p>
+<p>UDP socket：</p>
+<ul>
+<li><p>UDP服务，两个进程之间的通信需要之前无需建立连接</p>
+<ul>
+<li>每个报文都是独立传输的</li>
+<li>前后报文可能给不同的分布式进程</li>
+</ul>
+</li>
+<li><p>因此，只能用一个证书表示本应用实体的标示</p>
+<ul>
+<li>因为这个报文可能传给另外一个分布式进程</li>
+</ul>
+</li>
+<li><p>穿过层间接口的信息大小最小</p>
+</li>
+<li><p>UDP socket：本IP、本端口</p>
+</li>
+<li><p>但是传输报文时：必须要提供对方的IP、port</p>
+<ul>
+<li>接收报文时：传输层需要上传对方的IP、port</li>
+</ul>
+</li>
+</ul>
+<p><strong>UDP之上的套接字（socket）</strong></p>
+<ul>
+<li>对于使用无连接服务（UDP）的应用而言，套接字是2元组的一个具有本地意义的标示<ul>
+<li>2元组：IP，port</li>
+<li>UDP套接字指定了应用所在的一个端节点</li>
+<li>再发送数据报时，采用船舰好的本地套接字（标示ID），就不必再发送每个报文中知名自己所采用的ip和port</li>
+<li>但是在发送报文时，必须要指定对方的ip和udp port（另外一个端节点）</li>
+</ul>
+</li>
+</ul>
+<p><strong>套接字（Socket）</strong></p>
+<ul>
+<li>进程向套接字发送报文或从该套接字接收报文</li>
+<li>套接字 &lt;-&gt; 门户<ul>
+<li>发送进程将报文推出门户，发送进程依赖于传输层设施在另外一侧的门将报文交付给接受进程</li>
+<li>接收进程从另外一端的门户收到报文（依赖于传输设施）</li>
+</ul>
+</li>
+</ul>
+<p><strong>应用层协议</strong></p>
+<ul>
+<li><p>定义了：运行在不同端系统上的应用进程如何互相交换报文</p>
+<ul>
+<li>交换的报文类型：请求和应答报文</li>
+<li>各种报文类型的语法：报文中各个字段及其描述</li>
+<li>字段的语义：即字段取值的含义</li>
+<li>进程何时、如何发送报文及对报文进行响应的规则</li>
+</ul>
+</li>
+<li><p>应用协议仅仅是应用的一个组成部分</p>
+<ul>
+<li>Web应用：HTTP协议，web客户端、web服务器，HTML</li>
+</ul>
+</li>
+</ul>
+<p><strong>Internet传输层提供的服务</strong></p>
+<ul>
+<li><p>TCP服务</p>
+<ul>
+<li>可靠地传输服务</li>
+<li>流量控制：发送方不会淹没接收方</li>
+<li>拥塞控制：当网络出现拥塞时，能抑制发送方</li>
+<li>不能提供的服务：时间保证、最小吞吐保证和安全</li>
+<li>面向连接：要求在客户端进程和服务器进程之间建立连接</li>
+</ul>
+</li>
+<li><p>UDP服务</p>
+<ul>
+<li>不可靠数据服务</li>
+<li>不提供的服务：可靠，流量控制、拥塞控制、时间、带宽保证、建立连接</li>
+</ul>
+</li>
+</ul>
+<p><strong>UDP存在的必要性</strong></p>
+<ul>
+<li><p>能够区分不同的进程，而IP服务不能</p>
+<ul>
+<li>在IP提供的主机到主机端到端功能的基础上，区分了主机的应用进程</li>
+</ul>
+</li>
+<li><p>无需建立连接，省去了建立连接时间，适合事务性的应用</p>
+</li>
+<li><p>不做可靠性的工作，例如检错重传，适合那些对实时性要求比较高而对正确性要求不高的应用</p>
+<ul>
+<li>为了实现可靠性（准确、保序），必须符出时间代价（检错重传）</li>
+</ul>
+</li>
+<li><p>没有拥塞控制和流量控制，应用能够按照设定的速度发送数据</p>
+<ul>
+<li>而在TCP上面的应用，应用发送数据的速度和主机向网络发送的实际速度是不一致的，因为有流量控制和拥塞控制</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-2Web-and-HTTP"><a href="#2-2Web-and-HTTP" class="headerlink" title="2.2Web and HTTP"></a>2.2Web and HTTP</h3><p><strong>一些术语</strong></p>
+<ul>
+<li>web页：由一些对象组成 </li>
+<li>对象可以是HTML文件、JPEG图像、Java小程序、声音剪辑文件等</li>
+<li>Web页含有一个基本的HTML文件，该基本HTML文件又包含若干对象的引用（连接）</li>
+<li>通过URL对每个对象进行引用<ul>
+<li>访问格式，用户名，口令字，端口等</li>
+</ul>
+</li>
+<li>URL格式：Prot://user:<a href="mailto:&#x70;&#x73;&#x77;&#64;&#119;&#119;&#119;&#46;&#x73;&#111;&#109;&#x65;&#83;&#99;&#x68;&#x6f;&#x6f;&#108;&#x2e;&#x65;&#100;&#x75;">&#x70;&#x73;&#x77;&#64;&#119;&#119;&#119;&#46;&#x73;&#111;&#109;&#x65;&#83;&#99;&#x68;&#x6f;&#x6f;&#108;&#x2e;&#x65;&#100;&#x75;</a>/someDept/pic.gif:port</li>
+</ul>
+<p><strong>HTTP概况</strong></p>
+<p>HTTP：超文本传输协议</p>
+<ul>
+<li><p>Web的应用层协议</p>
+</li>
+<li><p>客户/服务器模式</p>
+<ul>
+<li>客户：请求、接收和显示Web对象的Web服务器</li>
+<li>服务器：对请求进行响应，发送对象的Web服务器</li>
+</ul>
+</li>
+<li><p>HTTP 1.0：RFC 1948</p>
+</li>
+<li><p>HTTP 1.1：RFC 2068</p>
+</li>
+</ul>
+<p>使用TCP</p>
+<ul>
+<li>客户发起一个与服务器的TCP连接（建议套接字）端口号为80</li>
+<li>服务器接受客户的TCP连接</li>
+<li>在浏览器（HTTP客户端）与Web服务器（HTTP服务器Server）交换HTTP报文（应用层协议报文）</li>
+<li>TCP连接关闭</li>
+</ul>
+<p>HTTP是无状态的</p>
+<ul>
+<li>服务器并不维护关于客户的任何信息</li>
+<li>维护状态的协议很复杂<ul>
+<li>必须维护历史信息(状态)</li>
+<li>如果服务器/客户端死机，他们的状态信息可能不一致，二者的信息必须是一致</li>
+<li>无状态的服务器能够支持更多的客户端</li>
+</ul>
+</li>
+</ul>
+<p><strong>HTTP连接</strong></p>
+<p>非持久的HTTP</p>
+<ul>
+<li>最多只有一个对象在TCP连接上发送</li>
+<li>下载多个对象需要多个TCP连接</li>
+<li>HTTP/1.0使用非持久连接</li>
+</ul>
+<p>持久HTTP</p>
+<ul>
+<li>多个对象可以在一个（在客户端和服务器之间的）TCP连接上传输</li>
+<li>HTTP/1.1默认使用持久连接</li>
+</ul>
+<p><strong>非持久HTTP连接</strong></p>
+<p>假设用户输入URL</p>
+<p><a target="_blank" rel="noopener" href="http://www.someschool.edu/someDept/home.index">www.someSchool.edu/someDept/home.index</a></p>
+<ol>
+<li>HTTP客户端在端口号80发起一个到服务器<a target="_blank" rel="noopener" href="http://www.someschool.edu的连接/">www.someSchool.edu的连接</a></li>
+<li>位于主机<a target="_blank" rel="noopener" href="http://www.someschool.edu的http服务器在80号端口等待连接,接收连接并通知客户端/">www.someSchool.edu的HTTP服务器在80号端口等待连接，接收连接并通知客户端</a></li>
+<li>HTTP客户端向TCP连接的套接字发送HTTP请求报文，报文标示客户端需要对象someDepartment/home.index</li>
+<li>HTTP服务器接收到请求报文，检索出被请求的对象，奖对象封装在一个响应报文，并通过其套接字客户端发送</li>
+<li>HTTP关闭TCP连接</li>
+<li>HTTPHTTP客户端收到包含html文件的响应报文，并显示html。然后对html文件进行检查，找到10引用对象</li>
+<li>对10jpeg对象，重复1-6步骤</li>
+</ol>
+<p><strong>响应时间模型</strong></p>
+<p>往返时间RTT：一个小的分组从客户端到服务器，在回到客户端的时间</p>
+<p>响应时间</p>
+<ul>
+<li>一个RTT用来发起TCP请求</li>
+<li>一个·RTT用来HTTP请求并等待HTTP响应</li>
+<li>文件传输时间</li>
+</ul>
+<p><strong>持久HTTP</strong></p>
+<p>非持久HTTP的缺点：</p>
+<ul>
+<li>每个对象要两个RTT</li>
+<li>操作系统必须为每个TCP连接分配资源</li>
+<li>但浏览器通常打开并行TCP连接，以获取引用对象</li>
+</ul>
+<p>持久HTTP</p>
+<ul>
+<li><p>服务器在发送响应后，仍保持TCP连接</p>
+</li>
+<li><p>在线共客户端和服务器之间的后续请求和响应报文通过相同的连接进行传送</p>
+</li>
+<li><p>客户端在遇到一个引用对象的时候，就可以尽快发送该对象的请求</p>
+</li>
+<li><p>非流水方式的持久HTTP</p>
+<ul>
+<li>客户端只能在收到前一个响应后才能发出新的请求</li>
+<li>每个引用对象花费一个RTT</li>
+</ul>
+</li>
+<li><p>流水方式的持久HTTP</p>
+<ul>
+<li>HTTP/1.1的默认模式</li>
+<li>客户端遇到一个引用对象就立即产生一个请求</li>
+<li>所有引用对象只花费一个RTT是可能的</li>
+</ul>
+</li>
+</ul>
+<p><strong>HTTP请求报文</strong></p>
+<ul>
+<li>两种请求的HTTP报文：请求，响应</li>
+<li>HTTP请求报文</li>
+</ul>
+<p><img src="./n_images/2022-09-14_215439.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>HTTP请求报文通用格式</li>
+</ul>
+<p><img src="./n_images/2022-09-14_215611.png" srcset="/img/loading.gif" lazyload alt="image-20220914215648989"></p>
+<p><strong>提交表单输入</strong></p>
+<ul>
+<li>Post方式<ul>
+<li>网页通常包括表单输入</li>
+<li>包含在实体主体（entitry body）中的输入被提交到服务器</li>
+</ul>
+</li>
+<li>URL方式<ul>
+<li>方法：GET</li>
+<li>输入通过请求行的URL字段上载</li>
+</ul>
+</li>
+</ul>
+<p><strong>方法类型</strong></p>
+<ul>
+<li><p>HTTP/1.0</p>
+<ul>
+<li>GET</li>
+<li>POST</li>
+<li>HEAD<ul>
+<li>要求服务器在响应报文中不包含请求对象-&gt;故障跟踪</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>HTTP/1.1</p>
+<ul>
+<li>GET、POST、HEAD</li>
+<li>PUT<ul>
+<li>将实体主体中的文件上载到URL字段规定的路径</li>
+</ul>
+</li>
+<li>DELETE<ul>
+<li>删除URL字段规定的文件</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>HTTP响应报文</strong></p>
+<p><img src="./n_images/2022-09-14_220249.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>HTTP响应状态码</strong></p>
+<ul>
+<li>位于服务器-&gt;客户端的响应报文中的首行<ul>
+<li>200 OK<ul>
+<li>请求成功，请求对象包含在响应报文的后续部分</li>
+</ul>
+</li>
+<li>301 Moved Permanently<ul>
+<li>请求的对象已经被永久转移了，新的URL在响应报文的Location首部行中指定</li>
+<li>客户端软件自动用新的URL去获取对象</li>
+</ul>
+</li>
+<li>400 Bad Request<ul>
+<li>一个通用的差错代码，标示该请求不饿能被服务器解读</li>
+</ul>
+</li>
+<li>404 Not Found<ul>
+<li>请i取得文档在该服务器上没有找到</li>
+</ul>
+</li>
+<li>505 HTTP Version Not Supported</li>
+</ul>
+</li>
+</ul>
+<p><strong>用户-服务器状态：cookies</strong></p>
+<p>组成部分</p>
+<ol>
+<li>在HTTP响应报文中有一个cookie的首部行</li>
+<li>在HTTP请求报文含有一个cookie的首部行</li>
+<li>在用户端系统中保留有一个cookie文件，由用户的浏览器管理</li>
+<li>在Web站点有一个后端数据库</li>
+</ol>
+<p>Cookies能带来什么</p>
+<ol>
+<li>用户验证</li>
+<li>购物车</li>
+<li>推荐</li>
+<li>用户状态</li>
+</ol>
+<p>如何维持状态</p>
+<ul>
+<li>协议端节点：在多个事务上，发送端和接收端维持状态</li>
+<li>cookies：heep报文携带状态信息</li>
+</ul>
+<p><strong>Web缓存（代理服务器）</strong></p>
+<p>目标：不访问原始服务器，就满足客户的请求</p>
+<ul>
+<li><p>用户设置浏览器：通过缓存访问Web</p>
+</li>
+<li><p>浏览器将所有的HTTP请求发给缓存</p>
+<ul>
+<li>在缓存中的对象，缓存直接就返回对象</li>
+<li>如对象不在缓存，缓存请求原始服务器，然后再将对象返回给客户端</li>
+</ul>
+</li>
+<li><p>缓存即是客户端又是服务器</p>
+</li>
+<li><p>通常缓存是由ISP安装</p>
+</li>
+</ul>
+<p>为什么要使用Web缓存</p>
+<ul>
+<li>降低客户端的请求响应时间</li>
+<li>可以大大减少一个就够内部与Internet接入链路上的流量</li>
+<li>互联网大量采用了缓存，可以使较弱的ISP也能有效提供内容</li>
+</ul>
+<p><strong>条件GET方法</strong></p>
+<p><img src="./n_images/2022-09-14_221923.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2-3FTP"><a href="#2-3FTP" class="headerlink" title="2.3FTP"></a>2.3FTP</h3><p><strong>FTP文件传输协议</strong></p>
+<ul>
+<li><p>向远程主机传输文件或从远程主机接收文件</p>
+</li>
+<li><p>客户/服务器模式</p>
+<ul>
+<li>客户端：发起传输的一方</li>
+<li>服务器：远程主机</li>
+</ul>
+</li>
+<li><p>ftp服务器：端口号为21</p>
+</li>
+</ul>
+<p><strong>FTP：控制连接与数据连接分开</strong></p>
+<ul>
+<li>FTP客户端与FTP服务器通过端口21连接，并使用TCP为传输协议</li>
+<li>客户端通过控制连接获得身份确认</li>
+<li>客户端通过连接控制发送命令浏览远程目录</li>
+<li>收到一个文件传输命令，服务器打开一个到客户端的数据</li>
+<li>一个文件传输完成时，服务器关闭连接</li>
+<li>服务器打开第二个TCP连接数据用来传输另一个文件</li>
+<li>控制连接：带外传送</li>
+<li>FTP服务器维护用户的状态信息，当前路径、用户账户与控制连接对应</li>
+</ul>
+<h3 id="2-4Email、SMTP、POP3、IMAP"><a href="#2-4Email、SMTP、POP3、IMAP" class="headerlink" title="2.4Email、SMTP、POP3、IMAP"></a>2.4Email、SMTP、POP3、IMAP</h3><p><strong>电子邮件</strong></p>
+<p>三个重要组成部分</p>
+<ul>
+<li>用户代理</li>
+<li>邮件服务器</li>
+<li>简单邮件传输协议：SMTP</li>
+</ul>
+<p>用户代理：</p>
+<ul>
+<li>又名“邮件阅读器”</li>
+<li>攥写、编辑和阅读邮件</li>
+<li>如OutLook、Faxmail</li>
+<li>输出和输入邮件保存到服务器上</li>
+</ul>
+<p><strong>邮件服务器</strong></p>
+<ul>
+<li>邮箱中管理和维护发送给用户的邮件</li>
+<li>输出报文队列报纸发送邮件报文</li>
+<li>邮件服务器之间的SMTP协议：发送email报文<ul>
+<li>客户：发送方邮件服务器</li>
+<li>服务组：接收端邮件服务器</li>
+</ul>
+</li>
+</ul>
+<p><strong>EMail：SMTP</strong></p>
+<ul>
+<li><p>使用TCP在客户端和服务器之间传送报文，端口号为25</p>
+</li>
+<li><p>直接传输：从发送方服务器到接收方服务器</p>
+</li>
+<li><p>传输的三个阶段</p>
+<ul>
+<li>握手</li>
+<li>传输报文</li>
+<li>关闭</li>
+</ul>
+</li>
+<li><p>命令/响应交互</p>
+<ul>
+<li>命令：ASCII文本</li>
+<li>响应：状态码和状态信息</li>
+</ul>
+</li>
+<li><p>报文必须为7位ASCII码</p>
+</li>
+</ul>
+<p><strong>SMTP总结</strong></p>
+<ul>
+<li>SMTP使用非持久连接</li>
+<li>SMTP要求报文为7位ASCII</li>
+<li>SMTP服务器使用CRLF决定报文的尾部</li>
+</ul>
+<p>HTTP比较</p>
+<ul>
+<li>HTTP：拉（pull）</li>
+<li>SMTP：推（push）</li>
+<li>二者都是ASCII形式的命令/响应交互、状态码</li>
+<li>HTTP：每个对象都封装在各自的响应报文中</li>
+<li>SMTP：多个对象包含在一个报文中</li>
+</ul>
+<p><strong>邮件报文格式</strong></p>
+<p>SMTP：交换email报文的协议</p>
+<p>RFC 822：文本报文的标准：</p>
+<ul>
+<li><p>首部行</p>
+<ul>
+<li>To</li>
+<li>From</li>
+<li>Subject</li>
+</ul>
+</li>
+<li><p>主体</p>
+<ul>
+<li>报文，只能是ASCII字符</li>
+</ul>
+</li>
+</ul>
+<p><strong>报文格式：多媒体扩展</strong></p>
+<ul>
+<li><p>MIME：多媒体邮件扩展</p>
+</li>
+<li><p>在报文首部使用额外的行申明MIME内容类型</p>
+</li>
+</ul>
+<p><strong>邮件访问协议</strong></p>
+<p><img src="./n_images/2022-09-15_102529.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>SMTP：传送到接收方的邮件服务器</li>
+<li>邮件访问协议：从服务器访问邮件<ul>
+<li>POP：邮局访问协议<ul>
+<li>用户身份确认（代理&lt;–&gt;服务器）并下载</li>
+</ul>
+</li>
+<li>IMAP：Internet邮件访问协议<ul>
+<li>更多特性</li>
+<li>在服务器上处理存储的报文</li>
+</ul>
+</li>
+<li>HTTP<ul>
+<li>方便</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>POP3协议</strong></p>
+<ul>
+<li>下载并删除，阅后即删</li>
+<li>下载并保留，不同客户机上为报文的拷贝</li>
+<li>POP3在会话中是无状态的</li>
+</ul>
+<p><strong>IMAP协议</strong></p>
+<ul>
+<li>IMAP服务器将每个报文与一个文件夹联系起来</li>
+<li>允许用户目录来组织保温</li>
+<li>允许用户读取报文组件</li>
+<li>IMAP在会话过程中保留用户状态<ul>
+<li>目录名：报文ID与目录名之间的映射</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-5DNS"><a href="#2-5DNS" class="headerlink" title="2.5DNS"></a>2.5DNS</h3><ul>
+<li>DNS的必要性<ul>
+<li>IP地址标识主机、路由器</li>
+<li>但IP地址不好记忆、不便人类使用</li>
+<li>人类一般倾向于使用一些有意义的字符串来表示</li>
+<li>存在着“字符串”–IP地址转换的必要性</li>
+<li>人类用户提供要访问机器的“字符串”名称</li>
+<li>由DNS负责转换成为二进制的网络地址</li>
+</ul>
+</li>
+</ul>
+<p><strong>DNS系统需要解决的问题</strong></p>
+<ul>
+<li><p>Q1：如何命名设备</p>
+<ul>
+<li>用有意义的字符串：好记，便于人类使用</li>
+<li>解决一个平面命名的问题：层次化命名</li>
+</ul>
+</li>
+<li><p>Q2：如何完成名字到IP地址的转换</p>
+<ul>
+<li>分布式的数据库维护和响应名字查询</li>
+</ul>
+</li>
+<li><p>Q3：如何维护：增加或删除一个域，需要在域名系统中做哪些工作</p>
+</li>
+</ul>
+<p><strong>DNS总体思路和目标</strong></p>
+<ul>
+<li><p>DNS的主要思路</p>
+<ul>
+<li>分层的、基于域的命名机制</li>
+<li>若干分布式的数据库完成名字到IP地址的转换</li>
+<li>运行在UDP之上端口53的应用服务</li>
+<li>核心的Internet功能，但以应用层协议实现</li>
+<li>在网络边缘处理复杂性</li>
+</ul>
+</li>
+<li><p>DNS主要目的</p>
+<ul>
+<li>实现主机名-IP地址的转换</li>
+<li>其他目的<ul>
+<li>主机别名到规范名字的转换</li>
+<li>邮件服务器别名到邮件服务器的正规名字的转换</li>
+<li>负载均衡：Load Distribution</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>DNS域名结构</strong></p>
+<ul>
+<li><p>一个层面命名设备会有很多重名</p>
+</li>
+<li><p>DNS采用层次树状结构的 命名方法</p>
+</li>
+<li><p>Internet根被划为几百个顶级域</p>
+<ul>
+<li>通用的：.com .edu …</li>
+<li>国家的：.cn .us …</li>
+</ul>
+</li>
+<li><p>每个（子）域下面可划分为若干子域</p>
+</li>
+<li><p>树叶是主机</p>
+</li>
+<li><p>共有13个根服务器</p>
+</li>
+</ul>
+<p><strong>DNS名字空间</strong></p>
+<p><img src="./n_images/2022-09-15_104552.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>域名</p>
+<ul>
+<li>从本域名往上，直到树根</li>
+<li>中间使用“.间隔不同级别</li>
+<li>域的域名：可以用于表示一个域</li>
+<li>主机的域名：一个域上的一个主机</li>
+</ul>
+</li>
+<li><p>域名的管理</p>
+<ul>
+<li>一个域管理其下的子域</li>
+<li>创建一个新的域，必须征得它所属域的同意</li>
+</ul>
+</li>
+<li><p>域与物理网络无关</p>
+<ul>
+<li>域遵从组织界限，而不是物理网络<ul>
+<li>一个域的主机可以不在一个网络</li>
+<li>一个网络的主机不一定在一个域</li>
+</ul>
+</li>
+<li>域的划分是逻辑的，不是物理的</li>
+</ul>
+</li>
+</ul>
+<p><strong>解析问题-名字服务器</strong></p>
+<ul>
+<li><p>一个名字服务器的问题</p>
+<ul>
+<li>可靠性问题：单点故障</li>
+<li>扩展性问题：通信容量</li>
+<li>维护问题：远距离的集中式数据库</li>
+</ul>
+</li>
+<li><p>区域</p>
+<ul>
+<li>区域的划分由区域管理者自己决定</li>
+<li>将DNS名字空间划分为互不相交的区域，每个区域都是树的一部分</li>
+<li>名字服务器<ul>
+<li>每个区域都有一个名字服务器，维护着它所管辖区域的权威信息</li>
+<li>名字服务器允许被防止在区域之外，以保障可靠性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>权威服务器和TLD服务器</strong></p>
+<ul>
+<li>权威DNS服务器：组织机构的DNS服务器，提供组织机构服务器可访问的主机和IP之间的映射，组织机构可以选择实现自己维护或由某个服务商来维护</li>
+<li>顶级域（TLD）服务器：负责顶级域名和所有国家级的顶级域名<ul>
+<li>Network solutios公司维护comTLd服务器</li>
+<li>Educause公司维护eduTLD服务器</li>
+</ul>
+</li>
+</ul>
+<p><strong>区域名字服务器维护资源记录</strong></p>
+<ul>
+<li><p>资源记录（resource records）</p>
+<ul>
+<li>作用：维护域名-IP地址的映射关系</li>
+<li>位置：Name Server的分布式数据库中</li>
+</ul>
+</li>
+<li><p>RR格式：（domain_name，ttl，type，class，Value）</p>
+<ul>
+<li>Domain_name：域名</li>
+<li>Ttl：time to live：生存时间（权威，缓冲记录）</li>
+<li>Class类型：对于Internet，值为IN</li>
+<li>Value值：可以是数字，域名或ASCII串</li>
+<li>Type类别：资源记录的类型<ul>
+<li>A：Name为主机，Value为Ip地址</li>
+<li>CNAME：Name为规范名字的别名，Value为规范名字</li>
+<li>NS：Name域名，Value为该域名的权威服务器的域名</li>
+<li>MX：Value为name对应的邮件服务器的名字</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>DNS</strong></p>
+<ul>
+<li>DNS大致工作过程<ul>
+<li>应用调用解析器</li>
+<li>解析器作为客户，向Name Server发出查询报文</li>
+<li>Name Server返回响应报文</li>
+</ul>
+</li>
+</ul>
+<p><strong>本地名字服务器Local Name Server</strong></p>
+<ul>
+<li><p>并不严格属于层次结构</p>
+</li>
+<li><p>每个ISP都有一个DNS服务器</p>
+<ul>
+<li>也成为默认名字服务器</li>
+</ul>
+</li>
+<li><p>当一个主机发起一个DNS查询时，查询被送到其本地DNS服务器</p>
+<ul>
+<li>起着代理的作用，将查询转发到层次结构中</li>
+</ul>
+</li>
+</ul>
+<p><strong>名字服务器（Name Server）</strong></p>
+<ul>
+<li>名字解析过程<ul>
+<li>目标名字在Local Name Server中<ul>
+<li>情况1：查询的名字在该区域内部</li>
+<li>情况2：缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>当与本地名字服务器不能解析名字时，联系根名字服务器顺着根-TLD一直找到权威名字服务器</p>
+</blockquote>
+<p><strong>递归查询和迭代查询</strong></p>
+<ul>
+<li><p>递归查询</p>
+<ul>
+<li>名字解析负担都放在当前联络的名字服务器上</li>
+<li>问题：跟服务器的负担太重</li>
+<li>解决：迭代查询</li>
+</ul>
+</li>
+<li><p>迭代查询</p>
+<ul>
+<li>根及各级域名服务器返回的不是查询结果，而是下一个NS的地址</li>
+<li>最后由权威名字服务器给出解析结果</li>
+<li>当前联络的服务器给出可以联络的服务器的名字</li>
+<li>“我不知道这个名字，但可以向这个服务器请求”</li>
+</ul>
+</li>
+</ul>
+<p><strong>DNS协议、报文</strong></p>
+<p>DNS协议：查询和响应报文的格式相同</p>
+<p>报文首部</p>
+<ul>
+<li>标识符（ID）：16位</li>
+<li>flags：<ul>
+<li>查询/应答</li>
+<li>希望递归</li>
+<li>递归可用</li>
+<li>应答为权威</li>
+</ul>
+</li>
+</ul>
+<p><img src="./n_images/2022-09-15_111616.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>提高性能：缓存</strong></p>
+<ul>
+<li><p>一旦名字服务器学到了一个映射，就将该映射缓存起来</p>
+</li>
+<li><p>根服务器通常都在本地服务器中缓存着</p>
+<ul>
+<li>使得根服务器不用经常被访问</li>
+</ul>
+</li>
+<li><p>目的：提高效率</p>
+</li>
+<li><p>可能存在的问题：如果情况变化，缓存结果可能和群为资源记录不一致</p>
+</li>
+<li><p>解决方案：TTL（默认2天）</p>
+</li>
+</ul>
+<p><strong>维护问题：新增一个域</strong></p>
+<ul>
+<li><p>在上级域的名字服务器中增加两条记录，指向这个新增的子域的域名和域名服务器的地址</p>
+</li>
+<li><p>在新增子域的名字服务器上运行名字服务器，负责本域的名字解析：名字-&gt;IP地址</p>
+</li>
+<li><p>例子：在com域中建立一个“NetworkUtopia”</p>
+<ul>
+<li>到注册登记机构注册域名networkutopia.com<ul>
+<li>需要向该机构提供权威DNS服务器（基本的和辅助的）的名字和IP地址</li>
+<li>登记机构在com TLD服务器中插入两条RR记录：（networkutopia.com，dns1.networkutopia.com,NS）、（dns1.networkutopia.com,212.212.212.1,A）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>在networkutopia.com的权威服务器中保有</p>
+<ul>
+<li>用于Web服务器的<a target="_blank" rel="noopener" href="http://www.networkuptopia.com的类型为a的记录/">www.networkuptopia.com的类型为A的记录</a></li>
+<li>用于邮件服务器，ail.networkutopia.com的类型为MX的记录</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-6P2P协议"><a href="#2-6P2P协议" class="headerlink" title="2.6P2P协议"></a>2.6P2P协议</h3><p><strong>纯P2P架构</strong></p>
+<ul>
+<li><p>没有（或极少）一直运行的服务器</p>
+</li>
+<li><p>任意端系统都可以直接通信</p>
+</li>
+<li><p>利用peer的服务能力</p>
+</li>
+<li><p>peer节点间歇上网，每次IP地址都有可能变化</p>
+</li>
+<li><p>eg：文件分发，流媒体，VoIP</p>
+</li>
+</ul>
+<p><strong>文件分发：C/S模式</strong></p>
+<ul>
+<li><p>服务器传输：都是由服务器发送给peer，服务器必须顺序传输（上载）N哥文件拷贝：</p>
+<ul>
+<li>发送一个copy：F/u</li>
+<li>发送N个copy：NF/u</li>
+</ul>
+</li>
+<li><p>客户端：每个客户端必须下载一个文件拷贝</p>
+<ul>
+<li>$d_{min}$ =  客户端最小的下载速率</li>
+<li>下载带宽最小的客户端下载的时间：F/$d_{min}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-7CDN"><a href="#2-7CDN" class="headerlink" title="2.7CDN"></a>2.7CDN</h3><h3 id="2-8TCP套接字（Socket）编程"><a href="#2-8TCP套接字（Socket）编程" class="headerlink" title="2.8TCP套接字（Socket）编程"></a>2.8TCP套接字（Socket）编程</h3><h3 id="2-9UDP套接字编程"><a href="#2-9UDP套接字编程" class="headerlink" title="2.9UDP套接字编程"></a>2.9UDP套接字编程</h3><h1 id="第三章、传输层"><a href="#第三章、传输层" class="headerlink" title="第三章、传输层"></a>第三章、传输层</h1><h4 id="3-1概述和传输层服务"><a href="#3-1概述和传输层服务" class="headerlink" title="3.1概述和传输层服务"></a>3.1概述和传输层服务</h4><h4 id="3-2多路复用"><a href="#3-2多路复用" class="headerlink" title="3.2多路复用"></a>3.2多路复用</h4><h4 id="3-3无连接传输：UDP"><a href="#3-3无连接传输：UDP" class="headerlink" title="3.3无连接传输：UDP"></a>3.3无连接传输：UDP</h4><h4 id="3-4可靠传输的原理"><a href="#3-4可靠传输的原理" class="headerlink" title="3.4可靠传输的原理"></a>3.4可靠传输的原理</h4><h4 id="3-5面向连接的传输"><a href="#3-5面向连接的传输" class="headerlink" title="3.5面向连接的传输"></a>3.5面向连接的传输</h4><h4 id="3-6拥塞控制原理"><a href="#3-6拥塞控制原理" class="headerlink" title="3.6拥塞控制原理"></a>3.6拥塞控制原理</h4><h4 id="3-7TCP拥塞控制"><a href="#3-7TCP拥塞控制" class="headerlink" title="3.7TCP拥塞控制"></a>3.7TCP拥塞控制</h4>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="category-chain-item">计算机网络</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>计算机网络学习笔记</div>
+      <div>http://example.com/2020/11/08/guide/network/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 8, 2020</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/11/08/guide/Deep_into_OperatingSystem/" title="操作系统学习笔记">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">操作系统学习笔记</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2020/11/08/guide/Stereotyped%20Writing/" title="实习准备">
+                        <span class="hidden-mobile">实习准备</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

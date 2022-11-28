@@ -1,0 +1,800 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/bg/favicon.ico">
+  <link rel="icon" href="/img/bg/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Python 什么是 Python 生成器？ 什么是 Python 迭代器？ list 和 tuple 有什么区别？ Python 中的 list 和 dict 是怎么实现的？ Python 中使用多线程可以达到多核CPU一起使用吗？ 什么是装饰器？ Python 如何进行内存管理？ Python 中的垃圾回收机制？ 什么是 lambda 表达式？ 什么是深拷贝和浅拷贝？ 双等于和 is 有什么区">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python">
+<meta property="og:url" content="http://example.com/2022/11/27/guide/Python%20Handbook/index.html">
+<meta property="og:site_name" content="Huan&#39;s Blog">
+<meta property="og:description" content="Python 什么是 Python 生成器？ 什么是 Python 迭代器？ list 和 tuple 有什么区别？ Python 中的 list 和 dict 是怎么实现的？ Python 中使用多线程可以达到多核CPU一起使用吗？ 什么是装饰器？ Python 如何进行内存管理？ Python 中的垃圾回收机制？ 什么是 lambda 表达式？ 什么是深拷贝和浅拷贝？ 双等于和 is 有什么区">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images2017.cnblogs.com/blog/1088183/201709/1088183-20170926140930839-80064182.png">
+<meta property="article:published_time" content="2022-11-27T14:25:00.374Z">
+<meta property="article:modified_time" content="2022-11-27T16:23:12.198Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://images2017.cnblogs.com/blog/1088183/201709/1088183-20170926140930839-80064182.png">
+  
+  
+  
+  <title>Python - Huan&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Huan</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/hero.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-27 22:25" pubdate>
+          November 27, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          31 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><ul>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-Python-%E7%94%9F%E6%88%90%E5%99%A8">什么是 Python 生成器？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-Python-%E8%BF%AD%E4%BB%A3%E5%99%A8">什么是 Python 迭代器？</a></li>
+<li><a href="#list-%E5%92%8C-tuple-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">list 和 tuple 有什么区别？</a></li>
+<li><a href="#Python-%E4%B8%AD%E7%9A%84-list-%E5%92%8C-dict-%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84">Python 中的 list 和 dict 是怎么实现的？</a></li>
+<li><a href="#Python-%E4%B8%AD%E4%BD%BF%E7%94%A8%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%8F%AF%E4%BB%A5%E8%BE%BE%E5%88%B0%E5%A4%9A%E6%A0%B8CPU%E4%B8%80%E8%B5%B7%E4%BD%BF%E7%94%A8%E5%90%97">Python 中使用多线程可以达到多核CPU一起使用吗？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%A3%85%E9%A5%B0%E5%99%A8">什么是装饰器？</a></li>
+<li><a href="#Python-%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86">Python 如何进行内存管理？</a></li>
+<li><a href="#Python-%E4%B8%AD%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6">Python 中的垃圾回收机制？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF-lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F">什么是 lambda 表达式？</a></li>
+<li><a href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D">什么是深拷贝和浅拷贝？</a></li>
+<li><a href="#%E5%8F%8C%E7%AD%89%E4%BA%8E%E5%92%8C-is-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB">双等于和 is 有什么区别？</a></li>
+<li><a href="#%E5%85%B6%E5%AE%83-Python-%E7%9F%A5%E8%AF%86%E7%82%B9">其它 Python 知识点</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+<hr>
+<h2 id="什么是-Python-生成器？"><a href="#什么是-Python-生成器？" class="headerlink" title="什么是 Python 生成器？"></a>什么是 Python 生成器？</h2><p>generator，有两种产生生成器对象的方式：一种是列表生成式加括号：</p>
+<p><code>g1 = (x for x in range(10))</code></p>
+<p>一种是在函数定义中包含<code>yield</code>关键字：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">def</span> <span class="hljs-title function_">fib</span>(<span class="hljs-params"><span class="hljs-built_in">max</span></span>):<br>    n, a, b = <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span><br>    <span class="hljs-keyword">while</span> n &lt; <span class="hljs-built_in">max</span>:<br>        <span class="hljs-keyword">yield</span> b<br>        a, b = b, a + b<br>        n = n + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;done&#x27;</span><br><br>g2 = fib(<span class="hljs-number">8</span>)<br></code></pre></td></tr></table></figure>
+
+<p>对于generator对象g1和g2，可以通过<code>next(g1)</code>不断获得下一个元素的值，如果没有更多的元素，就会报错<code>StopIteration</code></p>
+<p>也可以通过for循环获得元素的值。</p>
+<p>生成器的好处是不用占用很多内存，只需要在用的时候计算元素的值就行了。</p>
+<h2 id="什么是-Python-迭代器？"><a href="#什么是-Python-迭代器？" class="headerlink" title="什么是 Python 迭代器？"></a>什么是 Python 迭代器？</h2><p>Python中可以用于for循环的，叫做可迭代<code>Iterable</code>，包括list/set/tuple/str/dict等数据结构以及生成器；可以用以下语句判断一个对象是否是可迭代的：</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs py"><span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> Iterable<br><span class="hljs-built_in">isinstance</span>(x, Iterable)<br></code></pre></td></tr></table></figure>
+
+<p>迭代器<code>Iterator</code>，是指可以被<code>next()</code>函数调用并不断返回下一个值，直到<code>StopIteration</code>；生成器都是Iterator，而列表等数据结构不是；可以通过以下语句将list变为Iterator：</p>
+<p><code>iter([1,2,3,4,5])</code></p>
+<p>生成器都是Iterator，但迭代器不一定是生成器。</p>
+<h2 id="list-和-tuple-有什么区别？"><a href="#list-和-tuple-有什么区别？" class="headerlink" title="list 和 tuple 有什么区别？"></a>list 和 tuple 有什么区别？</h2><ul>
+<li>list 长度可变，tuple不可变；</li>
+<li>list 中元素的值可以改变，tuple 不能改变；</li>
+<li>list 支持<code>append</code>; <code>insert</code>; <code>remove</code>; <code>pop</code>等方法，tuple 都不支持</li>
+</ul>
+<h2 id="Python-中的-list-和-dict-是怎么实现的？"><a href="#Python-中的-list-和-dict-是怎么实现的？" class="headerlink" title="Python 中的 list 和 dict 是怎么实现的？"></a>Python 中的 list 和 dict 是怎么实现的？</h2><h2 id="Python-中使用多线程可以达到多核CPU一起使用吗？"><a href="#Python-中使用多线程可以达到多核CPU一起使用吗？" class="headerlink" title="Python 中使用多线程可以达到多核CPU一起使用吗？"></a>Python 中使用多线程可以达到多核CPU一起使用吗？</h2><p>Python中有一个被称为Global Interpreter Lock（GIL）的东西，它会确保任何时候你的多个线程中，只有一个被执行。线程的执行速度非常之快，会让你误以为线程是并行执行的，但是实际上都是轮流执行。经过GIL这一道关卡处理，会增加执行的开销。</p>
+<p>可以通过多进程实现多核任务。</p>
+<h2 id="GIL-Global-Interpreter-Lock"><a href="#GIL-Global-Interpreter-Lock" class="headerlink" title="GIL(Global Interpreter Lock)"></a>GIL(Global Interpreter Lock)</h2><p>全局解释器锁</p>
+<p>全局解释器锁(Global Interpreter Lock)是计算机程序设计语言解释器用于同步线程的一种机制，它使得任何时刻仅有一个线程在执行。即便在多核处理器上，使用 GIL 的解释器也只允许同一时间执行一个线程，常见的使用 GIL 的解释器有CPython与Ruby MRI。可以看到GIL并不是Python独有的特性，是解释型语言处理多线程问题的一种机制而非语言特性。</p>
+<h3 id="GIL的设计初衷"><a href="#GIL的设计初衷" class="headerlink" title="GIL的设计初衷?"></a>GIL的设计初衷?</h3><details>
+<summary>展开</summary>
+单核时代高效利用CPU, 针对解释器级别的数据安全(不是thread-safe 线程安全)。
+首先需要明确的是GIL并不是Python的特性，它是在实现Python解析器(CPython)时所引入的一个概念。当Python虚拟机的线程想要调用C的原生线程需要知道线程的上下文，因为没有办法控制C的原生线程的执行，所以只能把上下文关系传给原生线程，同理获取结果也是线
+程在python虚拟机这边等待。那么要执行一次计算操作，就必须让执行程序的线程组串行执行。
+</details>
+
+<h3 id="为什么要加在解释器-而不是在其他层"><a href="#为什么要加在解释器-而不是在其他层" class="headerlink" title="为什么要加在解释器,而不是在其他层?"></a>为什么要加在解释器,而不是在其他层?</h3><details>
+<summary>展开</summary>
+GIL锁加在解释器一层，也就是说Python调用的Cython解释器上加了GIL锁，因为你python调用的所有线程都是原生线程。原生线程是通过C语言提供原生接口，相当于C语言的一个函数。你一调它，你就控制不了了它了，就必须等它给你返回结果。只要已通过python虚拟机
+，再往下就不受python控制了，就是C语言自己控制了。加在Python虚拟机以下加不上去，只能加在Python解释器这一层。
+</details>
+
+<h3 id="GIL的实现是线程不安全-为什么"><a href="#GIL的实现是线程不安全-为什么" class="headerlink" title="GIL的实现是线程不安全?为什么?"></a>GIL的实现是线程不安全?为什么?</h3><details>
+<summary>展开</summary>
+是不安全的，具体情况要分类讨论。
+
+<p>单核情况下:</p>
+<p><img src="https://images2017.cnblogs.com/blog/1088183/201709/1088183-20170926140930839-80064182.png" srcset="/img/loading.gif" lazyload alt="单核情况下——线程不安全"></p>
+<blockquote>
+<p>解释:</p>
+<ol>
+<li>到第5步的时候，可能这个时候python正好切换了一次GIL(据说python2.7中，每100条指令会切换一次GIL),执行的时间到了，被要求释放GIL,这个时候thead 1的count=0并没有得到执行，而是挂起状态，count=0这个上下文关系被存到寄存器中.</li>
+<li>然后到第6步，这个时候thead 2开始执行，然后就变成了count = 1,返回给count，这个时候count=1.</li>
+<li>然后再回到thead 1，这个时候由于上下文关系，thead 1拿到的寄存器中的count = 0，经过计算，得到count = 1，经过第13步的操作就覆盖了原来的count = 1的值，所以这个时候count依然是count = 1，所以这个数据并没有保护起来。</li>
+</ol>
+</blockquote>
+<p>python2.x和3.x都是在执行IO操作的时候，强制释放GIL，使其他线程有机会执行程序。</p>
+<p>Python2.x Python使用计数器ticks计算字节码，当执行100个字节码的时候强制释放GIL，其他线程获取GIL继续执行。ticks可以看作是Python自己的计数器，专门作用于GIL，释放后归零，技术可以调整。</p>
+<p>Python3.x Python使用计时器，执行时间达到阈值后，当前线程释放GIL。总体来说比Python3.x对CPU密集型任务更好，但是依然没有解决问题。</p>
+<p>多核情况下:</p>
+<p>多个CPU情况下，单个CPU释放GIL锁，其他CPU上的线程也会竞争，但是CPU-A可能又马上拿到了GIL，这样其他CPU上的线程只能继续等待，直到重新回到待调度状态。造成多线程在多核CPU情况下，效率反而会下降，出现了大量的资源浪费。</p>
+</details>
+
+<h2 id="什么是装饰器？"><a href="#什么是装饰器？" class="headerlink" title="什么是装饰器？"></a>什么是装饰器？</h2><h2 id="Python-中的垃圾回收机制？"><a href="#Python-中的垃圾回收机制？" class="headerlink" title="Python 中的垃圾回收机制？"></a>Python 中的垃圾回收机制？</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1e375fb40506">Python垃圾回收机制–完美讲解!</a></p>
+<h2 id="什么是-lambda-表达式？"><a href="#什么是-lambda-表达式？" class="headerlink" title="什么是 lambda 表达式？"></a>什么是 lambda 表达式？</h2><p>简单来说，lambda表达式通常是当你需要使用一个函数，但是又不想费脑袋去命名一个函数的时候使用，也就是通常所说的匿名函数。</p>
+<p>lambda表达式一般的形式是：关键词lambda后面紧接一个或多个参数，紧接一个冒号“：”，紧接一个表达式</p>
+<h2 id="什么是深拷贝和浅拷贝？"><a href="#什么是深拷贝和浅拷贝？" class="headerlink" title="什么是深拷贝和浅拷贝？"></a>什么是深拷贝和浅拷贝？</h2><p>赋值（=），就是创建了对象的一个新的引用，修改其中任意一个变量都会影响到另一个。</p>
+<p>浅拷贝 copy.copy：创建一个新的对象，但它包含的是对原始对象中包含项的引用（如果用引用的方式修改其中一个对象，另外一个也会修改改变）</p>
+<p>深拷贝：创建一个新的对象，并且递归的复制它所包含的对象（修改其中一个，另外一个不会改变）{copy模块的deep.deepcopy()函数}</p>
+<h2 id="双等于和-is-有什么区别？"><a href="#双等于和-is-有什么区别？" class="headerlink" title="双等于和 is 有什么区别？"></a>双等于和 is 有什么区别？</h2><figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs autohotkey"><br>```is```比较的是两个变量的 id，即```id(a) == id(b)```，只有两个变量指向同一个对象的时候，才会返回<span class="hljs-literal">True</span><br><br>但是需要注意的是，比如以下代码：<br><br></code></pre></td></tr></table></figure>
+<p>a = 2<br>b = 2<br>print(a is b)</p>
+<pre><code class="hljs">
+按照上面的解释，应该会输出False，但是事实上会输出True，这是因为Python中对小数据有缓存机制，-5~256之间的数据都会被缓存。
+
+------
+
+## 其它 Python 知识点
+
+### 类型转换
+- list(x)
+- str(x)
+- set(x)
+- int(x)
+- tuple(x)
+
+### try...except
+
+### list
+- ```lst[a:b]```：左闭右开
+- ```lst.append(value)```：在末尾添加元素，复杂度O(1)
+- ```lst.pop()```：弹出列表末尾元素，复杂度O(1)
+- ```lst.pop(index)```：弹出任意位置元素，将后面的元素前移，复杂度O(n)
+- ```lst.insert(index, value)```：插入元素，后面的元素后移，复杂度O(n)
+- ```lst.remove(value)```：移除等于value的第一个元素，后面的元素前移，复杂度O(n)
+- ```lst.count(value)```：计数值为value的元素个数
+- ```lst.sort(reverse = False)```：排序，默认升序
+
+### 参考
+- [生成器 - 廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/1016959663602400/1017318207388128)
+- [Python中的is和==的区别](https://www.cnblogs.com/yjtxin/p/11793243.html)
+- [为什么Python多线程无法利用多核](https://www.mdeditor.tw/pl/pXhj)
+- [GIL锁、线程锁(互斥锁)、递归锁(RLock)](https://www.cnblogs.com/Keep-Ambition/p/7596098.html)
+</code></pre>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python/" class="category-chain-item">Python</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python</div>
+      <div>http://example.com/2022/11/27/guide/Python Handbook/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 27, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/27/guide/Operating%20Systems/" title="操作系统">
+                        <span class="hidden-mobile">操作系统</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

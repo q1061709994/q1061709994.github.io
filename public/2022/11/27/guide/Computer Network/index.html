@@ -722,8 +722,8 @@ HTTP不可以使用UDP，HTTP需要基于可靠的传输协议，而UDP不可靠
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/08/16/training/815-816/" title="暑期集训13">
-                        <span class="hidden-mobile">暑期集训13</span>
+                      <a href="/2022/11/08/guide/Stereotyped%20Writing/" title="实习准备">
+                        <span class="hidden-mobile">实习准备</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -777,6 +777,12 @@ HTTP不可以使用UDP，HTTP需要基于可靠的传输协议，而UDP不可靠
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -970,6 +976,49 @@ HTTP不可以使用UDP，HTTP需要基于可靠的传输协议，而UDP不可靠
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
 
   <script  src="/js/local-search.js" ></script>
 

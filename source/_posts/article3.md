@@ -2,6 +2,7 @@
 icon: article
 title: 算法模板
 author: huan
+sticky: 100
 date: 2022-01-02
 category: 算法笔记
 tag: 

@@ -1,7 +1,9 @@
 ---
 icon: structure
 title: 实习准备
-date: 2020-11-08 20:07:00
+author: huan
+date: 2022-11-08 20:07:00
+sticky: 100
 tags:
 - 实习
 categories:

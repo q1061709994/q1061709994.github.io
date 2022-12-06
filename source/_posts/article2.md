@@ -15,22 +15,7 @@ star: true
 
 **解法：递归&模拟**
 
-~~~
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- *     int val;
- *     TreeNode left;
- *     TreeNode right;
- *     TreeNode() {}
- *     TreeNode(int val) { this.val = val; }
- *     TreeNode(int val, TreeNode left, TreeNode right) {
- *         this.val = val;
- *         this.left = left;
- *         this.right = right;
- *     }
- * }
- */
+~~~java
 class Solution {
     public boolean evaluateTree(TreeNode root) {
         boolean ans = dfs(root);
@@ -58,7 +43,7 @@ class Solution {
 
 **在所有可以上车的时刻中取最大值即可。复杂度 O(*n*log*n*)。**
 
-~~~
+~~~java
 class Solution {
     public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {
         int n = buses.length, m = passengers.length;
@@ -93,7 +78,7 @@ class Solution {
 
 **解法：二分&贪心**
 
-~~~
+~~~java
 class Solution {
     public long minSumSquareDiff(int[] a, int[] b, int k1, int k2) {
         int n = a.length, m = k1 + k2;
@@ -144,7 +129,7 @@ class Solution {
 
 **解法：贪心&优先队列 || 排序**
 
-~~~
+~~~java
 class Solution {
     public int fillCups(int[] amount) {
         PriorityQueue<Integer> q = new PriorityQueue<>((a, b) -> b - a);
@@ -170,7 +155,7 @@ class Solution {
 
 **解法：模拟&优先队列**
 
-~~~
+~~~java
 class SmallestInfiniteSet {
     PriorityQueue<Integer> q = new PriorityQueue<>();
     public SmallestInfiniteSet() {
@@ -201,7 +186,7 @@ class SmallestInfiniteSet {
 
 **解法：双指针**
 
-~~~
+~~~java
 class Solution {
     public boolean canChange(String start, String target) {
         int n = start.length();
@@ -234,7 +219,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int[] numberOfPairs(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -253,7 +238,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public int maximumSum(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -280,7 +265,7 @@ class Solution {
 
 **解法：字符串排序&第二关键字排序**
 
-~~~
+~~~java
 class Solution {
     public int[] smallestTrimmedNumbers(String[] a, int[][] b) {
         int n = a.length, m = a[0].length();
@@ -309,7 +294,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int gcd(int a, int b) {
         return b != 0 ? gcd(b, a % b) : a;
@@ -335,7 +320,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public String bestHand(int[] ranks, char[] suits) {
         // 记录花色种类的 set
@@ -360,7 +345,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public long zeroFilledSubarray(int[] nums) {
         long res = 0;
@@ -384,7 +369,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class NumberContainers {
     Map<Integer, Integer> m1 = new HashMap<>();
     Map<Integer, TreeSet<Integer>> m2 = new HashMap<>();
@@ -430,7 +415,7 @@ class NumberContainers {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public char repeatedCharacter(String s) {
         int[] map = new int[128];
@@ -449,7 +434,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int equalPairs(int[][] g) {
         int n = g.length, m = g[0].length;
@@ -472,7 +457,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class FoodRatings {
     Map<String, TreeSet<Pair<Integer, String>>> hash = new HashMap<>();
     Map<String, String> c = new HashMap<>();
@@ -519,7 +504,7 @@ class FoodRatings {
 
 第i位在两个数里出现几次那么它对答案的贡献就是几
 
-~~~
+~~~java
 class Solution {
     public long countExcellentPairs(int[] nums, int k) {
         TreeSet<Integer> set = new TreeSet<>();
@@ -553,7 +538,7 @@ class Solution {
 
 **解法：脑筋急转弯**
 
-~~~
+~~~java
 class Solution {
     public int minimumOperations(int[] nums) {
         Set<Integer> set = new HashSet<>();
@@ -571,7 +556,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int maximumGroups(int[] g) {
         int res = 0, cnt = 1, n = g.length;
@@ -591,7 +576,7 @@ class Solution {
 
 **解法：dfs**
 
-~~~
+~~~java
 class Solution {
     public int closestMeetingNode(int[] p, int x, int y) {
         int n = p.length;
@@ -630,7 +615,7 @@ class Solution {
 
 **解法：dfs**
 
-~~~
+~~~java
 class Solution {
     int[] p, in_stk;
     boolean[] st;
@@ -671,7 +656,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public List<List<Integer>> mergeSimilarItems(int[][] a, int[][] b) {
         TreeMap<Integer, Integer> map = new TreeMap<>();
@@ -699,7 +684,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public long countBadPairs(int[] nums) {
         long n = nums.length;
@@ -725,7 +710,7 @@ class Solution {
 
 **解法：模拟&贪心**
 
-~~~
+~~~java
 class Solution {
     public long taskSchedulerII(int[] q, int space) {
         int n = q.length;
@@ -752,7 +737,7 @@ class Solution {
 
 **解法：贪心&数学**
 
-~~~
+~~~java
 class Solution {
     public long minimumReplacement(int[] nums) {
         long res = 0;
@@ -779,7 +764,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int arithmeticTriplets(int[] nums, int diff) {
         int n = nums.length;
@@ -801,7 +786,7 @@ class Solution {
 
 **解法：dfs**
 
-~~~
+~~~java
 class Solution {
     List<Integer>[] g;
     boolean[] r;
@@ -832,7 +817,7 @@ class Solution {
 
 **解法：bfs**
 
-~~~
+~~~java
 class Solution {
     public int reachableNodes(int n, int[][] edges, int[] restricted) {
         List<Integer>[] g = new List[n];
@@ -871,7 +856,7 @@ class Solution {
 
 **解法：线性dp**
 
-~~~
+~~~java
 class Solution {
     public boolean validPartition(int[] nums) {
         var n = nums.length;
@@ -897,7 +882,7 @@ class Solution {
 
 **解法：线性dp**
 
-~~~
+~~~java
 class Solution {
     public int longestIdealString(String s, int k) {
         //记 f[d] 表示以字符 d 为结尾的最长理想子序列。
@@ -923,7 +908,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int[][] largestLocal(int[][] g) {
         int n = g.length, m = g[0].length;
@@ -944,7 +929,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int edgeScore(int[] edges) {
         int n = edges.length;
@@ -967,7 +952,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public String smallestNumber(String pattern) {
         int n = pattern.length();
@@ -1000,7 +985,7 @@ class Solution {
 
 **解法：暴力**
 
-~~~
+~~~java
 class Solution {
     boolean[] st;
     String p;
@@ -1070,7 +1055,7 @@ class Solution {
 
 **解法：滑动窗口**
 
-~~~
+~~~java
 class Solution {
     public int minimumRecolors(String s, int k) {
         int res = 100;
@@ -1091,7 +1076,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int secondsToRemoveOccurrences(String s) {
         int res = 0;
@@ -1108,7 +1093,7 @@ class Solution {
 
 **解法：差分**
 
-~~~
+~~~java
 class Solution {
     public String shiftingLetters(String s, int[][] shifts) {
         char[] c = s.toCharArray();
@@ -1145,7 +1130,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int minNumberOfHours(int a, int b, int[] c, int[] d) {
         int n = c.length;
@@ -1174,7 +1159,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public String largestPalindromic(String s) {
         int[] map = new int[10];
@@ -1210,7 +1195,7 @@ class Solution {
 
 链式前向星建图
 
-~~~
+~~~java
 class Solution {
     int N = 100010;
     int[] h, e, ne;
@@ -1268,7 +1253,7 @@ class Solution {
 
 Map建图
 
-~~~
+~~~java
 class Solution {
     int N = 100010;
     Map<Integer, LinkedList<Integer>> g = new HashMap<>();
@@ -1329,7 +1314,7 @@ class Solution {
 
 **解法：前缀和 &二分**
 
-~~~
+~~~java
 class Solution {
     public int[] answerQueries(int[] nums, int[] q) {
         Arrays.sort(nums);
@@ -1356,7 +1341,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public String removeStars(String s) {
         StringBuilder sb = new StringBuilder();
@@ -1373,7 +1358,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int garbageCollection(String[] g, int[] t) {
         Map<Character, Integer> map = new HashMap<>();
@@ -1400,7 +1385,7 @@ class Solution {
 
 **解法：拓扑排序**
 
-~~~
+~~~java
 class Solution {
     public int[] topoSort(int k, int[][] edges) {
         List<Integer>[] g = new List[k];
@@ -1445,7 +1430,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public boolean findSubarrays(int[] nums) {
         Set<Integer> set = new HashSet<>();
@@ -1466,7 +1451,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public boolean f(String s) {
         for (int i = 0, j = s.length() - 1; i < j; i ++ , j -- ) 
@@ -1493,7 +1478,7 @@ class Solution {
 
 **解法：脑筋急转弯**
 
-~~~
+~~~java
 class Solution {
     public boolean isStrictlyPalindromic(int n) {
     	return false;
@@ -1507,7 +1492,7 @@ class Solution {
 
 **解法：二进制枚举**
 
-~~~
+~~~java
 class Solution {
     public int maximumRows(int[][] g, int cols) {
         int m = g.length, n = g[0].length;
@@ -1530,7 +1515,7 @@ class Solution {
 
 **解法：dfs**、
 
-~~~
+~~~java
 class Solution {
     int[][] g;
     int res = 0;
@@ -1577,7 +1562,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public boolean checkDistances(String s, int[] d) {
         Map<Integer, List<Integer>> map = new HashMap<>();
@@ -1596,7 +1581,7 @@ class Solution {
 
 ~~~
 
-~~~
+~~~java
 class Solution {
     public boolean checkDistances(String s, int[] distance) {
         int[] a = new int[26];
@@ -1619,7 +1604,7 @@ class Solution {
 
 动态规划求组合数
 
-~~~
+~~~java
 class Solution {
     private int mod = (int)1e9 + 7;
     public int numberOfWays(int startPos, int endPos, int k) {
@@ -1638,7 +1623,7 @@ class Solution {
 
 逆元求组合数
 
-~~~
+~~~java
 class Solution {
     private int mod = (int)1e9 + 7;
     
@@ -1655,10 +1640,13 @@ class Solution {
     public int numberOfWays(int startPos, int endPos, int k) {
         int m = Math.abs(endPos - startPos);
         if ((m - k) % 2 != 0 || k < m) return 0;
+        // 设往右走r，往左走l，则有l + r = k, r - l = m
         int r = (k + m) / 2;
         long res = 1;
+        // 求组和数的分子
         for (int i = k; i > k - r; i -- ) 
             res = res * i % mod;
+        // 逆元求组合数（除以一个数等于乘以它的逆元）
         for (int i = 1; i <= r; i ++ ) {
             res = res * qmi(i, mod - 2, mod) % mod;
         }
@@ -1673,7 +1661,7 @@ class Solution {
 
 **解法：位运算&滑动窗口&状态压缩**
 
-~~~
+~~~java
 class Solution {
     public int longestNiceSubarray(int[] nums) {
         int n = nums.length;
@@ -1704,7 +1692,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int mostFrequentEven(int[] nums) {
         Map<Integer, Integer> map = new HashMap<>();
@@ -1729,7 +1717,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int partitionString(String s) {
         int[] map = new int[26];
@@ -1754,7 +1742,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int minGroups(int[][] g) {
         int n = g.length;
@@ -1790,7 +1778,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     int[] t = new int[]{0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
     public int get(String s) {
@@ -1812,7 +1800,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int matchPlayersAndTrainers(int[] a, int[] b) {
         Arrays.sort(a);
@@ -1835,7 +1823,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int[] smallestSubarrays(int[] nums) {
         int n = nums.length;
@@ -1858,7 +1846,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public long minimumMoney(int[][] transactions) {
         long sum = 0;
@@ -1886,7 +1874,7 @@ class Solution {
 
 **解法：数学**
 
-~~~
+~~~java
 class Solution {
     public int smallestEvenMultiple(int n) {
         if (n % 2 == 0) return n;
@@ -1899,7 +1887,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public int longestContinuousSubstring(String s) {
         char[] ss = s.toCharArray();
@@ -1921,7 +1909,7 @@ class Solution {
 
 **解法：bfs**
 
-~~~
+~~~java
 class Solution {
     public void reverse(List<TreeNode> list) {
         int l = 0, r = list.size() - 1;
@@ -1958,7 +1946,7 @@ class Solution {
 
 **解法：dfs**
 
-~~~
+~~~java
 class Solution {
     public void swap(TreeNode a, TreeNode b) {
         int t = a.val;
@@ -1986,7 +1974,7 @@ class Solution {
 
 **解法：字典树**
 
-~~~
+~~~java
 class Solution {
     
     public class TrieNode {
@@ -2049,7 +2037,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public String[] sortPeople(String[] names, int[] h) {
         var map = new HashMap<Integer, String>();
@@ -2068,7 +2056,7 @@ class Solution {
 
 **解法：脑筋急转弯**
 
-~~~
+~~~java
 class Solution {
     public int longestSubarray(int[] nums) {
         int mx = 0, n = nums.length;
@@ -2093,7 +2081,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public List<Integer> goodIndices(int[] nums, int k) {
         var n = nums.length;
@@ -2126,7 +2114,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public boolean equalFrequency(String s) {
         int[] map = new int[26];
@@ -2155,7 +2143,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class LUPrefix {
     boolean[] st;
     int n, now = 0;
@@ -2188,7 +2176,7 @@ class LUPrefix {
 
 **解法：脑筋急转弯**
 
-~~~
+~~~java
 class Solution {
     public int xorAllNums(int[] a, int[] b) {
         int n = a.length, m = b.length;
@@ -2216,7 +2204,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public int commonFactors(int a, int b) {
         int res = 0;
@@ -2235,7 +2223,7 @@ class Solution {
 
 **解法：前缀和**
 
-~~~
+~~~java
 class Solution {
     public int maxSum(int[][] g) {
         int n = g.length, m = g[0].length;
@@ -2260,7 +2248,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int minimizeXor(int a, int b) {
         int n = Integer.bitCount(b);
@@ -2287,7 +2275,7 @@ class Solution {
 
 **解法：线性dp&字符串哈希**
 
-~~~
+~~~java
 class Solution {
     int P = 131, n;
     long[] h, p;
@@ -2322,7 +2310,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int hardestWorker(int n, int[][] logs) {
         var list = new ArrayList<int[]>();
@@ -2344,7 +2332,7 @@ class Solution {
 
 **解法：位运算**
 
-~~~
+~~~java
 class Solution {
     public int[] findArray(int[] p) {
         int n = p.length;
@@ -2362,7 +2350,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public String robotWithString(String s) {
         var map = new int[26];
@@ -2392,7 +2380,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
         public int countTime(String time) {
             String[] temp = time.split(":");
@@ -2422,7 +2410,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     int mod = (int) 1e9 + 7;
     public int[] productQueries(int n, int[][] q) {
@@ -2450,7 +2438,7 @@ class Solution {
 
 **解法：二分**
 
-~~~
+~~~java
 class Solution {
     public int minimizeArrayValue(int[] nums) {
         int n = nums.length;
@@ -2490,7 +2478,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int findMaxK(int[] nums) {
         var set = new HashSet<>();
@@ -2512,7 +2500,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int countDistinctIntegers(int[] nums) {
         var set = new HashSet<Integer>();
@@ -2534,7 +2522,7 @@ class Solution {
 
 **枚举**
 
-~~~
+~~~java
 class Solution {
     public boolean sumOfNumberAndReverse(int num) {
         for (int x = 0; x <= num; x ++ ) {
@@ -2554,7 +2542,7 @@ class Solution {
 
 **解法：滑动窗口**
 
-~~~
+~~~java
 class Solution {
     public long countSubarrays(int[] nums, int minK, int maxK) {
         var res = 0l;
@@ -2577,7 +2565,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int get(String s) {
         String[] ss = s.split(":");
@@ -2596,7 +2584,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     int gcd(int a, int b) {
         return b != 0 ? gcd(b, a % b) : a;
@@ -2621,7 +2609,7 @@ class Solution {
 
 **解法：数学**
 
-~~~
+~~~java
 class Solution {
     public long minCost(int[] nums, int[] cost) {
         var n = nums.length;
@@ -2656,7 +2644,7 @@ class Solution {
 
 
 
-~~~
+~~~java
 class Solution:
     def minCost(self, nums: List[int], cost: List[int]) -> int:
         tem = sorted(zip(nums, cost))
@@ -2675,7 +2663,7 @@ class Solution:
 
 **解法：数学**
 
-~~~
+~~~java
 class Solution {
     public long makeSimilar(int[] nums, int[] target) {
         var n = nums.length;
@@ -2697,7 +2685,7 @@ class Solution {
 
 
 
-~~~
+~~~java
 class Solution:
     def makeSimilar(self, nums: List[int], target: List[int]) -> int:
         nums.sort(key=lambda x: (x % 2, x))
@@ -2711,7 +2699,7 @@ class Solution:
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public String oddString(String[] words) {
         int n = words.length, m = words[0].length();
@@ -2745,7 +2733,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public List<String> twoEditWords(String[] q, String[] d) {
         var res = new ArrayList<String>();
@@ -2773,7 +2761,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public int destroyTargets(int[] nums, int space) {
         var map = new TreeMap<Integer, Integer>();
@@ -2801,7 +2789,7 @@ class Solution {
 
 **解法：单调栈**
 
-~~~
+~~~java
 class Solution {
     public int[] secondGreaterElement(int[] nums) {
         var n = nums.length;
@@ -2825,7 +2813,7 @@ class Solution {
 
 **解法：单调栈&堆**
 
-~~~
+~~~java
 class Solution {
     public int[] secondGreaterElement(int[] nums) {
         var n = nums.length;
@@ -2851,7 +2839,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int averageValue(int[] nums) {
         int sum = 0, cnt = 0;
@@ -2869,7 +2857,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public List<List<String>> mostPopularCreator(String[] creators, String[] ids, int[] views) {
         int n = creators.length;
@@ -2911,7 +2899,7 @@ class Solution {
 
 **解法：数学&模拟**
 
-~~~
+~~~java
 class Solution {
     public int f(List<Integer> A) {
         var sm = 0;
@@ -2953,7 +2941,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int[] applyOperations(int[] nums) {
         var n = nums.length;
@@ -2979,7 +2967,7 @@ class Solution {
 
 **解法：滑动窗口**
 
-~~~
+~~~java
 class Solution {
     public long maximumSubarraySum(int[] nums, int k) {
         var res = 0l;
@@ -3006,7 +2994,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public long totalCost(int[] costs, int k, int candidates) {
         var qf = new PriorityQueue<Integer>();
@@ -3048,7 +3036,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int distinctAverages(int[] nums) {
         Arrays.sort(nums);
@@ -3068,7 +3056,7 @@ class Solution {
 
 **解法：递推**
 
-~~~
+~~~java
 class Solution {
     int MOD = (int) 1e9 + 7;
     public int countGoodStrings(int l, int h, int zero, int one) {
@@ -3091,7 +3079,7 @@ class Solution {
 
 **解法：枚举&dfs**
 
-~~~
+~~~java
 class Solution {
     int n;
     int[] bt, p, w;
@@ -3146,7 +3134,7 @@ class Solution {
 
 **链式前向星建图**
 
-~~~
+~~~java
 class Solution {
     int n;
     int idx;
@@ -3224,12 +3212,13 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public double[] convertTemperature(double celsius) {
-        return new double[]{celsius + 273.15, celsius * 1.80 +};
+        return new double[]{celsius + 273.15, celsius * 1.80 + 32.00};
     }
 }
+
 ~~~
 
 
@@ -3238,7 +3227,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     int gcd(int a, int b) {
         return b != 0 ? gcd(b, a % b) : a;
@@ -3268,7 +3257,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public void swap(int[] arr, int a, int b) {
         int t = arr[a];
@@ -3318,7 +3307,7 @@ class Solution {
 
 **解法：DP&中心扩展**
 
-~~~
+~~~java
 class Solution {
     public int maxPalindromes(String S, int k) {
         var s = S.toCharArray();
@@ -3343,7 +3332,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~~
+~~~java~
 class Solution {
     public int unequalTriplets(int[] nums) {
         var res = 0;
@@ -3364,7 +3353,7 @@ class Solution {
 
 **解法：二分**
 
-~~~
+~~~java
 class Solution {
     List<Integer> arr;
     public void dfs(TreeNode root) {
@@ -3405,7 +3394,7 @@ class Solution {
 
 **解法：二叉搜索树**
 
-~~~
+~~~java
 class Solution {
     TreeSet<Integer> set;
     public void dfs(TreeNode root) {
@@ -3435,7 +3424,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     int seats;
     long res = 0l;
@@ -3481,7 +3470,7 @@ class Solution {
 
 **解法：分类讨论**
 
-~~~
+~~~java
 class Solution {
     public int numberOfCuts(int n) {
         if (n == 1) return 0;
@@ -3497,7 +3486,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int[][] onesMinusZeros(int[][] g) {
         int n = g.length, m = g[0].length;
@@ -3522,7 +3511,7 @@ class Solution {
 
 **解法：枚举&前缀和**
 
-~~~
+~~~java
 class Solution {
     public int bestClosingTime(String c) {
         var n = c.length();
@@ -3556,7 +3545,7 @@ class Solution {
 
 **解法：枚举**
 
-~~~
+~~~java
 class Solution {
     public int pivotInteger(int n) {
         var k = (1 + n) * n / 2;
@@ -3577,7 +3566,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int appendCharacters(String s, String t) {
         int k = 0;
@@ -3596,7 +3585,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public ListNode removeNodes(ListNode head) {
         var list = new ArrayList<Integer>();
@@ -3620,7 +3609,7 @@ class Solution {
 
 **解法：递归**
 
-~~~
+~~~java
 class Solution {
     int mx = 0;
     public ListNode removeNodes(ListNode head) {
@@ -3645,7 +3634,7 @@ class Solution {
 
 **解法：枚举&中心扩展**
 
-~~~
+~~~java
 class Solution {
     public int countSubarrays(int[] nums, int k) {
         var res = 0;
@@ -3669,4 +3658,221 @@ class Solution {
     }
 }
 ~~~
+
+
+
+## 322场周赛
+
+#### Problem A - [回环句](https://leetcode.cn/problems/circular-sentence/)
+
+**解法：模拟**
+
+~~~java
+class Solution {
+    public boolean isCircularSentence(String s) {
+        String[] ss = s.split(" ");
+        int n  = ss.length;
+        for (int i = 1; i < n; i ++ ) {
+            if (ss[i - 1].charAt(ss[i - 1].length() - 1) != ss[i].charAt(0)) return false;
+        }
+        if (ss[0].charAt(0) != ss[n - 1].charAt(ss[n - 1].length() - 1)) return false;
+        return true;
+    }
+}
+~~~
+
+~~~python
+class Solution:
+    def isCircularSentence(self, s: str) -> bool:
+        ss = s.split(' ')
+        n = len(ss)
+        for i in range(n):
+            if ss[i][-1] != ss[(i + 1) % n][0]:
+                return False
+        return True
+~~~
+
+#### Problem B - [划分技能点相等的团队](https://leetcode.cn/problems/divide-players-into-teams-of-equal-skill/)
+
+**解法：模拟**
+
+~~~java
+class Solution {
+    public long dividePlayers(int[] sk) {
+        var sum = 0l;
+        var n = sk.length;
+        for (var x : sk) sum += x;
+        if (sum % (n / 2) != 0) return -1;
+        var k = sum / (n / 2);
+        Arrays.sort(sk);
+        var map = new HashMap<Long, Long>();
+        var res = 0l;
+        for (int i = 0; i < n; i ++ ) {
+            if (map.containsKey(k - sk[i])) {
+                res += sk[i] * 1l *  (k - sk[i]);
+                map.put(k - sk[i], map.get(k - sk[i]) - 1);
+                if (map.get(k - sk[i]) == 0) map.remove(k - sk[i]);
+            } else {
+                map.put(sk[i] * 1l, map.getOrDefault(sk[i] * 1l, 0l) + 1);
+            }
+        }
+        if (map.size() > 0) return -1;
+        return res;
+    }
+}
+~~~
+
+**解法：贪心**
+
+~~~java
+class Solution {
+    public long dividePlayers(int[] sk) {
+        var n = sk.length;
+        var res = 0l;
+        Arrays.sort(sk);
+        for (int i = 0, j = n - 1; i < j; i ++, j -- ) {
+            if (sk[i] + sk[j] != sk[0] + sk[n - 1])
+                return -1;
+            else 
+                res += sk[i] * sk[j];
+        }
+        return res;
+    }
+}
+~~~
+
+#### Problem C - [两个城市间路径的最小分数](https://leetcode.cn/problems/minimum-score-of-a-path-between-two-cities/)
+
+**解法：bfs**
+
+~~~java
+class Solution {
+    int n, N, idx, res;
+    int[] e, h, ne, w;
+    boolean[] st;
+    public void add(int a, int b, int c) {
+        e[idx] = b;
+        w[idx] = c;
+        ne[idx] = h[a];
+        h[a] = idx ++ ;
+    }
+    public int minScore(int _n, int[][] r) {
+        N = (int) 1e5;
+        n = _n;
+        res = 10010;
+        e = new int[N * 2 + 10];
+        ne = new int[N * 2 + 10];
+        h = new int[N + 10];
+        st = new boolean[N + 10];
+        w = new int[N * 2 + 10];
+        Arrays.fill(h, -1);
+        for (var p : r) {
+            int a = p[0], b = p[1], c = p[2];
+            add(a, b, c);
+            add(b, a, c);
+        }
+        var q = new ArrayDeque<Integer>();
+        q.add(1);
+        st[1] = true;
+        while (!q.isEmpty()) {
+            var p = q.poll();
+            for (var i = h[p]; i != -1; i = ne[i]) {
+                int u = e[i];
+                res = Math.min(res, w[i]);
+                if (st[u]) continue;
+                q.add(u);
+                st[u] = true;
+            }
+        }
+        return res;
+    }
+}
+~~~
+
+**解法：dfs**
+
+~~~java
+class Solution {
+    int n, N, idx, res;
+    int[] e, h, ne, w;
+    boolean[] st;
+    public void add(int a, int b, int c) {
+        e[idx] = b;
+        w[idx] = c;
+        ne[idx] = h[a];
+        h[a] = idx ++ ;
+    }
+
+    public void dfs(int u) {
+        st[u] = true;
+        for (int i = h[u]; i != -1; i = ne[i]) {
+            var p = e[i];
+            res = Math.min(res, w[i]);
+            if (!st[p]) dfs(p); 
+        }
+        return;
+    }
+
+    public int minScore(int _n, int[][] r) {
+        N = (int) 1e5;
+        n = _n;
+        res = 10010;
+        e = new int[N * 2 + 10];
+        ne = new int[N * 2 + 10];
+        h = new int[N + 10];
+        st = new boolean[N + 10];
+        w = new int[N * 2 + 10];
+        Arrays.fill(h, -1);
+        for (var p : r) {
+            int a = p[0], b = p[1], c = p[2];
+            add(a, b, c);
+            add(b, a, c);
+        }
+        dfs(1);
+        return res;
+    }
+}
+~~~
+
+**解法：并查集**
+
+~~~java
+class Solution {
+    int[] p;
+    public int find(int x) {
+        if (x != p[x]) p[x] = find(p[x]);
+        return p[x];
+    }
+
+    public void union(int a, int b) {
+        p[find(a)] = find(b);
+    }
+
+    public int minScore(int n, int[][] roads) {
+        p = new int[n + 1];
+        for (int i = 0; i < n + 1; i ++ ) p[i] = i;
+        
+        for (var r : roads) {
+            int a = r[0], b = r[1];
+            if (find(a) != find(b))
+                if (find(a) >= find(b)) union(a, b);
+                else union(b, a);
+        }
+
+        var res = (int) 1e5;
+        for (var r : roads) {
+            int a = r[0], b = r[1], c = r[2];
+            if (find(a) == 1)
+                res = Math.min(res, c);
+        }
+        return res;
+    }
+}
+~~~
+
+
+
+#### Problem D - [将节点分成尽可能多的组](https://leetcode.cn/problems/divide-nodes-into-the-maximum-number-of-groups/)
+
+**解法：BFS**
 

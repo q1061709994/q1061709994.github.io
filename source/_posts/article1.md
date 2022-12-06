@@ -92,7 +92,7 @@ star: true
 
 #### [23. 合并K个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
 
-~~~
+~~~java
 class Solution {
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) return null;
@@ -117,7 +117,7 @@ class Solution {
 
 #### [剑指 Offer II 029. 排序的循环链表](https://leetcode.cn/problems/4ueAj6/)
 
-~~~
+~~~java
 class Solution {
     public Node insert(Node head, int insertVal) {
         Node node = new Node(insertVal);
@@ -145,7 +145,7 @@ class Solution {
 
 #### [61. 旋转链表](https://leetcode.cn/problems/rotate-list/)
 
-~~~
+~~~java
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
         if (head == null) return null;
@@ -172,7 +172,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -216,7 +216,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public ListNode[] splitListToParts(ListNode head, int k) {
         ListNode[] res = new ListNode[k];
@@ -246,7 +246,7 @@ class Solution {
 
 **解法：使用哈希进行快速拷贝**
 
-~~~
+~~~java
 class Solution {
     public Node copyRandomList(Node head) {
         if (head == null) return null;
@@ -273,7 +273,7 @@ class Solution {
 
 **解法2：不使用额外空间**
 
-~~~
+~~~java
 class Solution {
     public Node copyRandomList(Node head) {
         if (head == null) return head;
@@ -307,7 +307,7 @@ class Solution {
 
 #### [147. 对链表进行插入排序](https://leetcode.cn/problems/insertion-sort-list/)
 
-~~~
+~~~java
 class Solution {
     public ListNode insertionSortList(ListNode head) {
         ListNode dummy = new ListNode(-1);
@@ -323,6 +323,29 @@ class Solution {
 }
 ~~~
 
+#### [92. 反转链表 II](https://leetcode.cn/problems/reverse-linked-list-ii/)
+
+~~~java
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        var dummy = new ListNode(-1);
+        dummy.next = head;
+        var p = dummy;
+        for (var i = 1; i < left; i ++ ) p = p.next;
+        ListNode a = p, b = a.next;
+        for (var i = left; i <= right; i ++ ) {
+            var c = b.next;
+            b.next = a;
+            a = b;
+            b = c;
+        } 
+        p.next.next = b;
+        p.next = a;
+        return dummy.next;
+    }
+}
+~~~
+
 
 
 ## 单调栈
@@ -331,7 +354,7 @@ class Solution {
 
 #### [6080. 使数组按非递减顺序排列](https://leetcode.cn/problems/steps-to-make-array-non-decreasing/)
 
-~~~
+~~~java
 //https://leetcode.cn/problems/steps-to-make-array-non-decreasing/solution/by-newhar-6k75/
 class Solution {
     public int totalSteps(int[] nums) {
@@ -363,7 +386,7 @@ class Solution {
 
 #### [739. 每日温度](https://leetcode.cn/problems/daily-temperatures/)
 
-~~~
+~~~java
 class Solution {
     public int[] dailyTemperatures(int[] tem) {
         int n = tem.length;
@@ -383,7 +406,7 @@ class Solution {
 
 #### [907. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums/)
 
-~~~
+~~~java
 class Solution {
     public int sumSubarrayMins(int[] arr) {
         int mod = (int)1e9 + 7;
@@ -415,7 +438,7 @@ class Solution {
 
 **解法：单调栈&三次遍历**
 
-~~~
+~~~python
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
         n, res, mod = len(arr), 0, 10 ** 9 + 7
@@ -437,7 +460,7 @@ class Solution:
 
 **解法：单调栈&两次遍历**
 
-~~~
+~~~java
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
         n, res, mod = len(arr), 0, 10 ** 9 + 7
@@ -454,7 +477,7 @@ class Solution:
 
 **解法：单调栈&一次遍历**
 
-~~~
+~~~java
 class Solution:
     def sumSubarrayMins(self, arr: List[int]) -> int:
     	# 栈顶下面的元素正好也是栈顶的左边界
@@ -473,7 +496,7 @@ class Solution:
 
 #### [剑指 Offer 33. 二叉搜索树的后序遍历序列](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/)
 
-~~~
+~~~java
 class Solution {
     public boolean verifyPostorder(int[] pos) {
         ArrayDeque<Integer> q = new ArrayDeque<>();
@@ -493,7 +516,7 @@ class Solution {
 
 **解法1：单调栈**
 
-~~~
+~~~java
 class Solution {
     public int trap(int[] h) {
         int ans = 0, n = h.length;
@@ -515,7 +538,7 @@ class Solution {
 
 **解法2：双指针**
 
-~~~
+~~~java
 class Solution {
     public int trap(int[] h) {
         int n = h.length;
@@ -543,7 +566,7 @@ class Solution {
 
 **解法：单调栈**
 
-~~~
+~~~java
 class Solution {
     //尽可能让最高位小，最高位相同的情况下尽可能让次高位小
     public String removeKdigits(String num, int k) {
@@ -570,7 +593,7 @@ class Solution {
 
 O（N * N）超时
 
-~~~
+~~~java
 class Solution {
     public int largestRectangleArea(int[] heights) {
         int n = heights.length;
@@ -593,7 +616,7 @@ O（N * N）超时
 
 **解法3：单调栈**
 
-~~~
+~~~java
 class Solution {
     //找到每个柱形条左边和右边最近的比自己低的矩形条，然后用宽度乘上当前柱形条的高度
     public int largestRectangleArea(int[] heights) {
@@ -626,7 +649,7 @@ class Solution {
 
 #### [768. 最多能完成排序的块 II](https://leetcode.cn/problems/max-chunks-to-make-sorted-ii/)
 
-~~~
+~~~java
 class Solution {
     public int maxChunksToSorted(int[] arr) {
         //维护每一个块的最大值
@@ -652,7 +675,7 @@ class Solution {
 
 **解法：单调栈&前缀和**
 
-~~~
+~~~java
 class Solution {
     public int longestWPI(int[] h) {
         int n = h.length;
@@ -680,7 +703,7 @@ class Solution {
 
 #### [962. 最大宽度坡](https://leetcode.cn/problems/maximum-width-ramp/)
 
-~~~
+~~~java
 class Solution {
     public int maxWidthRamp(int[] nums) {
         int res = 0;
@@ -698,7 +721,7 @@ class Solution {
 
 #### [503. 下一个更大元素 II](https://leetcode.cn/problems/next-greater-element-ii/)
 
-~~~
+~~~java
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
         int n = nums.length;
@@ -720,7 +743,7 @@ class Solution {
 
 #### [2289. 使数组按非递减顺序排列](https://leetcode.cn/problems/steps-to-make-array-non-decreasing/)
 
-~~~
+~~~java
 class Solution {
     public int totalSteps(int[] nums) {
         var res = 0;
@@ -744,7 +767,7 @@ class Solution {
 
 #### [901. 股票价格跨度](https://leetcode.cn/problems/online-stock-span/)
 
-~~~
+~~~java
 class StockSpanner {
     ArrayDeque<Pair<Integer, Integer>> stk;
     int cur;
@@ -766,7 +789,7 @@ class StockSpanner {
 
 **解法：单调栈**
 
-~~~
+~~~java
 class Solution {
     public int[] secondGreaterElement(int[] nums) {
         var n = nums.length;
@@ -790,7 +813,7 @@ class Solution {
 
 **解法：单调栈&堆**
 
-~~~
+~~~java
 class Solution {
     public int[] secondGreaterElement(int[] nums) {
         var n = nums.length;
@@ -816,7 +839,7 @@ class Solution {
 
 #### [239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum/)
 
-~~~
+~~~java
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         ArrayDeque<Integer> q = new ArrayDeque<>();
@@ -836,7 +859,7 @@ class Solution {
 
 #### [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
-~~~
+~~~java
 class Solution {
     public int shortestSubarray(int[] nums, int k) {
         int ans = Integer.MAX_VALUE;
@@ -861,7 +884,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~python
 class Solution:
     def shortestSubarray(self, nums: List[int], k: int) -> int:
         n = len(nums)
@@ -882,7 +905,7 @@ class Solution:
 
 #### [1438. 绝对差不超过限制的最长连续子数组](https://leetcode.cn/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/)
 
-~~~
+~~~java
 class Solution {
     public int longestSubarray(int[] nums, int limit) {
         int n = nums.length;
@@ -939,7 +962,7 @@ class Solution {
 
 #### [240. 搜索二维矩阵 II](https://leetcode.cn/problems/search-a-2d-matrix-ii/)
 
-~~~
+~~~java
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         int n = matrix.length, m = matrix[0].length;
@@ -957,7 +980,7 @@ class Solution {
 
 #### [2271. 毯子覆盖的最多白色砖块数](https://leetcode.cn/problems/maximum-white-tiles-covered-by-a-carpet/)
 
-~~~
+~~~java
 class Solution {
     public int maximumWhiteTiles(int[][] tiles, int carpetLen) {
         int n = tiles.length;
@@ -1001,7 +1024,7 @@ class Solution {
 
 #### [668. 乘法表中第k小的数](https://leetcode.cn/problems/kth-smallest-number-in-multiplication-table/)
 
-~~~
+~~~java
 class Solution {
     public int findKthNumber(int m, int n, int k) {
         int l = 0,r = m * n;
@@ -1025,7 +1048,7 @@ class Solution {
 
 #### [剑指 Offer 53 - I. 在排序数组中查找数字 I](https://leetcode.cn/problems/zai-pai-xu-shu-zu-zhong-cha-zhao-shu-zi-lcof/)
 
-~~~
+~~~java
 class Solution {
     public int search(int[] nums, int target) {
         if (nums.length == 0) return 0;
@@ -1052,7 +1075,7 @@ class Solution {
 
 #### [6096. 咒语和药水的成功对数](https://leetcode.cn/problems/successful-pairs-of-spells-and-potions/)
 
-~~~
+~~~java
 class Solution {
     public int[] successfulPairs(int[] s, int[] p, long success) {
         Arrays.sort(p);
@@ -1080,7 +1103,7 @@ class Solution {
 
 #### [209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/)
 
-~~~
+~~~java
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         int n = nums.length;
@@ -1104,7 +1127,7 @@ class Solution {
 
 #### [1760. 袋子里最少数目的球](https://leetcode.cn/problems/minimum-limit-of-balls-in-a-bag/)
 
-~~~
+~~~java
 class Solution {
     public int minimumSize(int[] nums, int m) {
         int l = 1, r = 0;
@@ -1126,7 +1149,7 @@ class Solution {
 
 #### [658. 找到 K 个最接近的元素](https://leetcode.cn/problems/find-k-closest-elements/)
 
-~~~
+~~~java
 class Solution {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         List<Integer> ans = new ArrayList<>();
@@ -1155,7 +1178,7 @@ class Solution {
 
 #### [1894. 找到需要补充粉笔的学生编号](https://leetcode.cn/problems/find-the-student-that-will-replace-the-chalk/)
 
-~~~
+~~~java
 class Solution {
     public int chalkReplacer(int[] chalk, int k) {
         int n = chalk.length;
@@ -1175,7 +1198,7 @@ class Solution {
 
 #### [719. 找出第 K 小的数对距离](https://leetcode.cn/problems/find-k-th-smallest-pair-distance/)
 
-~~~
+~~~java
 class Solution {
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
@@ -1204,7 +1227,7 @@ class Solution {
 
 #### [287. 寻找重复数](https://leetcode.cn/problems/find-the-duplicate-number/)
 
-~~~
+~~~java
 class Solution {
     public int findDuplicate(int[] nums) {
         Arrays.sort(nums);
@@ -1221,7 +1244,7 @@ class Solution {
 
 #### [719. 找出第 K 小的数对距离](https://leetcode.cn/problems/find-k-th-smallest-pair-distance/)
 
-~~~
+~~~java
 class Solution {
     public int smallestDistancePair(int[] nums, int k) {
         Arrays.sort(nums);
@@ -1243,7 +1266,7 @@ class Solution {
 
 #### [1283. 使结果不超过阈值的最小除数](https://leetcode.cn/problems/find-the-smallest-divisor-given-a-threshold/)
 
-~~~
+~~~java
 class Solution {
     public int smallestDivisor(int[] nums, int threshold) {
         int l = 1, r = 1000000;
@@ -1261,7 +1284,7 @@ class Solution {
 
 #### [1870. 准时到达的列车最小时速](https://leetcode.cn/problems/minimum-speed-to-arrive-on-time/)
 
-~~~
+~~~java
 class Solution {
     public int minSpeedOnTime(int[] dist, double h) {
         int n = dist.length;
@@ -1281,7 +1304,7 @@ class Solution {
 
 #### [1898. 可移除字符的最大数目](https://leetcode.cn/problems/maximum-number-of-removable-characters/)
 
-~~~
+~~~java
 class Solution {
     public int maximumRemovals(String s, String p, int[] removable) {
         int n = removable.length;
@@ -1312,7 +1335,7 @@ class Solution {
 
 #### [1482. 制作 m 束花所需的最少天数](https://leetcode.cn/problems/minimum-number-of-days-to-make-m-bouquets/)
 
-~~~
+~~~java
 class Solution {
     public int minDays(int[] bloomDay, int m, int k) {
         if (bloomDay.length < m * k) return -1;
@@ -1338,7 +1361,7 @@ class Solution {
 
 #### [275. H 指数 II](https://leetcode.cn/problems/h-index-ii/)
 
-~~~
+~~~java
 class Solution {
     public int hIndex(int[] ct) {
         int  n = ct.length;
@@ -1356,7 +1379,7 @@ class Solution {
 
 #### [1818. 绝对差值和](https://leetcode.cn/problems/minimum-absolute-sum-difference/)
 
-~~~
+~~~java
 class Solution {
     public int minAbsoluteSumDiff(int[] nums1, int[] nums2) {
         long sum = 0;
@@ -1385,7 +1408,7 @@ class Solution {
 
 #### [540. 有序数组中的单一元素](https://leetcode-cn.com/problems/single-element-in-a-sorted-array/)
 
-~~~
+~~~java
 class Solution {
     public int singleNonDuplicate(int[] nums) {
         int l = 0, r = (nums.length - 1) / 2;
@@ -1402,7 +1425,7 @@ class Solution {
 
 #### [1712. 将数组分成三个子数组的方案数](https://leetcode.cn/problems/ways-to-split-array-into-three-subarrays/)
 
-~~~
+~~~java
 class Solution {
     public int waysToSplit(int[] nums) {
         int n = nums.length, mod = (int) 1e9 + 7;
@@ -1438,7 +1461,7 @@ class Solution {
 
 #### [1838. 最高频元素的频数](https://leetcode.cn/problems/frequency-of-the-most-frequent-element/)
 
-~~~
+~~~java
 class Solution {
     int[] nums, s;
     int n, k;
@@ -1471,7 +1494,7 @@ class Solution {
 
 #### [436. 寻找右区间](https://leetcode.cn/problems/find-right-interval/)
 
-~~~
+~~~java
 class Solution {
     public int[] findRightInterval(int[][] intervals) {
         int n = intervals.length;
@@ -1501,7 +1524,7 @@ class Solution {
 
 #### [826. 安排工作以达到最大收益](https://leetcode.cn/problems/most-profit-assigning-work/)
 
-~~~
+~~~java
 class Solution {
     public int maxProfitAssignment(int[] d, int[] p, int[] w) {
         int ans = 0, max = 0;
@@ -1536,7 +1559,7 @@ class Solution {
 
 #### [*81. 搜索旋转排序数组 II](https://leetcode.cn/problems/search-in-rotated-sorted-array-ii/)
 
-~~~
+~~~java
 class Solution {
     public boolean search(int[] nums, int target) {
         int n = nums.length;
@@ -1567,7 +1590,7 @@ class Solution {
 
 #### [154. 寻找旋转排序数组中的最小值 II](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array-ii/)
 
-~~~
+~~~java
 class Solution {
     public int findMin(int[] nums) {
         int l = 0, r = nums.length - 1;
@@ -1585,7 +1608,7 @@ class Solution {
 
 #### [153. 寻找旋转排序数组中的最小值](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/)
 
-~~~
+~~~java
 class Solution {
     public int findMin(int[] nums) {
         int l = 0, r = nums.length - 1;
@@ -1602,7 +1625,7 @@ class Solution {
 
 #### [710. 黑名单中的随机数](https://leetcode.cn/problems/random-pick-with-blacklist/)
 
-~~~
+~~~java
 class Solution {
     List<int[]> list = new ArrayList<>();
     int[] s = new int[100005];
@@ -1654,7 +1677,7 @@ class Solution {
 
 #### [1498. 满足条件的子序列数目](https://leetcode.cn/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
 
-~~~
+~~~java
 class Solution {
     public int numSubseq(int[] nums, int target) {
         int mod = (int)1e9 + 7;
@@ -1682,7 +1705,7 @@ class Solution {
 
 #### [793. 阶乘函数后 K 个零](https://leetcode.cn/problems/preimage-size-of-factorial-zeroes-function/)
 
-~~~
+~~~java
 class Solution {
     //阶乘函数后k个0的个数取决于有几个5
     public int preimageSizeFZF(int k) {
@@ -1711,7 +1734,7 @@ class Solution {
 
 #### [878. 第 N 个神奇数字](https://leetcode.cn/problems/nth-magical-number/)
 
-~~~
+~~~java
 class Solution {
     int mod = (int) 1e9 + 7;
 
@@ -1741,7 +1764,7 @@ class Solution {
 
 前缀和优化
 
-~~~
+~~~java
 class Solution {
     public int subarraySum(int[] nums, int k) {
         int n = nums.length;
@@ -1768,7 +1791,7 @@ class Solution {
 
 #### [930. 和相同的二元子数组](https://leetcode.cn/problems/binary-subarrays-with-sum/)
 
-~~~
+~~~java
 class Solution {
     public int numSubarraysWithSum(int[] nums, int goal) {
         int n = nums.length;
@@ -1788,7 +1811,7 @@ class Solution {
 
 #### [525. 连续数组](https://leetcode.cn/problems/contiguous-array/)
 
-~~~
+~~~java
 class Solution {
     public int findMaxLength(int[] nums) {
         int n = nums.length;
@@ -1810,7 +1833,7 @@ class Solution {
 
 #### [523. 连续的子数组和](https://leetcode.cn/problems/continuous-subarray-sum/)
 
-~~~
+~~~java
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
         int n = nums.length;
@@ -1835,7 +1858,7 @@ class Solution {
 
 #### [1248. 统计「优美子数组」](https://leetcode.cn/problems/count-number-of-nice-subarrays/)
 
-~~~
+~~~java
 class Solution {
     public int numberOfSubarrays(int[] nums, int k) {
         int n = nums.length;
@@ -1855,7 +1878,7 @@ class Solution {
 
 #### [974. 和可被 K 整除的子数组](https://leetcode.cn/problems/subarray-sums-divisible-by-k/)
 
-~~~
+~~~java
 class Solution {
     public int subarraysDivByK(int[] nums, int k) {
         int n = nums.length;
@@ -1878,7 +1901,7 @@ class Solution {
 
 **解法：二维前缀和 + 二分**
 
-~~~
+~~~java
 class Solution {
     public boolean check(int[][] s, int d) {
         int n = s.length - 1, m = s[0].length - 1;
@@ -1913,7 +1936,7 @@ class Solution {
 
 #### [6098. 统计得分小于 K 的子数组数目](https://leetcode.cn/problems/count-subarrays-with-score-less-than-k/)
 
-~~~
+~~~java
 class Solution {
     public long countSubarrays(int[] nums, long k) {
         int n = nums.length;
@@ -1931,7 +1954,7 @@ class Solution {
 
 #### [5229. 拼接数组的最大分数](https://leetcode.cn/problems/maximum-score-of-spliced-array/)
 
-~~~
+~~~java
 class Solution {
     public int work (int[] a, int[] b) {
         int sum = 0;
@@ -1954,7 +1977,7 @@ class Solution {
 
 **解法：二维前缀和**
 
-~~~
+~~~java
 import java.util.*;
 public class Main {
     public static void main(String[] args) {
@@ -1983,7 +2006,7 @@ public class Main {
 
 **解法：二维前缀和**
 
-~~~~
+~~~java
 class Solution {
     public int[][] matrixBlockSum(int[][] mat, int k) {
         int n = mat.length, m = mat[0].length;
@@ -2004,13 +2027,83 @@ class Solution {
 }
 ~~~~
 
+#### [396. 旋转函数](https://leetcode.cn/problems/rotate-function/)
+
+**解法：模拟**
+
+~~~java
+class Solution {
+    public int maxRotateFunction(int[] nums) {
+        int res = 0, sum = 0;
+        int i = 0, n = nums.length;
+        for (int x : nums) {
+            res += i ++ * x;
+            sum += x;
+        }
+        for (int j = n - 1, cur = res; j >= 0; j -- ) {
+            cur += sum - nums[j] * n;
+            res = Math.max(res, cur);
+        }
+        return res;
+    }
+}
+~~~
+
+**解法：前缀和&滑动窗口**
+
+~~~java
+class Solution {
+    public int maxRotateFunction(int[] nums) {
+        int res = 0;
+        int n = nums.length;
+        var s = new int[n * 2 + 1];
+        for (int i = 0; i < n; i ++ ) res += i * nums[i];
+        for (int i = 0; i < n * 2; i ++ ) s[i + 1] = s[i] + nums[i % n];
+        for (int i = n, cur = res; i < n * 2; i ++ ) {
+            cur += nums[i % n] * (n - 1);
+            cur -= s[i] - s[i + 1 - n];
+            res = Math.max(res, cur);
+        }
+        return res;
+    }
+}
+~~~
+
+#### [1769. 移动所有球到每个盒子所需的最小操作数](https://leetcode.cn/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/)
+
+**解法：前缀和**
+
+~~~java
+class Solution {
+    public int[] minOperations(String boxes) {
+        var n = boxes.length();
+        var l = new int[n + 1];
+        var r = new int[n + 1];
+        var res = new int[n];
+        //预处理每个位置左边对答案的贡献
+        for (int i = 0, cur = 0; i < n; i ++ ) {
+            cur += boxes.charAt(i) - '0';
+            l[i + 1] = l[i] + cur;
+        }
+        //预处理每个位置右边对答案的贡献
+        for (int i = n - 1, cur = 0; i >= 0; i -- ) {
+            cur += boxes.charAt(i) - '0';
+            r[i] = r[i + 1] + cur;
+        }
+        //统计答案
+        for (int i = 0; i < n; i ++ ) res[i] = l[i] + r[i + 1];
+        return res;
+    }
+}
+~~~
+
 
 
 ## Trie字典树
 
 #### [208. 实现 Trie (前缀树)](https://leetcode.cn/problems/implement-trie-prefix-tree/)
 
-~~~
+~~~java
 //字典树 + dfs
 class Trie {
     private static class TrieNode {
@@ -2085,7 +2178,7 @@ class Trie {
 
 #### [676. 实现一个魔法字典](https://leetcode.cn/problems/implement-magic-dictionary/)
 
-~~~
+~~~java
 class MagicDictionary {
     int N = 100 * 100, M = 26, idx = 0;
     int[][] son = new int[N][M];
@@ -2140,7 +2233,7 @@ class MagicDictionary {
 
 #### [745. 前缀和后缀搜索](https://leetcode.cn/problems/prefix-and-suffix-search/)
 
-~~~
+~~~java
 class WordFilter {
     public class TrieNode {
         int id;
@@ -2196,7 +2289,7 @@ class WordFilter {
 
 #### [211. 添加与搜索单词 - 数据结构设计](https://leetcode.cn/problems/design-add-and-search-words-data-structure/)
 
-~~~
+~~~java
 class WordDictionary {
 
     TrieNode root = new TrieNode();
@@ -2253,7 +2346,7 @@ class WordDictionary {
 
 #### [AcWing143.最大异或对](https://www.acwing.com/problem/content/description/145/)
 
-~~~
+~~~java
 import java.io.*;
 import java.util.*;
 public class Main {
@@ -2303,7 +2396,7 @@ public class Main {
 
 #### [421. 数组中两个数的最大异或值](https://leetcode.cn/problems/maximum-xor-of-two-numbers-in-an-array/)
 
-~~~
+~~~java
 class Solution {
     TrieNode root = new TrieNode();
     public void insert(int x) {
@@ -2347,8 +2440,7 @@ class Solution {
     }
 }
 ~~~
-
-~~~
+~~~python
 class Solution:
     def __init__(self):
         self.idx = 0
@@ -2405,7 +2497,7 @@ class Solution:
 
 #### [347. 前 K 个高频元素](https://leetcode.cn/problems/top-k-frequent-elements/)
 
-~~~
+~~~java
 //哈希排序
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
@@ -2429,7 +2521,7 @@ class Solution {
 
 #### [205. 同构字符串](https://leetcode.cn/problems/isomorphic-strings/)
 
-~~~
+~~~java
 public boolean isIsomorphic(String s, String t) {
         int[] st = new int[128];
         int[] ts = new int[128];
@@ -2446,7 +2538,7 @@ public boolean isIsomorphic(String s, String t) {
 
 #### [890. 查找和替换模式](https://leetcode.cn/problems/find-and-replace-pattern/)
 
-~~~
+~~~java
 class Solution {
     public List<String> findAndReplacePattern(String[] words, String pattern) {
         List<String> ans = new ArrayList<>();
@@ -2472,7 +2564,7 @@ class Solution {
 
 #### [30. 串联所有单词的子串](https://leetcode.cn/problems/substring-with-concatenation-of-all-words/)
 
-~~~
+~~~java
 //朴素哈希O(n×m×w)
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
@@ -2495,32 +2587,30 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //哈希 + 分组 + 滑窗 O(nw)
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
-        int n = s.length(), m = words.length, w = words[0].length();
-        List<Integer> res = new ArrayList<>();
-        HashMap<String, Integer> map = new HashMap<>();
-        for (String word : words) map.put(word, map.getOrDefault(word, 0) + 1);
-        //根据当前下标与单词长度的取余结果分为w组
-        for (int i = 0; i < w; i ++ ) {
-            Map<String, Integer> wd = new HashMap<>();
-            //记录有效单词数
-            int cnt = 0;
-            //每次将下一个单词加入，上一个单词移除
-            for (int j = i; j + w <= n; j += w) {
-            	//窗口已达到最大，删除首个单词
-                if (j >= i + m * w) {
-                    String word = s.substring(j - m * w, j - m * w + w);
-                    wd.put(word, wd.get(word) - 1);
-                    if (map.containsKey(word) && wd.get(word) < map.get(word)) cnt -- ;
+        int n = words.length, m = words[0].length();
+        var res = new ArrayList<Integer>();
+        var map = new HashMap<String, Integer>();
+        for (var w : words) map.put(w, map.getOrDefault(w, 0) + 1);
+        // 将起点根据 当前下标与单词长度的取余结果 进行分类
+        for (int i = 0; i < m; i ++ ) {
+            var temp = new HashMap<String, Integer>();
+            for (int j = i; j + m <= s.length(); j += m) {
+                var cur = s.substring(j, j + m);
+                temp.put(cur, temp.getOrDefault(cur, 0) + 1);
+                if (j >= i + m * n) {
+                    var idx = j - m * n;
+                    var x = s.substring(idx, idx + m);
+                    temp.put(x, temp.getOrDefault(x, 0) - 1);
+                    if (temp.get(x) == 0) temp.remove(x);
+                    if (!temp.getOrDefault(x, 0).equals(map.getOrDefault(x, 0))) 
+                        continue;
                 }
-                //添加新的单词
-                String word = s.substring(j, j + w);
-                wd.put(word, wd.getOrDefault(word, 0) + 1);
-                if (map.containsKey(word) && wd.get(word) <= map.get(word)) cnt ++ ;
-                if (cnt == m) res.add(j - (m - 1) * w);
+                if (!temp.getOrDefault(cur, 0).equals(map.getOrDefault(cur, 0))) continue;
+                if (temp.equals(map)) res.add(j - (n - 1) * m);
             }
         }
         return res;
@@ -2530,7 +2620,7 @@ class Solution {
 
 #### [648. 单词替换](https://leetcode.cn/problems/replace-words/)
 
-~~~
+~~~java
 //哈希暴力
 class Solution {
     public String replaceWords(List<String> dictionary, String sentence) {
@@ -2554,7 +2644,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //字符串哈希
 class Solution {
     public String replaceWords(List<String> dictionary, String sentence) {
@@ -2584,7 +2674,7 @@ class Solution {
 
 #### [676. 实现一个魔法字典](https://leetcode.cn/problems/implement-magic-dictionary/)
 
-~~~
+~~~java
 class MagicDictionary {
 	//根据字符串长度进行哈希然后爆搜
     Map<Integer, List<String>> map;
@@ -2629,7 +2719,7 @@ class MagicDictionary {
 
 #### [745. 前缀和后缀搜索](https://leetcode.cn/problems/prefix-and-suffix-search/)
 
-~~~
+~~~java
 //枚举每个前缀和后缀放入map
 class WordFilter {
     Map<String, Integer> map = new HashMap<>();
@@ -2659,7 +2749,7 @@ class WordFilter {
 
 #### [692. 前K个高频单词](https://leetcode.cn/problems/top-k-frequent-words/)
 
-~~~
+~~~java
 //哈希排序
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
@@ -2688,7 +2778,7 @@ class Solution {
 
 **解法：哈希**
 
-~~~
+~~~java
 class Solution {
 	//求两个数的最长连续子序列
     public int totalFruit(int[] f) {
@@ -2709,7 +2799,7 @@ class Solution {
 
 #### [1282. 用户分组](https://leetcode.cn/problems/group-the-people-given-the-group-size-they-belong-to/)
 
-~~~
+~~~java
 class Solution {
     public List<List<Integer>> groupThePeople(int[] g) {
         List<List<Integer>> res = new ArrayList<>();
@@ -2730,7 +2820,7 @@ class Solution {
 
 #### [1224. 最大相等频率](https://leetcode.cn/problems/maximum-equal-frequency/)
 
-~~~
+~~~java
 class Solution {
     public int maxEqualFreq(int[] nums) {
         int n = nums.length;
@@ -2761,7 +2851,7 @@ class Solution {
 
 **解法：状态压缩&前缀和&哈希**
 
-~~~
+~~~java
 class Solution {
     private static String v = "aeiou";
     public int findTheLongestSubstring(String s) {
@@ -2820,13 +2910,13 @@ Knuth洗牌算法
 
 对于下标为 0 位置，从 [0,n−1] 随机一个位置进行交换，共有 n 种选择；下标为 1 的位置，从 [1,n−1] 随机一个位置进行交换，共有n−1 种选择 ...
 
-~~~
+~~~java
 for (int i = 0; i < n; i++) {
 	swap(ans, i, i + random.nextInt(n - i));
 }
 ~~~
 
-~~~
+~~~java
 class Solution {
     int[] nums;
     int n;
@@ -2884,7 +2974,7 @@ class Solution {
 
 #### [2275. 按位与结果大于零的最长组合](https://leetcode.cn/problems/largest-combination-with-bitwise-and-greater-than-zero/)
 
-~~~
+~~~java
 class Solution {
     public int largestCombination(int[] nums) {
         /*对于一个序列，其中每一个元素转换为二进制后看成一个32位的数组，
@@ -2907,7 +2997,7 @@ class Solution {
 
 #### [735. 行星碰撞](https://leetcode.cn/problems/asteroid-collision/)
 
-~~~
+~~~java
 class Solution {
     public int[] asteroidCollision(int[] asteroids) {
         ArrayDeque<Integer> s = new ArrayDeque<>();
@@ -2929,7 +3019,7 @@ class Solution {
 
 #### [118. 杨辉三角](https://leetcode.cn/problems/pascals-triangle/)
 
-~~~
+~~~java
 class Solution {
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ans = new ArrayList();
@@ -2948,7 +3038,7 @@ class Solution {
 
 #### [剑指 Offer II 041. 滑动窗口的平均值](https://leetcode.cn/problems/qIsx9U/)
 
-~~~
+~~~java
 class MovingAverage {
     int sum = 0, n;
     ArrayDeque<Integer> q = new ArrayDeque<>();
@@ -2974,7 +3064,7 @@ class MovingAverage {
 
 #### [1260. 二维网格迁移](https://leetcode.cn/problems/shift-2d-grid/)
 
-~~~
+~~~java
 class Solution {
     public List<List<Integer>> shiftGrid(int[][] g, int k) {
         List<List<Integer>> res = new ArrayList<>();
@@ -3001,7 +3091,7 @@ class Solution {
 
 #### [169. 多数元素](https://leetcode.cn/problems/majority-element/)
 
-~~~
+~~~java
 class Solution {
     public int majorityElement(int[] nums) {
         int r = 0, c = 0;
@@ -3024,7 +3114,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public int gcd(int a, int b) {
         return b != 0 ? gcd(b, a % b) : a; 
@@ -3059,7 +3149,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class MyCircularQueue {
     int[] q;
     int hh = 0, tt = 0;
@@ -3107,7 +3197,7 @@ class MyCircularQueue {
 
 **解法：栈**
 
-~~~
+~~~java
 class Solution {
     public void calc(ArrayDeque<Integer> num, ArrayDeque<Character> op) {
         var b = num.pop();
@@ -3155,7 +3245,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public Pair<Integer, Integer> work(String s) {
         int a = 0, b = 0;
@@ -3193,7 +3283,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class Solution {
     public TreeNode createBinaryTree(int[][] descriptions) {
         //用去重和构建二叉树
@@ -3221,7 +3311,7 @@ class Solution {
 
 **解法：模拟**
 
-~~~
+~~~java
 class MyCircularDeque {
     int[] q;
     int hh, tt, sz, n;
@@ -3298,7 +3388,7 @@ class MyCircularDeque {
 
 #### [1329. 将矩阵按对角线排序](https://leetcode.cn/problems/sort-the-matrix-diagonally/)
 
-~~~
+~~~java
 class Solution {
     public int[][] diagonalSort(int[][] mat) {
         int n = mat.length, m = mat[0].length;
@@ -3326,7 +3416,7 @@ class Solution {
 
 #### [1360. 日期之间隔几天](https://leetcode.cn/problems/number-of-days-between-two-dates/)
 
-~~~
+~~~java
 class Solution {
     int[] month = new int[]{0,31,28,31,30,31,30,31,31,30,31,30,31};
     public int daysBetweenDates(String date1, String date2) {
@@ -3357,7 +3447,7 @@ class Solution {
 
 #### [38. 外观数列](https://leetcode.cn/problems/count-and-say/)
 
-~~~
+~~~java
 class Solution {
     public String countAndSay(int n) {
         if (n == 1) return "1";
@@ -3376,7 +3466,7 @@ class Solution {
 
 #### [1073. 负二进制数相加](https://leetcode.cn/problems/adding-two-negabinary-numbers/)
 
-~~~
+~~~java
 class Solution {
     public void swap(int[] ss, int l, int r) {
         int t = ss[l];
@@ -3417,7 +3507,7 @@ class Solution {
 
 #### [842. 将数组拆分成斐波那契序列](https://leetcode.cn/problems/split-array-into-fibonacci-sequence/)
 
-~~~
+~~~java
 class Solution {
     public List<Integer> splitIntoFibonacci(String s) {
         for (int i = 1; i <= 10 && i < s.length(); i ++ ) {
@@ -3451,7 +3541,7 @@ class Solution {
 
 #### [289. 生命游戏](https://leetcode.cn/problems/game-of-life/)
 
-~~~
+~~~java
 class Solution {
     static int[][] ds = new int[][]{{1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}, {0, - 1}, {1, -1}};
     //最后一位为初始状态，第二位为新状态
@@ -3481,7 +3571,7 @@ class Solution {
 
 #### [950. 按递增顺序显示卡牌](https://leetcode.cn/problems/reveal-cards-in-increasing-order/)
 
-~~~
+~~~java
 class Solution {
     public int[] deckRevealedIncreasing(int[] deck) {
         Arrays.sort(deck);
@@ -3505,7 +3595,7 @@ class Solution {
 
 **解法：中心扩展**
 
-~~~
+~~~java
 class Solution {
     public int countSubstrings(String s) {
         var res = 0;
@@ -3525,7 +3615,7 @@ class Solution {
 
 #### [面试题 01.08. 零矩阵](https://leetcode.cn/problems/zero-matrix-lcci/)
 
-~~~
+~~~java
 class Solution {
     public void setZeroes(int[][] matrix) {
         int n = matrix.length, m = matrix[0].length;
@@ -3552,7 +3642,7 @@ class Solution {
 
 **解法：手撕堆排**
 
-~~~
+~~~java
 class Solution {
     int[] h;
     public void swap(int a, int b) {
@@ -3626,7 +3716,7 @@ dfs/bfs
 
 #### [222. 完全二叉树的节点个数](https://leetcode-cn.com/problems/count-complete-tree-nodes/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -3711,7 +3801,7 @@ class Solution {
 
 #### [513. 找树左下角的值](https://leetcode-cn.com/problems/find-bottom-left-tree-value/)
 
-~~~
+~~~java
 //bfs
 class Solution {
     public int findBottomLeftValue(TreeNode root) {
@@ -3727,7 +3817,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //dfs
 class Solution {
     int res = 0, dep = -1;
@@ -3763,7 +3853,7 @@ class Solution {
 
 #### [331. 验证二叉树的前序序列化](https://leetcode.cn/problems/verify-preorder-serialization-of-a-binary-tree/)
 
-~~~~
+~~~java~
 class Solution {
     public boolean isValidSerialization(String s) {
         int n = s.length();
@@ -3788,7 +3878,7 @@ class Solution {
 
 #### [剑指 Offer II 047. 二叉树剪枝](https://leetcode.cn/problems/pOCWxh/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -3817,7 +3907,7 @@ class Solution {
 
 #### [113. 路径总和 II](https://leetcode.cn/problems/path-sum-ii/)
 
-~~~
+~~~java
 class Solution {
     List<List<Integer>> res = new ArrayList<>();
     ArrayDeque<Integer> path = new ArrayDeque<>();
@@ -3840,7 +3930,7 @@ class Solution {
 
 #### [437. 路径总和 III](https://leetcode.cn/problems/path-sum-iii/)
 
-~~~
+~~~java
 //dfs + 前缀和
 /**
  * Definition for a binary tree node.
@@ -3880,7 +3970,7 @@ class Solution {
 
 #### [515. 在每个树行中找最大值](https://leetcode.cn/problems/find-largest-value-in-each-tree-row/)
 
-~~~
+~~~java
 //bfs
 /**
  * Definition for a binary tree node.
@@ -3919,7 +4009,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //dfs
 class Solution {
     List<Integer> res = new ArrayList<>();
@@ -3942,7 +4032,7 @@ class Solution {
 
 **解法1：队列**
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -4003,7 +4093,7 @@ class CBTInserter {
 
 **解法2：list模拟**
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -4063,7 +4153,7 @@ class CBTInserter {
 
 **解法：层序遍历**
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -4107,7 +4197,7 @@ class Solution {
 
 **解法：深搜**
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -4151,7 +4241,7 @@ class Solution {
 
 **解法：深搜**
 
-~~~
+~~~java
 class Solution {
     Map<Integer, Integer> map = new HashMap<>();
     public TreeNode constructFromPrePost(int[] pre, int[] pos) {
@@ -4175,7 +4265,7 @@ class Solution {
 
 **解法：递归**
 
-~~~
+~~~java
 class Solution {
     Map<Integer, Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] pre, int[] in) {
@@ -4198,7 +4288,7 @@ class Solution {
 
 **解法：递归**
 
-~~~
+~~~java
 class Solution {
     Map<Integer, Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] inorder, int[] postorder) {
@@ -4221,7 +4311,7 @@ class Solution {
 
 **解法：递归**
 
-~~~
+~~~java
 class Solution {
     public TreeNode bstFromPreorder(int[] pre) {
         return dfs(pre, 0, pre.length - 1);
@@ -4242,7 +4332,7 @@ class Solution {
 
 #### [687. 最长同值路径](https://leetcode.cn/problems/longest-univalue-path/)
 
-~~~
+~~~java
 //与124类似
 class Solution {
     private int res = 0;
@@ -4268,7 +4358,7 @@ class Solution {
 
 **解法：记忆化dfs**
 
-~~~
+~~~java
 class Solution {
     int mod = (int)1e9 + 7;
     long res = 0;
@@ -4292,7 +4382,7 @@ class Solution {
 
 #### [1373. 二叉搜索子树的最大键值和](https://leetcode.cn/problems/maximum-sum-bst-in-binary-tree/)
 
-~~~~
+~~~java~
 class Solution {
     int res = 0;
     public class Node {
@@ -4325,7 +4415,7 @@ class Solution {
 
 #### [921. 使括号有效的最少添加](https://leetcode.cn/problems/minimum-add-to-make-parentheses-valid/)
 
-~~~
+~~~java
 class Solution {
     public int minAddToMakeValid(String s) {
         int res = 0, cur = 0;
@@ -4345,7 +4435,7 @@ class Solution {
 
 #### [295. 数据流的中位数](https://leetcode.cn/problems/find-median-from-data-stream/)
 
-~~~
+~~~java
 class MedianFinder {
     
     PriorityQueue<Integer> a, b;
@@ -4379,7 +4469,7 @@ class MedianFinder {
 
 #### [856. 括号的分数](https://leetcode.cn/problems/score-of-parentheses/)
 
-~~~
+~~~java
 class Solution {
     public int scoreOfParentheses(String s) {
         var stk = new ArrayDeque<Integer>();
@@ -4396,7 +4486,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution {
     public int scoreOfParentheses(String s) {
         int layer = 0, res = 0;
@@ -4414,7 +4504,7 @@ class Solution {
 
 #### [32. 最长有效括号](https://leetcode.cn/problems/longest-valid-parentheses/)
 
-~~~
+~~~java
 //栈底元素为当前已经遍历过的元素中「最后一个没有被匹配的右括号的下标」
 class Solution {
     public int longestValidParentheses(String s) {
@@ -4436,7 +4526,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution {
     public int longestValidParentheses(String s) {
         int l = 0, r = 0, res = 0;
@@ -4463,7 +4553,7 @@ class Solution {
 
 **解法：堆**
 
-~~~
+~~~java
 class Solution {
     public long kSum(int[] nums, int k) {
         int n = nums.length;
@@ -4490,7 +4580,7 @@ class Solution {
 
 #### [769. 最多能完成排序的块](https://leetcode.cn/problems/max-chunks-to-make-sorted/)
 
-~~~
+~~~java
 class Solution {
     public int maxChunksToSorted(int[] arr) {
         int n = arr.length, res = 0;
@@ -4507,7 +4597,7 @@ class Solution {
 
 **解法1：排序**
 
-~~~
+~~~java
 class Solution {
     public int[][] merge(int[][] arr) {
         if (arr.length == 0 || arr == null) return arr;
@@ -4536,7 +4626,7 @@ class Solution {
 
 **解法2：BitSet位图**
 
-~~~
+~~~java
 //运用api
 class Solution {
     public int[][] merge(int[][] arr) {
@@ -4570,7 +4660,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //手动实现
 class Solution {
     boolean[] bitSet = new boolean[20010];
@@ -4613,7 +4703,7 @@ class Solution {
 
 #### [31. 下一个排列](https://leetcode-cn.com/problems/next-permutation/)
 
-~~~
+~~~java
 class Solution { 
     public void nextPermutation(int[] nums) {
         int k = nums.length - 1;
@@ -4640,7 +4730,7 @@ class Solution {
 
 #### [剑指 Offer 66. 构建乘积数组](https://leetcode.cn/problems/gou-jian-cheng-ji-shu-zu-lcof/)
 
-~~~
+~~~java
 class Solution {
     public int[] constructArr(int[] a) {
         int n = a.length;
@@ -4666,7 +4756,7 @@ class Solution {
 
 O($nlogn$),O($n$)
 
-~~~
+~~~java
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
         var n = nums.length;
@@ -4684,7 +4774,7 @@ class Solution {
 
 O($n$),O($1$)
 
-~~~
+~~~java
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
         int n = nums.length, l = 0, r = n - 1;
@@ -4704,7 +4794,7 @@ class Solution {
 
 #### [238. 除自身以外数组的乘积](https://leetcode.cn/problems/product-of-array-except-self/)
 
-~~~
+~~~java
 class Solution {
     public int[] productExceptSelf(int[] nums) {
         int n = nums.length;
@@ -4725,7 +4815,7 @@ class Solution {
 
 #### [399. 除法求值](https://leetcode.cn/problems/evaluate-division/)
 
-~~~
+~~~java
 class Solution {
     //转为多源最短路问题解决a -> b = c, b -> a = 1 / c, a -> c = a -> b * b -> c;
     public double[] calcEquation(List<List<String>> e, double[] val, List<List<String>> qu) {
@@ -4769,7 +4859,7 @@ class Solution {
 
 #### [剑指 Offer 45. 把数组排成最小的数](https://leetcode.cn/problems/ba-shu-zu-pai-cheng-zui-xiao-de-shu-lcof/)
 
-~~~
+~~~java
 class Solution {
     public String minNumber(int[] nums) {
         List<String> list = new ArrayList<>();
@@ -4784,7 +4874,7 @@ class Solution {
 
 #### [剑指 Offer 44. 数字序列中某一位的数字](https://leetcode.cn/problems/shu-zi-xu-lie-zhong-mou-yi-wei-de-shu-zi-lcof/)
 
-~~~
+~~~java
 class Solution {
     /* 数字范围    数量  位数    占多少位
     1-9        9      1       9
@@ -4814,7 +4904,7 @@ class Solution {
 
 #### [54. 螺旋矩阵](https://leetcode.cn/problems/spiral-matrix/)
 
-~~~
+~~~java
 class Solution {
     public List<Integer> spiralOrder(int[][] g) {
         int[] dx = new int[]{0, 1, 0, -1}, dy = new int[]{1, 0, -1, 0};
@@ -4843,7 +4933,7 @@ class Solution {
 
 #### [59. 螺旋矩阵 II](https://leetcode.cn/problems/spiral-matrix-ii/)
 
-~~~
+~~~java
 class Solution {
     public int[][] generateMatrix(int n) {
         int[][] ans = new int[n][n];
@@ -4867,7 +4957,7 @@ class Solution {
 
 #### [57. 插入区间](https://leetcode.cn/problems/insert-interval/)
 
-~~~
+~~~java
 class Solution {
     public int[][] insert(int[][] arrs, int[] newArr) {
         List<int[]> res = new ArrayList<>();
@@ -4894,7 +4984,7 @@ class Solution {
 
 #### [498. 对角线遍历](https://leetcode.cn/problems/diagonal-traverse/)
 
-~~~
+~~~java
 class Solution {
     public int[] findDiagonalOrder(int[][] mat) {
         int n = mat.length, m = mat[0].length;
@@ -4917,7 +5007,7 @@ class Solution {
 
 #### [6111. 螺旋矩阵 IV](https://leetcode.cn/problems/spiral-matrix-iv/)
 
-~~~
+~~~java
 class Solution {
     public int[][] spiralMatrix(int m, int n, ListNode head) {
         int[][] ans = new int[m][n];
@@ -4943,7 +5033,7 @@ class Solution {
 
 #### [565. 数组嵌套](https://leetcode.cn/problems/array-nesting/)
 
-~~~左闭右开
+~~~java左闭右开
 class Solution {
     //每个点出度和入读都是1，采取原地标记
     public int arrayNesting(int[] nums) {
@@ -4969,7 +5059,7 @@ class Solution {
 
 **解法：递推**
 
-~~~
+~~~java
 class Solution {
     public List<Integer> goodIndices(int[] nums, int k) {
         int n = nums.length;
@@ -5044,7 +5134,7 @@ class Solution:
 
 #### [1773. 统计匹配检索规则的物品数量](https://leetcode.cn/problems/count-items-matching-a-rule/)
 
-~~~
+~~~java
 class Solution:
     def countMatches(self, items: List[List[str]], ruleKey: str, ruleValue: str) -> int:
         res, idx = 0, 0 if ruleKey[0] == 't' else (1 if ruleKey[0] == 'c' else 2)
@@ -5053,7 +5143,7 @@ class Solution:
 
 #### [481. 神奇字符串](https://leetcode.cn/problems/magical-string/)
 
-~~~
+~~~java
 class Solution {
     public int magicalString(int n) {
         StringBuilder sb = new StringBuilder();
@@ -5076,7 +5166,7 @@ class Solution {
 
 #### [1106. 解析布尔表达式](https://leetcode.cn/problems/parsing-a-boolean-expression/)
 
-~~~
+~~~java
 class Solution {
     public char calc(char top, char cur, char op) {
         boolean x = top == 't', y = cur == 't';
@@ -5108,7 +5198,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution {
     String ex;
     int k;
@@ -5140,7 +5230,7 @@ class Solution {
 
 #### [816. 模糊坐标](https://leetcode.cn/problems/ambiguous-coordinates/)
 
-~~~
+~~~java
 class Solution {
     String s;
     public List<String> ambiguousCoordinates(String _s) {
@@ -5177,7 +5267,7 @@ class Solution {
 
 **解法：中心扩展**
 
-~~~
+~~~java
 class Solution {
     public String longestPalindrome(String s) {
         var n = s.length();
@@ -5198,7 +5288,7 @@ class Solution {
 
 #### [792. 匹配子序列的单词数](https://leetcode.cn/problems/number-of-matching-subsequences/)
 
-~~~
+~~~java
 class Solution {
     public int numMatchingSubseq(String s, String[] words) {
         var ss = s.toCharArray();
@@ -5231,7 +5321,7 @@ class Solution {
 
 #### [460. LFU 缓存](https://leetcode.cn/problems/lfu-cache/)
 
-~~~
+~~~java
 class LFUCache {
     int n;
     Block headBlock, tailBlock;
@@ -5357,7 +5447,7 @@ class LFUCache {
 
 **解法：逆元求组合数**
 
-~~~
+~~~java
 class Solution {
     private int mod = (int)1e9 + 7;
     
@@ -5388,7 +5478,7 @@ class Solution {
 
 #### [204. 计数质数](https://leetcode.cn/problems/count-primes/)
 
-~~~
+~~~java
 class Solution {
     public int countPrimes(int n) {
         var cnt = 0;
@@ -5410,7 +5500,7 @@ class Solution {
 
 根据超出t的步数分类讨论，超出偶数步可将（sum - t）/ 2处取反，奇数步的话看走完下一步超出的是奇数还是偶数，奇数的话位k+1，否则为k+2
 
-~~~
+~~~java
 class Solution {
     public int reachNumber(int target) {
         target = Math.abs(target);
@@ -5437,6 +5527,28 @@ Arrays.sort()排序 滑动窗口
 #### [3. 无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
 
 #### [424. 替换后的最长重复字符](https://leetcode-cn.com/problems/longest-repeating-character-replacement/)
+
+**解法：滑动窗口**
+
+~~~
+class Solution {
+    public int characterReplacement(String s, int k) {
+        var n = s.length();
+        var map = new int[26];
+        var max = 0;
+        var res = 0;
+        for (int i = 0, j = 0; i < n; i ++ ) {
+            map[s.charAt(i) - 'A'] ++ ;
+            max = Math.max(max, map[s.charAt(i) - 'A']);
+            while (i - j + 1 > max + k) map[s.charAt(j ++ ) - 'A'] -- ;
+            res = Math.max(res, i - j + 1);
+        }
+        return res;
+    }
+}
+~~~
+
+
 
 #### [713. 乘积小于 K 的子数组](https://leetcode-cn.com/problems/subarray-product-less-than-k/)
 
@@ -5498,9 +5610,64 @@ Arrays.sort()排序 滑动窗口
 >
 >public SortedSet tailSet(E fromElement)：返回>=fromElement值的集合元素
 
-#### [395. 至少有 K 个重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/)
+**解法：滑动窗口**
 
 ~~~
+class Solution {
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        var n = nums.length;
+        var set = new TreeSet<Long>();
+        for (var i = 0; i < n; i ++ ) {
+            var u = nums[i] * 1l;
+            var l = set.floor(u);
+            var r = set.ceiling(u);
+            if (l != null && u - l <= t) return true;
+            if (r != null && r - u <= t) return true;
+            set.add(u);
+            if (i >= k) set.remove(nums[i - k] * 1l);
+        }
+        return false;
+    }
+}
+~~~
+
+**解法：桶排序**
+
+~~~
+class Solution {
+    long size;
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        var n = nums.length;
+        size = t + 1;
+        var map = new HashMap<Long, Long>();
+        for (var i = 0; i < n; i ++ ) {
+            var u = nums[i] * 1l;
+            var idx = getIdx(u);
+            // 目标桶已存在（桶不为空），说明前面已有 [u - t, u + t] 范围的数字
+            if (map.containsKey(idx)) return true;
+            // 检查相邻的桶
+            long l = idx - 1, r = idx + 1;
+            if (map.containsKey(l) && u - map.get(l) <= t) return true;
+            if (map.containsKey(r) && map.get(r) - u <= t) return true;
+            //建立目标桶
+            map.put(idx, u);
+            // 移除下标范围不在 [max(0, i - k), i) 内的桶
+            if (i >= k) map.remove(getIdx(nums[i - k] * 1l));
+        }
+        return false;
+    }
+
+    public long getIdx(long u) {
+        return u >= 0 ? u / size : ((u + 1) / size) - 1;
+    }
+}
+~~~
+
+
+
+#### [395. 至少有 K 个重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/)
+
+~~~java
 class Solution {
     public int longestSubstring(String s, int k) {
         int[] map = new int[26];
@@ -5547,7 +5714,7 @@ class Solution {
 
 #### [1838. 最高频元素的频数](https://leetcode.cn/problems/frequency-of-the-most-frequent-element/)
 
-~~~
+~~~java
 class Solution {
     public int maxFrequency(int[] nums, int k) {
         Arrays.sort(nums);
@@ -5564,7 +5731,7 @@ class Solution {
 
 #### [1156. 单字符重复子串的最大长度](https://leetcode.cn/problems/swap-for-longest-repeated-character-substring/)
 
-~~~
+~~~java
 class Solution {
     public int maxRepOpt1(String s) {
         List<Integer>[] p = new List[26];
@@ -5596,6 +5763,74 @@ class Solution {
 }
 ~~~
 
+#### [992. K 个不同整数的子数组](https://leetcode.cn/problems/subarrays-with-k-different-integers/)
+
+**解法：滑动窗口**
+
+~~~~java
+class Solution {
+    public int find(int[] nums, int k) {
+        var map = new HashMap<Integer, Integer>();
+        var n = nums.length;
+        var res = 0;
+        for (int i = 0, j = 0; i < n; i ++ ) {
+            map.put(nums[i], map.getOrDefault(nums[i], 0) + 1);
+            while (map.size() > k) {
+                map.put(nums[j], map.get(nums[j]) - 1);
+                if (map.get(nums[j]) == 0) map.remove(nums[j]);
+                j ++ ;
+            } 
+            res += i - j + 1;
+        }
+        return res;
+    }
+    public int subarraysWithKDistinct(int[] nums, int k) {
+        return find(nums, k) - find(nums, k - 1);
+    }
+}
+~~~~
+
+#### [1610. 可见点的最大数目](https://leetcode.cn/problems/maximum-number-of-visible-points/)
+
+**解法：滑动窗口**
+
+~~~
+class Solution {
+    double eps = 1e-9;
+    public int visiblePoints(List<List<Integer>> points, int angle, List<Integer> location) {
+        int x = location.get(0), y = location.get(1);
+        var list = new ArrayList<Double>();
+        double pi = Math.PI, t = angle * pi / 180;
+        var cnt = 0;
+        for (var p : points) {
+            int a = p.get(0), b = p.get(1);
+            /* 
+                题目规定了与 location 重合的点在任意角度都能看到，
+                因此我们需要对这些点进行特殊处理
+            */
+            if (a == x && b == y && ++ cnt > 0) continue;
+            list.add(Math.atan2(b - y, a - x) + pi);
+        }
+        Collections.sort(list);
+        int n = list.size(), max = 0;
+        /*
+            直接在原数组 listlist 操作，会漏掉夹角横跨一四象限的情况：
+            因此，另外一个细节是，在求连续段长度时，先对夹角数组进行拷贝拼接，
+            并对拼接部分增加偏移量（确保数组仍具有单调性）。
+            具体的，设夹角数组长度为 nn，
+            此时令 list[n + i] = list[i] + 2 * PIlist[n+i]=list[i]+2∗PI，
+            从而将问题彻底转换为求连续段问题。
+        */
+        for (var i = 0; i < n; i ++ ) list.add(list.get(i) + 2 * pi);
+        for (int i = 0, j = 0; i < n * 2; i ++ ) {
+            while (list.get(i) - list.get(j) > t + eps) j ++ ;
+            max = Math.max(max, i - j + 1);
+        }
+        return max + cnt;
+    }
+}
+~~~
+
 
 
 ## 双指针
@@ -5604,7 +5839,7 @@ class Solution {
 
 **解法：排序 + 双指针**
 
-~~~
+~~~java
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
         List<List<Integer>> ans = new ArrayList<>();
@@ -5645,7 +5880,7 @@ class Solution {
 
 **解法2：三指针排序**
 
-~~~
+~~~java
 class Solution {
     public void swap(int[] nums, int i, int j) {
         int t = nums[i];
@@ -5667,7 +5902,7 @@ class Solution {
 
 #### [264. 丑数 II](https://leetcode.cn/problems/ugly-number-ii/)
 
-~~~
+~~~java
 //写法1，容量未固定内存消耗大
 class Solution {
     public int nthUglyNumber(int n) {
@@ -5686,7 +5921,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //三指针多路归并
 //写法2固定容量，比写法1的动态扩容内存少一点
 //s[i]表示第i + 1个丑数
@@ -5709,7 +5944,7 @@ class Solution {
 
 #### [16. 最接近的三数之和](https://leetcode.cn/problems/3sum-closest/)
 
-~~~
+~~~java
 class Solution {
     public int threeSumClosest(int[] nums, int target) {
         int n = nums.length;
@@ -5732,7 +5967,7 @@ class Solution {
 
 #### [209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum/)
 
-~~~
+~~~java
 class Solution {
     public int minSubArrayLen(int target, int[] nums) {
         int ans = Integer.MAX_VALUE;
@@ -5751,7 +5986,7 @@ class Solution {
 
 #### [1498. 满足条件的子序列数目](https://leetcode.cn/problems/number-of-subsequences-that-satisfy-the-given-sum-condition/)
 
-~~~
+~~~java
 class Solution {
     public int numSubseq(int[] nums, int target) {
         int mod = (int)1e9 + 7;
@@ -5780,7 +6015,7 @@ class Solution {
 
 #### [6117. 坐上公交的最晚时间](https://leetcode.cn/problems/the-latest-time-to-catch-a-bus/)
 
-~~~
+~~~java
 class Solution {
     public int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {
         int n = buses.length, m = passengers.length;
@@ -5813,7 +6048,7 @@ class Solution {
 
 #### [777. 在LR字符串中交换相邻字符](https://leetcode.cn/problems/swap-adjacent-in-lr-string/)
 
-~~~
+~~~java
 class Solution {
     public boolean canTransform(String start, String end) {
         char[] a = start.toCharArray(), b = end.toCharArray();
@@ -5848,7 +6083,7 @@ class Solution {
 
 **解法：dijkstra**
 
-~~~
+~~~java
 class Solution {
     public int reachableNodes(int[][] edges, int maxMoves, int n) {
         List<int[]>[] g = new ArrayList[n];
@@ -5903,7 +6138,7 @@ class Solution {
 
 #### [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/)
 
-~~~
+~~~java
 class Solution {
     public int climbStairs(int n) {
         int[] dp = new int[n + 1];
@@ -5920,7 +6155,7 @@ class Solution {
 
 #### [64. 最小路径和](https://leetcode.cn/problems/minimum-path-sum/)
 
-~~~
+~~~java
 class Solution {
     public int minPathSum(int[][] g) {
         int n = g.length, m = g[0].length;
@@ -5939,7 +6174,7 @@ class Solution {
 
 #### [62. 不同路径](https://leetcode.cn/problems/unique-paths/)
 
-~~~
+~~~java
 class Solution {
     public int uniquePaths(int m, int n) {
         int[][] dp = new int[m][n];
@@ -5959,7 +6194,7 @@ class Solution {
 
 #### [63. 不同路径 II](https://leetcode.cn/problems/unique-paths-ii/)
 
-~~~
+~~~java
 class Solution {
     public int uniquePathsWithObstacles(int[][] g) {
         int m = g.length, n = g[0].length;
@@ -5984,7 +6219,7 @@ class Solution {
 
 #### [剑指 Offer 46. 把数字翻译成字符串](https://leetcode.cn/problems/ba-shu-zi-fan-yi-cheng-zi-fu-chuan-lcof/)
 
-~~~
+~~~java
 class Solution {
     public int translateNum(int num) {
         String str = String.valueOf(num);
@@ -6008,7 +6243,7 @@ class Solution {
 
 #### [62. 不同路径](https://leetcode.cn/problems/unique-paths/)
 
-~~~
+~~~java
 class Solution {
     public int uniquePaths(int m, int n) {
         int[][] dp = new int[m][n];
@@ -6028,7 +6263,7 @@ class Solution {
 
 #### [63. 不同路径 II](https://leetcode.cn/problems/unique-paths-ii/)
 
-~~~
+~~~java
 class Solution {
     public int uniquePathsWithObstacles(int[][] g) {
         int m = g.length, n = g[0].length;
@@ -6051,7 +6286,7 @@ class Solution {
 
 #### [198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
 
-~~~
+~~~java
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
@@ -6069,7 +6304,7 @@ class Solution {
 
 #### [213. 打家劫舍 II](https://leetcode.cn/problems/house-robber-ii/)
 
-~~~
+~~~java
 class Solution {
     public int rob(int[] nums) {
         int n = nums.length;
@@ -6101,7 +6336,7 @@ class Solution {
 
 #### [337. 打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/)
 
-~~~
+~~~java
 //树形dp
 /*我们使用一个大小为 2 的数组来表示 int[] res = new int[2] 0 代表不偷，1 代表偷
 任何一个节点能偷到的最大钱的状态可以定义为
@@ -6130,7 +6365,7 @@ class Solution {
 
 #### [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
 
-~~~
+~~~java
 //O(n * n)
 class Solution {
     public int lengthOfLIS(int[] nums) {
@@ -6153,7 +6388,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //O(n * logn)
 class Solution {
     public int lengthOfLIS(int[] nums) {
@@ -6181,7 +6416,7 @@ class Solution {
 
 #### [152. 乘积最大子数组](https://leetcode.cn/problems/maximum-product-subarray/)
 
-~~~
+~~~java
 class Solution {
     public int maxProduct(int[] nums) {
         int res = nums[0];
@@ -6199,7 +6434,7 @@ class Solution {
 
 #### [139. 单词拆分](https://leetcode.cn/problems/word-break/)
 
-~~~
+~~~java
 class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
         int n = s.length();
@@ -6223,7 +6458,7 @@ class Solution {
 
 #### [剑指 Offer 42. 连续子数组的最大和](https://leetcode.cn/problems/lian-xu-zi-shu-zu-de-zui-da-he-lcof/)
 
-~~~
+~~~java
 class Solution {
     public int maxSubArray(int[] nums) {
         int f = -101;
@@ -6239,7 +6474,7 @@ class Solution {
 
 #### [53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/)
 
-~~~
+~~~java
 class Solution {
     public int maxSubArray(int[] nums) {
         int ans = Integer.MIN_VALUE;
@@ -6256,7 +6491,7 @@ class Solution {
 
 #### [1359. 有效的快递序列数目](https://leetcode.cn/problems/count-all-valid-pickup-and-delivery-options/)
 
-~~~
+~~~java
 class Solution {
     static final int MOD = (int)1e9 + 7;
     public int countOrders(int n) {
@@ -6274,7 +6509,7 @@ class Solution {
 
 **优化空间**
 
-~~~
+~~~java
 class Solution {
     static final int MOD = (int)1e9 + 7;
     public int countOrders(int n) {
@@ -6290,7 +6525,7 @@ class Solution {
 
 #### [1143. 最长公共子序列](https://leetcode.cn/problems/longest-common-subsequence/)
 
-~~~
+~~~java
 class Solution {
     public int longestCommonSubsequence(String a, String b) {
         int n = a.length(), m = b.length();
@@ -6312,7 +6547,7 @@ class Solution {
 
 **解法：记忆化搜索**
 
-```
+~~~java
 class Solution {
     int[] map;
     public int coinChange(int[] coins, int amount) {
@@ -6334,10 +6569,11 @@ class Solution {
         return map[rem] = min == Integer.MAX_VALUE ? -1 : min;
     } 
 }
-```
+~~~
+
 **解法：动态规划**
 
-~~~
+~~~java
 class Solution {
     public int coinChange(int[] coins, int m) {
         int[] f = new int[m + 1];
@@ -6355,7 +6591,7 @@ class Solution {
 
 **解法：序列dp**
 
-~~~
+~~~java
 class Solution {
     public int distinctSubseqII(String s) {
         int mod = (int) 1e9 + 7;
@@ -6384,7 +6620,7 @@ class Solution {
 
 **优化**
 
-~~~
+~~~java
 class Solution {
     public int distinctSubseqII(String s) {
         int mod = (int) 1e9 + 7;
@@ -6407,7 +6643,7 @@ class Solution {
 
 **解法：序列DP&二分**
 
-~~~
+~~~java
 class Solution {
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         var job = new ArrayList<int[]>();
@@ -6438,7 +6674,7 @@ class Solution {
 
 **解法：动态规划**
 
-~~~~
+~~~java~
 class Solution {
     public int maxRepeating(String a, String b) {
         int n = a.length(), m = b.length();
@@ -6462,7 +6698,7 @@ class Solution {
 
 #### [808. 分汤](https://leetcode.cn/problems/soup-servings/)
 
-~~~
+~~~java
 class Solution {
     public int g(int x) {
         return Math.max(x, 0);
@@ -6499,7 +6735,7 @@ class Solution {
 
 **解法：BFS**
 
-~~~
+~~~java
 class Solution {
     public int ladderLength(String start, String end, List<String> bank) {
         var set = new HashSet<String>();
@@ -6554,7 +6790,7 @@ class Solution {
 
 「双向 BFS」基本思路对应的伪代码大致如下：
 
-~~~
+~~~java
 d1、d2 为两个方向的队列
 m1、m2 为两个方向的哈希表，记录每个节点距离起点的
     
@@ -6574,7 +6810,7 @@ void update(Deque d, Map cur, Map other) {}
 
 **解法：双向BFS**
 
-~~~
+~~~java
 class Solution {
     Set<String> set;
     public int bfs(ArrayDeque<String> q, Map<String, Integer> m1, Map<String, Integer> m2) {
@@ -6631,7 +6867,7 @@ class Solution {
 
 BFS
 
-~~~
+~~~java
 class Solution {
     public int minMutation(String start, String end, String[] bank) {
         Set<String> set = new HashSet<>();
@@ -6669,7 +6905,7 @@ class Solution {
 
 双向BFS
 
-~~~
+~~~java
 class Solution {
     Set<String> set = new HashSet<>();
     char[] item = new char[]{'A','C','G','T'};
@@ -6721,7 +6957,7 @@ class Solution {
 
 #### [6081. 到达角落需要移除障碍物的最小数目](https://leetcode.cn/problems/minimum-obstacle-removal-to-reach-corner/)
 
-~~~
+~~~java
 class Solution {
     final static int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     public int minimumObstacles(int[][] g) {
@@ -6780,7 +7016,7 @@ class Solution {
 
 #### [116. 填充每个节点的下一个右侧节点指针](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)
 
-~~~
+~~~java
 /*
 // Definition for a Node.
 class Node {
@@ -6823,7 +7059,7 @@ class Solution {
 
 #### [117. 填充每个节点的下一个右侧节点指针 II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
 
-~~~
+~~~java
 /*
 // Definition for a Node.
 class Node {
@@ -6868,7 +7104,7 @@ class Solution {
 
 #### [690. 员工的重要性](https://leetcode.cn/problems/employee-importance/)
 
-~~~
+~~~java
 /*
 // Definition for Employee.
 class Employee {
@@ -6902,7 +7138,7 @@ class Solution {
 
 #### [AcWing3675.逃离迷宫](https://www.acwing.com/problem/content/description/3678/)
 
-~~~
+~~~java
 import java.util.*;
 import java.io.*;
 public class Main {
@@ -7039,7 +7275,7 @@ class InputReader {
 
 #### [1345. 跳跃游戏 IV](https://leetcode.cn/problems/jump-game-iv/)
 
-~~~
+~~~java
 class Solution {
     public int minJumps(int[] arr) {
         int n = arr.length;
@@ -7086,7 +7322,7 @@ class Solution {
 
 #### [785. 判断二分图](https://leetcode.cn/problems/is-graph-bipartite/)
 
-~~~
+~~~java
 class Solution {
     public boolean isBipartite(int[][] g) {
         int[] st = new int[g.length];
@@ -7113,7 +7349,7 @@ class Solution {
 
 #### [854. 相似度为 K 的字符串](https://leetcode.cn/problems/k-similar-strings/)
 
-~~~
+~~~java
 class Solution {
     public int kSimilarity(String s1, String s2) {
         int n = s1.length();
@@ -7158,7 +7394,7 @@ class Solution {
 
 **解法：BFS**
 
-~~~
+~~~java
 class Solution {
     public int orangesRotting(int[][] g) {
         int n = g.length, m = g[0].length;
@@ -7192,7 +7428,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution:
     def orangesRotting(self, g: List[List[int]]) -> int:
         n, m, num = len(g), len(g[0]), 0
@@ -7224,7 +7460,7 @@ class Solution:
 
 **解法：BFS**
 
-~~~
+~~~java
 class Solution {
     static int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
     public int shortestBridge(int[][] g) {
@@ -7279,7 +7515,7 @@ class Solution {
 
 **解法：并查集&双向BFS**
 
-~~~
+~~~java
 class Solution {
     static int N = 10010;
     static int[] p = new int[N];
@@ -7365,7 +7601,7 @@ class Solution {
 
 **解法：BFS&状态压缩**
 
-~~~
+~~~java
 class Solution {
     static int N = 35, K = 6, INF = 0x3f3f3f3f;
     static int[][][] dist = new int[N][N][1 << K];
@@ -7414,7 +7650,7 @@ class Solution {
 
 #### [39. 组合总和](https://leetcode-cn.com/problems/combination-sum/)
 
-~~~
+~~~java
 class Solution {
     List<List<Integer>> ans = new ArrayList<>();
     List<Integer> path = new ArrayList<>();
@@ -7445,7 +7681,7 @@ class Solution {
 
 #### [47. 全排列 II](https://leetcode-cn.com/problems/permutations-ii/)
 
-~~~
+~~~java
 class Solution {
     List<List<Integer>> ans;
     List<Integer> list;
@@ -7497,7 +7733,7 @@ floodfill
 	
 	4、当前最后一个数失败，直接跳过
 
-~~~
+~~~java
 class Solution {
     int[] nums;
     boolean[] st;
@@ -7543,7 +7779,7 @@ class Solution {
 
 #### [剑指 Offer 12. 矩阵中的路径](https://leetcode.cn/problems/ju-zhen-zhong-de-lu-jing-lcof/)
 
-~~~
+~~~java
 class Solution {
     char[][] g;
     String word;
@@ -7586,7 +7822,7 @@ class Solution {
 
 #### [剑指 Offer 34. 二叉树中和为某一值的路径](https://leetcode.cn/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -7623,7 +7859,7 @@ class Solution {
 
 #### [剑指 Offer 26. 树的子结构](https://leetcode.cn/problems/shu-de-zi-jie-gou-lcof/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -7648,7 +7884,7 @@ class Solution {
 
 #### [剑指 Offer 36. 二叉搜索树与双向链表](https://leetcode.cn/problems/er-cha-sou-suo-shu-yu-shuang-xiang-lian-biao-lcof/)
 
-~~~
+~~~java
 /*
 // Definition for a Node.
 class Node {
@@ -7697,7 +7933,7 @@ class Solution {
 
 #### [剑指 Offer 38. 字符串的排列](https://leetcode.cn/problems/zi-fu-chuan-de-pai-lie-lcof/)
 
-~~~
+~~~java
 class Solution {
     List<String> list = new ArrayList<>();
     List<Character> path = new ArrayList<>();
@@ -7737,7 +7973,7 @@ class Solution {
 
 #### [494. 目标和](https://leetcode.cn/problems/target-sum/)
 
-~~~
+~~~java
 //dfs
 class Solution {
     public int findTargetSumWays(int[] nums, int t) {
@@ -7752,7 +7988,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //dfs + 记忆化搜索
 class Solution {
     public int findTargetSumWays(int[] nums, int t) {
@@ -7769,7 +8005,7 @@ class Solution {
 
 #### [403. 青蛙过河](https://leetcode.cn/problems/frog-jump/)
 
-~~~
+~~~java
 //记忆化搜索
 class Solution {
     Map<Integer, Integer> map = new HashMap<>();
@@ -7811,7 +8047,7 @@ class Solution {
 
 #### [337. 打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/)
 
-~~~
+~~~java
 //记忆化搜索
 /**
  * Definition for a binary tree node.
@@ -7845,7 +8081,7 @@ class Solution {
 
 #### [394. 字符串解码](https://leetcode.cn/problems/decode-string/)
 
-~~~
+~~~java
 class Solution {
     int u = 0;
     public String decodeString(String s) {
@@ -7879,7 +8115,7 @@ class Solution {
 
 #### [22. 括号生成](https://leetcode.cn/problems/generate-parentheses/)
 
-~~~
+~~~java
 class Solution {
     List<String> ans = new ArrayList<>();
     public List<String> generateParenthesis(int n) {
@@ -7900,7 +8136,7 @@ class Solution {
 
 #### [剑指 Offer 33. 二叉搜索树的后序遍历序列](https://leetcode.cn/problems/er-cha-sou-suo-shu-de-hou-xu-bian-li-xu-lie-lcof/)
 
-~~~
+~~~java
 class Solution {
     public boolean verifyPostorder(int[] postorder) {
         return verify(postorder, 0, postorder.length - 1);
@@ -7920,7 +8156,7 @@ class Solution {
 
 #### [297. 二叉树的序列化与反序列化](https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -7975,7 +8211,7 @@ public class Codec {
 
 #### [5289. 公平分发饼干](https://leetcode.cn/problems/fair-distribution-of-cookies/)
 
-~~~
+~~~java
 class Solution {
     int[] sum = new int[10], q;
     int ans = (int)1e9, n;
@@ -8006,7 +8242,7 @@ class Solution {
 
 #### [90. 子集 II](https://leetcode.cn/problems/subsets-ii/)
 
-~~~~
+~~~java~
 class Solution {
     List<List<Integer>> ans = new ArrayList<>();
     List<Integer> path = new ArrayList<>();
@@ -8038,7 +8274,7 @@ class Solution {
 
 #### [508. 出现次数最多的子树元素和](https://leetcode.cn/problems/most-frequent-subtree-sum/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8076,7 +8312,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution:
     def findFrequentTreeSum(self, root: Optional[TreeNode]) -> List[int]:
         map = Counter()
@@ -8095,7 +8331,7 @@ class Solution:
 
 #### [241. 为运算表达式设计优先级](https://leetcode.cn/problems/different-ways-to-add-parentheses/)
 
-~~~
+~~~java
 class Solution {
     char cs[];
     public List<Integer> diffWaysToCompute(String expression) {
@@ -8129,7 +8365,7 @@ class Solution {
 
 #### [95. 不同的二叉搜索树 II](https://leetcode.cn/problems/unique-binary-search-trees-ii/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8173,7 +8409,7 @@ class Solution {
 
 #### [6110. 网格图中递增路径的数目](https://leetcode.cn/problems/number-of-increasing-paths-in-a-grid/)
 
-~~~
+~~~java
 //记忆化搜索
 class Solution {
     int mod = (int) 1e9 + 7;
@@ -8212,7 +8448,7 @@ class Solution {
 
 #### [129. 求根节点到叶节点数字之和](https://leetcode.cn/problems/sum-root-to-leaf-numbers/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8245,7 +8481,7 @@ class Solution {
 
 #### [116. 填充每个节点的下一个右侧节点指针](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)
 
-~~~
+~~~java
 /*
 // Definition for a Node.
 class Node {
@@ -8288,7 +8524,7 @@ class Solution {
 
 #### [117. 填充每个节点的下一个右侧节点指针 II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
 
-~~~
+~~~java
 /*
 // Definition for a Node.
 class Node {
@@ -8347,7 +8583,7 @@ class Solution {
 
 #### [199. 二叉树的右视图](https://leetcode.cn/problems/binary-tree-right-side-view/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8379,7 +8615,7 @@ class Solution {
 
 #### [130. 被围绕的区域](https://leetcode.cn/problems/surrounded-regions/)
 
-~~~
+~~~java
 class Solution {
     int n, m;
     char[][] g;
@@ -8423,7 +8659,7 @@ class Solution {
 
 #### [124. 二叉树中的最大路径和](https://leetcode.cn/problems/binary-tree-maximum-path-sum/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8456,7 +8692,7 @@ class Solution {
 
 #### [329. 矩阵中的最长递增路径](https://leetcode.cn/problems/longest-increasing-path-in-a-matrix/)
 
-~~~
+~~~java
 class Solution {
     int n, m;
     int[][] g, f;
@@ -8491,7 +8727,7 @@ class Solution {
 
 #### [419. 甲板上的战舰](https://leetcode.cn/problems/battleships-in-a-board/)
 
-~~~
+~~~java
 class Solution {
     char[][] g;
     public int countBattleships(char[][] board) {
@@ -8522,7 +8758,7 @@ class Solution {
 
 #### [1038. 从二叉搜索树到更大和树](https://leetcode.cn/problems/binary-search-tree-to-greater-sum-tree/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8556,7 +8792,7 @@ class Solution {
 
 #### [1026. 节点与其祖先之间的最大差值](https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8591,7 +8827,7 @@ class Solution {
 
 #### [1080. 根到叶路径上的不足节点](https://leetcode.cn/problems/insufficient-nodes-in-root-to-leaf-paths/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8632,7 +8868,7 @@ class Solution {
 
 #### [652. 寻找重复的子树](https://leetcode.cn/problems/find-duplicate-subtrees/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8671,7 +8907,7 @@ class Solution {
 
 #### [669. 修剪二叉搜索树](https://leetcode.cn/problems/trim-a-binary-search-tree/)
 
-~~~
+~~~java
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -8707,7 +8943,7 @@ class Solution {
 
 #### [690. 员工的重要性](https://leetcode.cn/problems/employee-importance/)
 
-~~~
+~~~java
 /*
 // Definition for Employee.
 class Employee {
@@ -8735,7 +8971,7 @@ class Solution {
 
 #### [814. 二叉树剪枝](https://leetcode.cn/problems/binary-tree-pruning/)
 
-~~~
+~~~java
 class Solution {
     public TreeNode pruneTree(TreeNode root) {
         if (!dfs(root)) return null;
@@ -8752,7 +8988,7 @@ class Solution {
 
 #### [133. 克隆图](https://leetcode.cn/problems/clone-graph/)
 
-~~~
+~~~java
 class Solution {
     Map<Node, Node> hash = new HashMap<>();
     public void dfs(Node node) {
@@ -8778,7 +9014,7 @@ class Solution {
 
 #### [655. 输出二叉树](https://leetcode.cn/problems/print-binary-tree/)
 
-~~~
+~~~java
 class Solution {
     String[][] res;
     public int[] dfs(TreeNode root) {
@@ -8810,7 +9046,7 @@ class Solution {
 
 #### [785. 判断二分图](https://leetcode.cn/problems/is-graph-bipartite/)
 
-~~~
+~~~java
 class Solution {
     int[] st;
     int[][] g;
@@ -8838,7 +9074,7 @@ class Solution {
 
 #### [491. 递增子序列](https://leetcode.cn/problems/increasing-subsequences/)
 
-~~~
+~~~java
 class Solution {
     List<List<Integer>> res;
     List<Integer> path;
@@ -8869,7 +9105,7 @@ class Solution {
 
 #### [865. 具有所有最深节点的最小子树](https://leetcode.cn/problems/smallest-subtree-with-all-the-deepest-nodes/)
 
-~~~
+~~~java
 class Solution {
     public TreeNode subtreeWithAllDeepest(TreeNode root) {
         return dfs(root).root;
@@ -8894,7 +9130,7 @@ class Solution {
 
 #### [216. 组合总和 III](https://leetcode.cn/problems/combination-sum-iii/)
 
-~~~
+~~~java
 class Solution {
     List<List<Integer>> res;
     List<Integer> path;
@@ -8923,7 +9159,7 @@ class Solution {
 
 #### [572. 另一棵树的子树](https://leetcode.cn/problems/subtree-of-another-tree/)
 
-~~~
+~~~java
 class Solution {
     public boolean isSubtree(TreeNode p, TreeNode q) {
         if (p == null) return false;
@@ -8941,7 +9177,7 @@ class Solution {
 
 #### [37. 解数独](https://leetcode.cn/problems/sudoku-solver/)
 
-~~~
+~~~java
 class Solution {
     boolean[][] row, col, block;
     public boolean dfs(char[][] board, int i, int j) {
@@ -8990,7 +9226,7 @@ class Solution {
 
 #### [4. 寻找两个正序数组的中位数](https://leetcode.cn/problems/median-of-two-sorted-arrays/)
 
-~~~
+~~~java
 class Solution {
     public double findMedianSortedArrays(int[] a, int[] b) {
         int tot = a.length + b.length;
@@ -9020,7 +9256,7 @@ class Solution {
 
 **解法：染色法判断二分图**
 
-~~~
+~~~java
 class Solution {
     int N = 2010, M =  2 * 10010;
     int[] h, e, ne, colour;
@@ -9065,7 +9301,7 @@ class Solution {
 
 #### [112. 路径总和](https://leetcode.cn/problems/path-sum/)
 
-~~~
+~~~java
 class Solution {
     public boolean hasPathSum(TreeNode root, int targetSum) {
         return dfs(root, targetSum);
@@ -9082,7 +9318,7 @@ class Solution {
 
 #### [784. 字母大小写全排列](https://leetcode.cn/problems/letter-case-permutation/)
 
-~~~
+~~~java
 class Solution {
     List<String> res = new ArrayList<>();
     public List<String> letterCasePermutation(String S) {
@@ -9107,7 +9343,7 @@ class Solution {
 
 #### [6240. 树上最大得分和路径](https://leetcode.cn/problems/most-profitable-path-in-a-tree/)
 
-~~~
+~~~java
 class Solution {
     int n;
     int[] bt, p, w;
@@ -9160,13 +9396,117 @@ class Solution {
 }
 ~~~
 
+#### [1774. 最接近目标价格的甜点成本](https://leetcode.cn/problems/closest-dessert-cost/)
+
+**解法：三进制枚举**
+
+~~~java
+class Solution {
+    public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
+        int m = baseCosts.length, n = toppingCosts.length;
+        var pos = new int[n + 1];
+        pos[0] = 1;
+        for (int i = 0; i < n; i ++ ) pos[i + 1] = pos[i] * 3;
+        int res = -1, d = (int) 1e9;
+        for (int i = 0; i < pos[n]; i ++ ) {
+            int sum = 0;
+            for (int j = 0; j < n; j ++ )
+                sum += i / pos[j] % 3 * toppingCosts[j];
+            for (int j = 0; j < m; j ++ ) {
+                sum += baseCosts[j];
+                if (Math.abs(sum - target) == d) {
+                    if (sum < d + target) {
+                        res = sum;
+                    }
+                }
+                if (Math.abs(sum - target) < d) {
+                    res = sum;
+                    d = Math.abs(sum - target);
+                }
+                sum -= baseCosts[j];
+            }
+        }
+        return res;
+    }
+}
+~~~
+
+**解法：dfs**
+
+~~~java
+class Solution {
+    int res;
+    public int closestCost(int[] baseCosts, int[] toppingCosts, int target) {
+        res = Arrays.stream(baseCosts).min().getAsInt();
+        for (int x: baseCosts)
+            dfs(toppingCosts, 0, x, target);
+        return res;
+    }
+
+    public void dfs(int[] c, int u, int cur, int k) {
+        if (cur - k > Math.abs(res - k)) return;
+        else if (Math.abs(res - k) >= Math.abs(cur - k))
+            if (Math.abs(res - k) > Math.abs(cur - k)) res = cur;
+            else res = Math.min(res, cur);
+        
+        if (u >= c.length) return;
+        for (int i = 0; i < 3; i ++ )
+            dfs(c, u + 1, cur + c[u] * i, k);
+    }
+}
+~~~
+
+#### [131. 分割回文串](https://leetcode.cn/problems/palindrome-partitioning/)
+
+**解法：深搜**
+
+~~~java
+class Solution {
+    List<List<String>> res;
+    List<String> path;
+    boolean[][] f;
+    public List<List<String>> partition(String s) {
+        var n = s.length();
+        var cs = s.toCharArray();
+        f = new boolean[n][n];
+        res = new ArrayList<>();
+        path = new ArrayList<>();
+        for (var i = 0; i < n; i ++ ) {
+            for (var j = i; j >= 0; j -- ) {
+                if (i == j) f[j][i] = true;
+                else {
+                    if (i - j + 1 == 2)
+                        f[j][i] = (cs[i] == cs[j]);
+                    else
+                        f[j][i] = f[j + 1][i - 1] && (cs[i] == cs[j]);
+                }
+            }
+        }
+        dfs(s, 0);
+        return res;
+    }
+
+    public void dfs(String s, int u) {
+        var n = s.length();
+        if (u == n) res.add(new ArrayList<>(path));
+        for (int i = u; i < n; i ++ ) {
+            if (f[u][i]) {
+                path.add(s.substring(u, i + 1));
+                dfs(s, i + 1);
+                path.remove(path.size() - 1);
+            }
+        }
+    }
+}
+~~~
+
 
 
 ## 并查集
 
 #### [547. 省份数量](https://leetcode-cn.com/problems/number-of-provinces/)
 
-~~~
+~~~java
 class Solution {
     int[] p;
     public int find(int x) {
@@ -9196,7 +9536,7 @@ class Solution {
 
 #### [128. 最长连续序列](https://leetcode-cn.com/problems/longest-consecutive-sequence/)
 
-~~~
+~~~java
 class Solution {
     int[] p, size;
     public int find(int x) {
@@ -9234,7 +9574,7 @@ class Solution {
 
 #### [684. 冗余连接](https://leetcode-cn.com/problems/redundant-connection/)
 
-~~~
+~~~java
 class Solution {
     int[] p;
     public int find(int x) {
@@ -9258,7 +9598,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~python
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         n = len(edges)
@@ -9284,7 +9624,7 @@ class Solution:
 
 **解法：dfs&并查集**
 
-~~~
+~~~java
 class Solution {
     int[] p;
     int[][] g;
@@ -9343,7 +9683,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 //dfs
 class Solution {
     int[][] g;
@@ -9384,7 +9724,7 @@ class Solution {
 
 #### [6106. 统计无向图中无法互相到达点对数](https://leetcode.cn/problems/count-unreachable-pairs-of-nodes-in-an-undirected-graph/)
 
-~~~
+~~~java
 class Solution {
     int[] p, size;
     public int find(int x) {
@@ -9418,7 +9758,7 @@ class Solution {
 
 #### [952. 按公因数计算最大组件大小](https://leetcode.cn/problems/largest-component-size-by-common-factor/)
 
-~~~
+~~~java
 class Solution {
     int[] p, s;
     public int find(int x) {
@@ -9471,7 +9811,7 @@ class Solution {
 
 #### [785. 判断二分图](https://leetcode.cn/problems/is-graph-bipartite/)
 
-~~~
+~~~java
 class Solution {
     int[] p;
     public int find(int x) {
@@ -9500,7 +9840,7 @@ class Solution {
 
 #### [827. 最大人工岛](https://leetcode.cn/problems/making-a-large-island/)
 
-~~~
+~~~java
 class Solution {
     int[] p, sz;
     int[][] dirs = new int[][]{{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
@@ -9564,7 +9904,7 @@ class Solution {
 
 #### [695. 岛屿的最大面积](https://leetcode.cn/problems/max-area-of-island/)
 
-~~~
+~~~java
 class Solution {
     int[] p, sz;
     int[][] dirs = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
@@ -9611,7 +9951,7 @@ class Solution {
 
 #### [886. 可能的二分法](https://leetcode.cn/problems/possible-bipartition/)
 
-~~~
+~~~java
 class Solution {
     int[] p;
     List<Integer>[] g;
@@ -9652,7 +9992,7 @@ class Solution {
 
 #### [207. 课程表](https://leetcode.cn/problems/course-schedule/)
 
-~~~
+~~~java
 class Solution {
     public boolean canFinish(int n, int[][] prerequisites) {
         //统计每个点入度
@@ -9682,7 +10022,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         g = collections.defaultdict(list)
@@ -9707,7 +10047,7 @@ class Solution:
 
 #### [210. 课程表 II](https://leetcode.cn/problems/course-schedule-ii/)
 
-~~~
+~~~java
 class Solution {
     public int[] findOrder(int n, int[][] pre) {
         int[] d = new int[n];//每个点的入度
@@ -9736,7 +10076,7 @@ class Solution {
 
 #### [802. 找到最终的安全状态](https://leetcode.cn/problems/find-eventual-safe-states/)
 
-~~~
+~~~java
 class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
         int n = graph.length;
@@ -9769,7 +10109,7 @@ class Solution {
 
 #### [310. 最小高度树](https://leetcode.cn/problems/minimum-height-trees/)
 
-~~~
+~~~java
 class Solution {
     public List<Integer> findMinHeightTrees(int n, int[][] edges) {
         if (n == 1) return List.of(0);
@@ -9808,7 +10148,7 @@ class Solution {
 
 #### [1462. 课程表 IV](https://leetcode.cn/problems/course-schedule-iv/)
 
-~~~
+~~~java
 class Solution {
     public List<Boolean> checkIfPrerequisite(int n, int[][] prerequisites, int[][] queries) {
         List<Boolean> ans = new ArrayList<>();
@@ -9845,7 +10185,7 @@ class Solution {
 
 #### [剑指 Offer II 115. 重建序列](https://leetcode.cn/problems/ur2n8P/)
 
-~~~
+~~~java
 class Solution {
     public boolean sequenceReconstruction(int[] nums, int[][] sequences) {
         int n = nums.length;
@@ -9881,7 +10221,7 @@ class Solution {
 
 **解法：拓扑排序找环**
 
-~~~
+~~~java
 class Solution {
     public int longestCycle(int[] p) {
         int n = p.length, res = -1;
@@ -9927,7 +10267,7 @@ class Solution {
 
 #### [55. 跳跃游戏](https://leetcode.cn/problems/jump-game/)
 
-~~~
+~~~java
 class Solution {
     public boolean canJump(int[] nums) {
         int n = nums.length;
@@ -9942,7 +10282,7 @@ class Solution {
 
 #### [45. 跳跃游戏 II](https://leetcode.cn/problems/jump-game-ii/)
 
-~~~
+~~~java
 class Solution {
     public int jump(int[] nums) {
         int n = nums.length;
@@ -9960,7 +10300,7 @@ class Solution {
 
 #### [406. 根据身高重建队列](https://leetcode.cn/problems/queue-reconstruction-by-height/)
 
-~~~
+~~~java
 class Solution {
     /**
      * 解题思路：先排序再插入
@@ -9986,7 +10326,7 @@ class Solution {
 
 #### [134. 加油站](https://leetcode.cn/problems/gas-station/)
 
-~~~
+~~~java
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
     	//rest表示走完后剩余的油量，g为当前油量， st为开始的起点
@@ -10006,7 +10346,7 @@ class Solution {
 
 #### [2311. 小于等于 K 的最长二进制子序列](https://leetcode.cn/problems/longest-binary-subsequence-less-than-or-equal-to-k/)
 
-~~~
+~~~java
 class Solution {
     public int longestSubsequence(String s, int k) {
         int res = 0, n = s.length();
@@ -10028,7 +10368,7 @@ class Solution {
 
 #### [6105. 操作后的最大异或和](https://leetcode.cn/problems/maximum-xor-after-operations/)
 
-~~~
+~~~java
 class Solution {
     public int maximumXOR(int[] nums) {
         int ans = 0;
@@ -10040,7 +10380,7 @@ class Solution {
 
 #### [871. 最低加油次数](https://leetcode.cn/problems/minimum-number-of-refueling-stops/)
 
-~~~
+~~~java
 class Solution {
     /*想象成不是只在加油站才能加油，而是只要现在需要油，并且之前有加油站
     还没有加油，那么此时就可以加油。这样一来，如果要使得加油次数最少，那么
@@ -10076,7 +10416,7 @@ class Solution {
 
 #### [556. 下一个更大元素 III](https://leetcode.cn/problems/next-greater-element-iii/)
 
-~~~
+~~~java
 /*1、从数组末尾往前找，找到 第一个 位置 k，使得 ss[k] <= ss[k - 1]
   2、如果不存在这样的 k，则说明数组是不递增的，直接将数组逆转即可。
   3、如果存在这样的 j，则从末尾找到第一个位置 t > k，使得 nums[t] > nums[k - 1]。
@@ -10115,7 +10455,7 @@ class Solution {
 
 #### [31. 下一个排列](https://leetcode.cn/problems/next-permutation/)
 
-~~~
+~~~java
 class Solution {
     public void nextPermutation(int[] nums) {
         int k = nums.length - 1;
@@ -10145,7 +10485,7 @@ class Solution {
 
 #### [1217. 玩筹码](https://leetcode.cn/problems/minimum-cost-to-move-chips-to-the-same-position/)
 
-~~~
+~~~java
 class Solution {
     //相当于先把奇数放一起，再把偶数放一起，把少的个数移到多的个数上去
     public int minCostToMoveChips(int[] position) {
@@ -10161,7 +10501,7 @@ class Solution {
 
 #### [6118. 最小差值平方和](https://leetcode.cn/problems/minimum-sum-of-squared-difference/)
 
-~~~
+~~~java
 //多路归并贪心
 class Solution {
     public long minSumSquareDiff(int[] a, int[] b, int k1, int k2) {
@@ -10207,7 +10547,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int intersectionSizeTwo(int[][] intervals) {
         //将数组按interval[1]升序列，interval[0]降序排列
@@ -10245,7 +10585,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public int minimumDeviation(int[] nums) {
         TreeSet<Integer> set = new TreeSet<>();
@@ -10265,7 +10605,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution {
     public int minimumDeviation(int[] nums) {
         PriorityQueue<Integer> q = new PriorityQueue<>((o1, o2) -> o2 - o1);
@@ -10296,7 +10636,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public long taskSchedulerII(int[] q, int space) {
         int n = q.length;
@@ -10321,7 +10661,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     public long minimumReplacement(int[] nums) {
         long res = 0;
@@ -10347,7 +10687,7 @@ class Solution {
 
 **解法：排序贪心**
 
-~~~
+~~~java
 class Solution {
     public String largestNumber(int[] nums) {
         int n = nums.length;
@@ -10368,7 +10708,7 @@ class Solution {
 
 **解法：贪心&单调栈**
 
-~~~
+~~~java
 class Solution {
     public String removeDuplicateLetters(String s) {
         StringBuilder res = new StringBuilder();
@@ -10394,7 +10734,7 @@ class Solution {
 
 **解法：排序&贪心**
 
-~~~
+~~~java
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[1] - b[1]);
@@ -10412,7 +10752,7 @@ class Solution {
 
 #### [330. 按要求补齐数组](https://leetcode.cn/problems/patching-array/)
 
-~~~
+~~~java
 class Solution {
     public int minPatches(int[] nums, int n) {
         int res = 0;
@@ -10439,7 +10779,7 @@ class Solution {
 
 #### [321. 拼接最大数](https://leetcode.cn/problems/create-maximum-number/)
 
-~~~
+~~~java
 class Solution {
     public int[] maxNumber(int[] nums1, int[] nums2, int k) {
         int n = nums1.length, m = nums2.length;
@@ -10497,7 +10837,7 @@ class Solution {
 
 **解法：排序贪心**
 
-~~~
+~~~java
 class Solution {
     public int findMinArrowShots(int[][] p) {
         Arrays.sort(p, (a, b) -> {
@@ -10521,7 +10861,7 @@ class Solution {
 
 **解法：贪心&优先队列**
 
-~~~
+~~~java
 class Solution {
     public int[] smallestRange(List<List<Integer>> nums) {
         int[] res = new int[]{(int)-1e5, (int)1e5};
@@ -10555,7 +10895,7 @@ class Solution {
 
 **解法：贪心**
 
-~~~
+~~~java
 class Solution {
     /*
     * 从右往左扫，若当前位比前一位小，将该位及其后边设为9，前一位减一
@@ -10579,7 +10919,7 @@ class Solution {
 
 #### [646. 最长数对链](https://leetcode.cn/problems/maximum-length-of-pair-chain/)
 
-~~~
+~~~java
 class Solution {
     public int findLongestChain(int[][] p) {
         Arrays.sort(p, (a, b) -> a[1] - b[1]);
@@ -10600,7 +10940,7 @@ class Solution {
 
 **解法：贪心&位运算&哈希**
 
-~~~
+~~~java
 class Solution {
     public int maxNumberOfFamilies(int n, int[][] rs) {
         n <<= 1;
@@ -10619,7 +10959,7 @@ class Solution {
 
 #### [857. 雇佣 K 名工人的最低成本](https://leetcode.cn/problems/minimum-cost-to-hire-k-workers/)
 
-~~~
+~~~java
 class Solution {
     public double mincostToHireWorkers(int[] qs, int[] ws, int k) {
         int n = qs.length;
@@ -10646,7 +10986,7 @@ class Solution {
 
 #### [2182. 构造限制重复的字符串](https://leetcode.cn/problems/construct-string-with-repeat-limit/)
 
-~~~
+~~~java
 class Solution {
     public String repeatLimitedString(String s, int repeatLimit) {
         var map = new int[26];
@@ -10678,7 +11018,7 @@ class Solution {
 
 #### [剑指 Offer 56 - I. 数组中数字出现的次数](https://leetcode.cn/problems/shu-zu-zhong-shu-zi-chu-xian-de-ci-shu-lcof/)
 
-~~~
+~~~java
 class Solution {
     public int[] singleNumbers(int[] nums) {
         int t = 0;
@@ -10696,7 +11036,7 @@ class Solution {
 
 #### [剑指 Offer 65. 不用加减乘除做加法](https://leetcode.cn/problems/bu-yong-jia-jian-cheng-chu-zuo-jia-fa-lcof/)
 
-~~~
+~~~java
 class Solution {
     public int add(int a, int b) {
         /*
@@ -10723,7 +11063,7 @@ class Solution {
 
 #### [231. 2 的幂](https://leetcode.cn/problems/power-of-two/)
 
-~~~
+~~~java
 //lowbit运算
 class Solution {
     public boolean isPowerOfTwo(int n) {
@@ -10736,7 +11076,7 @@ class Solution {
 
 **解法：位运算**
 
-~~~
+~~~java
 class Solution {
     public int singleNumber(int[] nums) {
         for (int i = 1; i < nums.length; i ++ ) 
@@ -10750,7 +11090,7 @@ class Solution {
 
 **解法：二进制枚举&哈希**
 
-~~~
+~~~java
 class Solution {
     public List<List<Integer>> findSubsequences(int[] nums) {
         int n = nums.length;
@@ -10775,7 +11115,7 @@ class Solution {
 
 #### [201. 数字范围按位与](https://leetcode.cn/problems/bitwise-and-of-numbers-range/)
 
-~~~
+~~~java
 class Solution {
     public int rangeBitwiseAnd(int n, int m) {
         var res = 0;
@@ -10790,7 +11130,7 @@ class Solution {
 
 #### [137. 只出现一次的数字 II](https://leetcode.cn/problems/single-number-ii/)
 
-~~~
+~~~java
 class Solution {
     public int singleNumber(int[] nums) {
         var res = 0;
@@ -10805,7 +11145,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~python
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         res = 0
@@ -10824,7 +11164,7 @@ class Solution:
 
 #### [260. 只出现一次的数字 III](https://leetcode.cn/problems/single-number-iii/)
 
-~~~
+~~~java
 class Solution {
     public int[] singleNumber(int[] nums) {
         var xor = 0;
@@ -10843,7 +11183,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
         xor = 0
@@ -10961,7 +11301,7 @@ dfs + flood fill
 
 #### [1763. 最长的美好子字符串](https://leetcode-cn.com/problems/longest-nice-substring/)
 
-~~~
+~~~java
  public String longestNiceSubstring(String s) {
         int n = s.length();
         String ans = "";
@@ -10988,7 +11328,7 @@ dfs + flood fill
 
 #### [479. 最大回文数乘积](https://leetcode-cn.com/problems/largest-palindrome-product/)
 
-~~~
+~~~java
 class Solution {
     public int largestPalindrome(int n) {
         if (n == 1) return 9;
@@ -11008,7 +11348,7 @@ class Solution {
 }
 ~~~
 
-~~~
+~~~java
 class Solution {
     public int largestPalindrome(int n) {
         if (n == 1) return 9;

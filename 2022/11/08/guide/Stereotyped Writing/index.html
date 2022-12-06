@@ -63,7 +63,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZd2iaBC1ShwqhoV6S62KgArQlIgynyFHL9VBRpbSanADPgV0cUVI9DBn1VSYsbibiamRzWzsRqukRRag/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/J0g14CUwaZd2iaBC1ShwqhoV6S62KgArQPxyPYiaDmGYPCWtQcCjILVVBFYcdegBSRGly002A7wRYqZ355MBdM0w/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2022-11-08T12:07:00.000Z">
-<meta property="article:modified_time" content="2022-12-03T17:52:08.180Z">
+<meta property="article:modified_time" content="2022-12-06T07:55:57.464Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="实习">
 <meta name="twitter:card" content="summary_large_image">
@@ -270,7 +270,7 @@
         
         
         
-          424 mins
+          426 mins
         
       </span>
     
@@ -1309,6 +1309,14 @@
 <li><strong>可重复读（repeatable read）</strong>，指一个事务执行过程中看到的数据，一直跟这个事务启动时看到的数据是一致的，<strong>MySQL InnoDB 引擎的默认隔离级别</strong>；</li>
 <li><strong>串行化（serializable ）</strong>；会对记录加上读写锁，在多个事务对这条记录进行读写操作时，如果发生了读写冲突的时候，后访问的事务必须等前一个事务执行完成，才能继续执行；</li>
 </ul>
+<p>Q：InnoDB 引擎通过什么技术来保证事务的这四个特性的呢？</p>
+<p>A：</p>
+<ul>
+<li>持久性是通过 redo log （重做日志）来保证的；</li>
+<li>原子性是通过 undo log（回滚日志） 来保证的；</li>
+<li>隔离性是通过 MVCC（多版本并发控制） 或锁机制来保证的；</li>
+<li>一致性则是通过持久性+原子性+隔离性来保证</li>
+</ul>
 <p>Q：MySQL 的隔离级别是基于锁实现的吗？</p>
 <p>A：MySQL 的隔离级别基于锁和 MVCC 机制共同实现的。</p>
 <p>Q：Read View 在 MVCC 里如何工作的？</p>
@@ -1556,7 +1564,8 @@
 <p>Q： linux 命令，如何查看主机 CPU 核数？如何查看内存还剩多少？</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/proc/</span>cpuinfo<br>cat <span class="hljs-regexp">/proc/m</span>eminfo<br></code></pre></td></tr></table></figure>
 
-
+<p>Q：linux查看日志命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Linux查看日志的命令有多种: <span class="hljs-built_in">tail</span>、<span class="hljs-built_in">cat</span>、<span class="hljs-built_in">tac</span>、<span class="hljs-built_in">head</span>、<span class="hljs-built_in">echo</span><br></code></pre></td></tr></table></figure>
 
 
                 
